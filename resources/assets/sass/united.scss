@@ -1,0 +1,24 @@
+/*
+elixir((mix) => {
+    mix.sass([
+            '../../themes/getrealt/assets/sass/united.scss'
+       ], './public/themes/getrealt/css/united.css');
+});
+*/
+
+/*
+|--------------------------------------------------------------------------
+| Packages
+|--------------------------------------------------------------------------
+*/
+
+@import "resources/themes/getrealt/assets/bootswatch/united/variables";
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "resources/themes/getrealt/assets/bootswatch/united/bootswatch";
+
+/*
+|--------------------------------------------------------------------------
+| Base
+|--------------------------------------------------------------------------
+*/
+@import "resources/themes/getrealt/assets/sass/app";

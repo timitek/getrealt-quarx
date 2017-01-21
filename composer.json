@@ -1,0 +1,55 @@
+{
+    "name": "timitek/getrealt-quarx",
+    "type": "library",
+    "description": "A quarx module for for GetRETS.",
+    "keywords": ["laravel", "Quarx", "RETS", "IDX", "Realty", "Real Estate"],
+    "homepage": "https://github.com/timitek/getrealt-quarx",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "timitek, llc",
+            "email": "support@timitek.com",
+            "homepage": "http://www.timitek.com",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "support@timitek.com",
+        "source": "https://github.com/timitek/getrealt-quarx"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "illuminate/support": "~5.1",
+        "php" : "~5.6|~7.0",
+        "yab/quarx": "^2.2"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/timitek/getrealt-quarx"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit" : "~4.0||~5.0",
+        "timitek/getrets-laravel": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Timitek\\GetRealT\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Timitek\\GetRealT\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "check-style": "phpcs -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests",
+        "fix-style": "phpcbf -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests"
+    },
+    "config": {
+        "sort-packages": true
+    }
+}

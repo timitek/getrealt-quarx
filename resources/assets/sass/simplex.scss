@@ -1,0 +1,24 @@
+/*
+elixir((mix) => {
+    mix.sass([
+            '../../themes/getrealt/assets/sass/simplex.scss'
+       ], './public/themes/getrealt/css/simplex.css');
+});
+*/
+
+/*
+|--------------------------------------------------------------------------
+| Packages
+|--------------------------------------------------------------------------
+*/
+
+@import "resources/themes/getrealt/assets/bootswatch/simplex/variables";
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "resources/themes/getrealt/assets/bootswatch/simplex/bootswatch";
+
+/*
+|--------------------------------------------------------------------------
+| Base
+|--------------------------------------------------------------------------
+*/
+@import "resources/themes/getrealt/assets/sass/app";

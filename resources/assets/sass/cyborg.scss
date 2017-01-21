@@ -1,0 +1,24 @@
+/*
+elixir((mix) => {
+    mix.sass([
+            '../../themes/getrealt/assets/sass/cyborg.scss'
+       ], './public/themes/getrealt/css/cyborg.css');
+});
+*/
+
+/*
+|--------------------------------------------------------------------------
+| Packages
+|--------------------------------------------------------------------------
+*/
+
+@import "resources/themes/getrealt/assets/bootswatch/cyborg/variables";
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "resources/themes/getrealt/assets/bootswatch/cyborg/bootswatch";
+
+/*
+|--------------------------------------------------------------------------
+| Base
+|--------------------------------------------------------------------------
+*/
+@import "resources/themes/getrealt/assets/sass/app";

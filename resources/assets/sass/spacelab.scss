@@ -1,0 +1,24 @@
+/*
+elixir((mix) => {
+    mix.sass([
+            '../../themes/getrealt/assets/sass/spacelab.scss'
+       ], './public/themes/getrealt/css/spacelab.css');
+});
+*/
+
+/*
+|--------------------------------------------------------------------------
+| Packages
+|--------------------------------------------------------------------------
+*/
+
+@import "resources/themes/getrealt/assets/bootswatch/spacelab/variables";
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "resources/themes/getrealt/assets/bootswatch/spacelab/bootswatch";
+
+/*
+|--------------------------------------------------------------------------
+| Base
+|--------------------------------------------------------------------------
+*/
+@import "resources/themes/getrealt/assets/sass/app";

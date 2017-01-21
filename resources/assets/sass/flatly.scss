@@ -1,0 +1,24 @@
+/*
+elixir((mix) => {
+    mix.sass([
+            '../../themes/getrealt/assets/sass/flatly.scss'
+       ], './public/themes/getrealt/css/flatly.css');
+});
+*/
+
+/*
+|--------------------------------------------------------------------------
+| Packages
+|--------------------------------------------------------------------------
+*/
+
+@import "resources/themes/getrealt/assets/bootswatch/flatly/variables";
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "resources/themes/getrealt/assets/bootswatch/flatly/bootswatch";
+
+/*
+|--------------------------------------------------------------------------
+| Base
+|--------------------------------------------------------------------------
+*/
+@import "resources/themes/getrealt/assets/sass/app";
