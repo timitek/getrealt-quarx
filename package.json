@@ -1,0 +1,36 @@
+{
+  "name": "getrealt-quarx",
+  "version": "1.0.0",
+  "description": "A quarx module for GetRETS",
+  "main": "gulpfile.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "bootstrap-sass": "^3.3.7",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/timitek/getrealt-quarx.git"
+  },
+  "keywords": [
+    "GetRETS",
+    "Larvel",
+    "IDX",
+    "RETS",
+    "Real",
+    "Estate"
+  ],
+  "author": "josh@timitek.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/timitek/getrealt-quarx/issues"
+  },
+  "homepage": "https://github.com/timitek/getrealt-quarx#readme"
+}

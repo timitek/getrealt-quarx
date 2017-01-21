@@ -12,13 +12,13 @@ elixir((mix) => {
 |--------------------------------------------------------------------------
 */
 
-@import "resources/themes/getrealt/assets/bootswatch/cyborg/variables";
+@import "resources/assets/bootswatch/cyborg/variables";
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
-@import "resources/themes/getrealt/assets/bootswatch/cyborg/bootswatch";
+@import "resources/assets/bootswatch/cyborg/bootswatch";
 
 /*
 |--------------------------------------------------------------------------
 | Base
 |--------------------------------------------------------------------------
 */
-@import "resources/themes/getrealt/assets/sass/app";
+@import "resources/assets/sass/app";

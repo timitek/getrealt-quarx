@@ -12,13 +12,13 @@ elixir((mix) => {
 |--------------------------------------------------------------------------
 */
 
-@import "resources/themes/getrealt/assets/bootswatch/lumen/variables";
+@import "resources/assets/bootswatch/lumen/variables";
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
-@import "resources/themes/getrealt/assets/bootswatch/lumen/bootswatch";
+@import "resources/assets/bootswatch/lumen/bootswatch";
 
 /*
 |--------------------------------------------------------------------------
 | Base
 |--------------------------------------------------------------------------
 */
-@import "resources/themes/getrealt/assets/sass/app";
+@import "resources/assets/sass/app";

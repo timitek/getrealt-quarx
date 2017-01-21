@@ -43,7 +43,7 @@ class GetRealTServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(realpath(__DIR__.'/../../database/migrations'));
         $this->publishes([realpath(__DIR__.'/../../database/migrations') => database_path('migrations')], 'migrations');
 
-        $this->publishes([realpath(__DIR__.'/../../resources/assets') => public_path('assets')], 'public');
+        $this->publishes([realpath(__DIR__.'/../../resources/assets/themes') => public_path('assets')], 'public');
 
         $this->publishes([realpath(__DIR__.'/../../config') => config_path('')], 'config');
 
