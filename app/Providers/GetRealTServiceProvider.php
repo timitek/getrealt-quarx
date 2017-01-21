@@ -30,7 +30,7 @@ class GetRealTServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(DispatcherContract $events, Router $router)
+    public function boot()
     {
         $this->loadRoutesFrom(realpath(__DIR__.'/../../routes/web.php'));
 
@@ -43,18 +43,10 @@ class GetRealTServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(realpath(__DIR__.'/../../database/migrations'));
         $this->publishes([realpath(__DIR__.'/../../database/migrations') => database_path('migrations')], 'migrations');
 
-        $this->publishes([realpath(__DIR__.'/../../resources/assets/themes') => public_path('assets')], 'public');
+        $this->publishes([realpath(__DIR__.'/../../resources/assets/themes') => public_path('assets') . '/themes'], 'public');
 
         $this->publishes([realpath(__DIR__.'/../../config') => config_path('')], 'config');
 
         $this->publishes([realpath(__DIR__.'/../../database/seeds') => database_path('seeds')], 'seeds');
-
-
-        // View namespace
-        View::addNamespace('getrealt', __DIR__.'/Views');
-
-        // Configs
-        Config::set('quarx.modules.getrealt', include(__DIR__.'/config.php'));
-
     }
 }
