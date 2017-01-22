@@ -10,18 +10,7 @@
         </div>
         <div class="collapse navbar-collapse" id="navBar">
             <ul class="nav navbar-nav">
-                @php
-                    $mainMenu = Quarx::menu('main');
-                @endphp
-                
-                @if (!empty($mainMenu))
-                    {!! str_replace( '</a>', '</a></li>', str_replace( '<a ', '<li><a ', $mainMenu)) !!}
-                @else
-                    <li><a href="{{ url('blog') }}">Blog</a></li>
-                    <li><a href="{{ url('gallery') }}">Gallery</a></li>
-                    <li><a href="{{ url('faqs') }}">FAQs</a></li>
-                    <li><a href="{{ url('events') }}">Events</a></li>
-                @endif
+                @mainMenu()
             </ul>
         </div>
     </div>

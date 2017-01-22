@@ -20,6 +20,7 @@
             <div class="col-md-4">
                 <div class="well">
                     <h3>Basics</h3>
+                    @hw()
                     <p>In order to add content to this page login to Quarx and add a home page. Remember you can set up
                         your own Auth for Quarx or run the artisan command: <code>php artisan quarx:setup</code> to get
                         a prebuilt auth system.</p>

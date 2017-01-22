@@ -4,15 +4,63 @@ namespace Timitek\GetRealT\Providers;
 
 use App;
 use Config;
-use Illuminate\Support\ServiceProvider;
 use Lang;
-use Timitek\GetRealT;
-use Timitek\GetRealT\Facades\GetRealTFacade;
+use Blade;
+use Illuminate\Support\ServiceProvider;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\Facades\View;
+use Timitek\GetRealT;
+use Timitek\GetRealT\Facades\GetRealTServiceFacade;
+use Timitek\GetRealT\Facades\GetRealTFrontEndServiceFacade;
+use Timitek\GetRealT\Services\GetRealTFrontEndService;
 
 class GetRealTServiceProvider extends ServiceProvider
 {
+    protected function registerAliases() {
+        $loader = AliasLoader::getInstance();
+
+        $loader->alias('GetRealT', GetRealTServiceFacade::class);
+        
+        $loader->alias('GetRealTFrontEnd', GetRealTFrontEndServiceFacade::class);
+    }
+    
+    protected function registerServices() {
+        $this->app->bind('GetRealT', function ($app) {
+            return new GetRealTService();
+        });
+        
+        $this->app->bind('GetRealTFrontEnd', function ($app) {
+            return new GetRealTFrontEndService();
+        });
+    }
+    
+    protected function loadResources() {
+        $this->loadRoutesFrom(realpath(__DIR__.'/../../routes/web.php'));
+        $this->loadTranslationsFrom(realpath(__DIR__.'/../../resources/lang'), 'GetRealT');
+        $this->loadViewsFrom(realpath(__DIR__.'/../../resources/views'), 'GetRealT');
+        $this->loadMigrationsFrom(realpath(__DIR__.'/../../database/migrations'));
+    }
+    
+    protected function loadPublishes() {
+        $this->publishes([realpath(__DIR__.'/../../config') => config_path('')], 'config');
+        $this->publishes([realpath(__DIR__.'/../../resources/assets/themes') => public_path('assets') . '/themes'], 'public');
+        $this->publishes([realpath(__DIR__.'/../../resources/lang') => resource_path('lang/vendor/timitek')], 'translations');
+        $this->publishes([realpath(__DIR__.'/../../resources/views') => base_path('resources/views/vendor/timitek/getrealt')], 'views');
+        $this->publishes([realpath(__DIR__.'/../../database/migrations') => database_path('migrations')], 'migrations');
+        $this->publishes([realpath(__DIR__.'/../../database/seeds') => database_path('seeds')], 'seeds');
+    }
+
+    protected function registerDirectives() {
+        Blade::directive('hw', function ($expression) {
+            return "<?php echo GetRealTFrontEnd::helloWord(); ?>";
+        });
+        
+        Blade::directive('mainMenu', function ($expression) {
+            return "<?php echo GetRealTFrontEnd::mainMenu(); ?>";
+        });
+        
+    }
+    
     /**
      * Register the service provider.
      *
@@ -20,9 +68,8 @@ class GetRealTServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $loader = AliasLoader::getInstance();
-
-        $loader->alias('GetRealT', GetRealTFacade::class);
+        $this->registerAliases();
+        $this->registerServices();
     }
 
     /**
@@ -32,21 +79,8 @@ class GetRealTServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadRoutesFrom(realpath(__DIR__.'/../../routes/web.php'));
-
-        $this->loadTranslationsFrom(realpath(__DIR__.'/../../resources/lang'), 'GetRealT');
-        $this->publishes([realpath(__DIR__.'/../../resources/lang') => resource_path('lang/vendor/timitek')], 'translations');
-
-        $this->loadViewsFrom(realpath(__DIR__.'/../../resources/views'), 'GetRealT');
-        $this->publishes([realpath(__DIR__.'/../../resources/views') => base_path('resources/views/vendor/timitek/getrealt')], 'views');
-
-        $this->loadMigrationsFrom(realpath(__DIR__.'/../../database/migrations'));
-        $this->publishes([realpath(__DIR__.'/../../database/migrations') => database_path('migrations')], 'migrations');
-
-        $this->publishes([realpath(__DIR__.'/../../resources/assets/themes') => public_path('assets') . '/themes'], 'public');
-
-        $this->publishes([realpath(__DIR__.'/../../config') => config_path('')], 'config');
-
-        $this->publishes([realpath(__DIR__.'/../../database/seeds') => database_path('seeds')], 'seeds');
+        $this->loadResources();
+        $this->loadPublishes();
+        $this->registerDirectives();
     }
 }
