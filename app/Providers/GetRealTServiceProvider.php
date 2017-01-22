@@ -51,14 +51,9 @@ class GetRealTServiceProvider extends ServiceProvider
     }
 
     protected function registerDirectives() {
-        Blade::directive('hw', function ($expression) {
-            return "<?php echo GetRealTFrontEnd::helloWord(); ?>";
-        });
-        
         Blade::directive('mainMenu', function ($expression) {
             return "<?php echo GetRealTFrontEnd::mainMenu(); ?>";
         });
-        
     }
     
     /**

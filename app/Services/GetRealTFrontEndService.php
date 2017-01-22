@@ -6,10 +6,6 @@ use Quarx;
 
 class GetRealTFrontEndService {
     
-    public function helloWord() {
-        return "Testing 123";
-    }
-    
     public function mainMenu() {
         $output = "";
         
@@ -18,7 +14,8 @@ class GetRealTFrontEndService {
             $output = str_replace( '</a>', '</a></li>', str_replace( '<a ', '<li><a ', $mainMenu));
         }
         else {
-            $output = "<li><a href='" . url('blog') . "'>Blog</a></li>" .
+            $output = "<li><a href='" . url('listings') . "'>Listings</a></li>" .
+                      "<li><a href='" . url('blog') . "'>Blog</a></li>" .
                       "<li><a href='" . url('gallery') . "'>Gallery</a></li>" .
                       "<li><a href='" . url('faqs') . "'>FAQs</a></li>" .
                       "<li><a href='" . url('events') . "'>Events</a></li>";

@@ -12,3 +12,9 @@
 */
 
 
+    Route::group(['namespace' => 'Timitek\GetRealT\Http\Controllers'], function () {
+        
+        Route::get('listings', 'ListingController@all');
+    
+    });
+
