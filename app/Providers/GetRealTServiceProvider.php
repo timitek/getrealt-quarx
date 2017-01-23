@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\View;
 use Timitek\GetRealT;
 use Timitek\GetRealT\Facades\GetRealTServiceFacade;
 use Timitek\GetRealT\Facades\GetRealTFrontEndServiceFacade;
+use Timitek\GetRealT\Services\GetRealTService;
 use Timitek\GetRealT\Services\GetRealTFrontEndService;
 
 class GetRealTServiceProvider extends ServiceProvider
