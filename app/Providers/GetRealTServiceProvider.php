@@ -58,8 +58,23 @@ class GetRealTServiceProvider extends ServiceProvider
         });
     }
     
+    private function addQuarxMenu($menu) {                
+        $packageViews = Config::get('quarx.package-menus');
+
+        if (is_null($packageViews)) {
+            $packageViews = [];
+        }
+
+        $menuView = realpath(__DIR__.'/../../resources/views/quarx/') . $menu;
+
+        if (!in_array($menuView, $packageViews)) {
+            array_push($packageViews, $menuView);
+            Config::set('quarx.package-menus', $packageViews);
+        }
+    }
+    
     protected function registerQuarxModule() {
-        Quarx::addToPackages(realpath(__DIR__.'/../../resources/views/quarx/menus'));
+        $this->addQuarxMenu('/getrealt/menu.php');
     }
     
     /**
