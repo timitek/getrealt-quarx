@@ -3,11 +3,16 @@
 namespace Timitek\GetRealT\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Timitek\GetRealT\Http\Controllers\GetRealTController;
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Yab\Quarx\Repositories\BlogRepository;
 
-class ListingController extends GetRealTController
+class ListingController extends BaseController
 {
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
     /**
      * Display all Blog entries.
      *

@@ -6,6 +6,7 @@ use App;
 use Config;
 use Lang;
 use Blade;
+use Quarx;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\Facades\View;
@@ -37,8 +38,8 @@ class GetRealTServiceProvider extends ServiceProvider
     protected function loadResources() {
         $this->loadRoutesFrom(realpath(__DIR__.'/../../routes/web.php'));
         $this->loadTranslationsFrom(realpath(__DIR__.'/../../resources/lang'), 'GetRealT');
-        $this->loadViewsFrom(realpath(__DIR__.'/../../resources/views'), 'GetRealT');
         $this->loadMigrationsFrom(realpath(__DIR__.'/../../database/migrations'));
+        $this->loadViewsFrom(realpath(__DIR__.'/../../resources/views'), 'GetRealT');
     }
     
     protected function loadPublishes() {
@@ -54,6 +55,10 @@ class GetRealTServiceProvider extends ServiceProvider
         Blade::directive('mainMenu', function ($expression) {
             return "<?php echo GetRealTFrontEnd::mainMenu(); ?>";
         });
+    }
+    
+    protected function registerQuarxModule() {
+        Quarx::addToPackages(realpath(__DIR__.'/../../resources/views/quarx/menus'));
     }
     
     /**
@@ -77,5 +82,6 @@ class GetRealTServiceProvider extends ServiceProvider
         $this->loadResources();
         $this->loadPublishes();
         $this->registerDirectives();
+        $this->registerQuarxModule();        
     }
 }

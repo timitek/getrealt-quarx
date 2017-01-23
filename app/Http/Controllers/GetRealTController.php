@@ -2,12 +2,26 @@
 
 namespace Timitek\GetRealT\Http\Controllers;
 
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Quarx;
+use CryptoService;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Timitek\GetRealT\Services\GetRealTService;
 
-abstract class GetRealTController extends BaseController
+class GetRealTController extends Controller
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    public function __construct(GetRealTService $getrealtService)
+    {
+        $this->service = $getrealtService;
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(Request $request)
+    {
+        return view('GetRealT::quarx.getrealt.index');
+    }
 }

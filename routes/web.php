@@ -18,3 +18,9 @@
     
     });
 
+    Route::group(['namespace' => 'Timitek\GetRealT\Http\Controllers', 'prefix' => 'quarx', 'middleware' => ['web', 'auth', 'quarx']], function () { 
+       
+        Route::resource('getrealt', 'GetRealTController', ['only' => ['index']]);
+        
+    });
+
