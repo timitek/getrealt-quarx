@@ -41,4 +41,28 @@ class GetRealTService {
     public function setGetRealTTheme($theme) {
         $this->setEnvironmentValue('GETREALT_THEME', 'getrealt.theme', $theme);
     }
+    
+    public function getSettingsForm() {
+        $form = [
+          'customer_key' => [
+              'placeholder' => 'Customer Key from timitek.com',
+              ],
+          'enable_example' => [
+              'type' => 'checkbox',
+              ],
+          'theme' => [
+              ]
+        ];
+
+        $values = [
+          'customer_key' => config('getrets.customer_key'),
+          'enable_example' => config('getrets.enable_example'),
+          'theme' => config('getrealt.theme')
+        ];
+        
+        return [
+          'form' => $form,
+          'values' => (object)$values
+        ];        
+    }
 }
