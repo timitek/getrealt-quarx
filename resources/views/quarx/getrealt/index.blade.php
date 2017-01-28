@@ -10,12 +10,12 @@
     @include('GetRealT::quarx.getrealt.breadcrumbs', ['location' => ['settings']])
 
     <div class="row">
-        {!! Form::open(['route' => 'quarx.blog.store', 'class' => 'add']) !!}
+        {!! Form::open(['route' => 'quarx.getrealt.store', 'class' => 'add']) !!}
 
-            {!! FormMaker::fromObject(GetRealT::getSettingsForm()['values'], GetRealT::getSettingsForm()['form']) !!}
+            {!! FormMaker::fromObject(GetRealT::getSettings(), GetRealT::getSettingsForm()) !!}
 
             <div class="form-group text-right">
-                <a href="{!! URL::to('quarx/blog') !!}" class="btn btn-default raw-left">Cancel</a>
+                <a href="{!! URL::to('quarx/getrealt') !!}" class="btn btn-default raw-left">Cancel</a>
                 {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
             </div>
 
