@@ -6,7 +6,7 @@ use App;
 use Config;
 use Artisan;
 
-class GetRealTService {
+class GetRealTSettingsService {
     
      /**
      * Set the in the environment file.

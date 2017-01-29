@@ -11,9 +11,9 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\Facades\View;
 use Timitek\GetRealT;
-use Timitek\GetRealT\Facades\GetRealTServiceFacade;
+use Timitek\GetRealT\Facades\GetRealTSettingsServiceFacade;
 use Timitek\GetRealT\Facades\GetRealTFrontEndServiceFacade;
-use Timitek\GetRealT\Services\GetRealTService;
+use Timitek\GetRealT\Services\GetRealTSettingsService;
 use Timitek\GetRealT\Services\GetRealTFrontEndService;
 
 class GetRealTServiceProvider extends ServiceProvider
@@ -21,14 +21,14 @@ class GetRealTServiceProvider extends ServiceProvider
     protected function registerAliases() {
         $loader = AliasLoader::getInstance();
 
-        $loader->alias('GetRealT', GetRealTServiceFacade::class);
+        $loader->alias('GetRealTSettings', GetRealTSettingsServiceFacade::class);
         
         $loader->alias('GetRealTFrontEnd', GetRealTFrontEndServiceFacade::class);
     }
     
     protected function registerServices() {
-        $this->app->bind('GetRealT', function ($app) {
-            return new GetRealTService();
+        $this->app->bind('GetRealTSettings', function ($app) {
+            return new GetRealTSettingsService();
         });
         
         $this->app->bind('GetRealTFrontEnd', function ($app) {
