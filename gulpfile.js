@@ -1,9 +1,12 @@
 var gulp = require('gulp');
+var uglify = require('gulp-uglify');
 var sass = require('gulp-sass');
 
 
-gulp.task('default', function() {
-  // place code for your default task here
+gulp.task('js', function() {
+    gulp.src('./resources/assets/js/*.js')
+      .pipe(uglify())
+      .pipe(gulp.dest('./resources/assets/themes/getrealt/js'));
 });
 
 gulp.task('sass', function () {
@@ -11,3 +14,5 @@ gulp.task('sass', function () {
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest('./resources/assets/themes/getrealt/css'));
 });
+
+gulp.task('default', ['js', 'sass']);

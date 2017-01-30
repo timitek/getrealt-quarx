@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="row">
-        <h1 class="page-header">GetRealT</h1>
+        <h1 class="page-header">GetRealT : Settings</h1>
     </div>
 
 

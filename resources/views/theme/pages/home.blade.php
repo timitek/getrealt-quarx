@@ -5,13 +5,33 @@
     @section('seoKeywords') {{ $page->seo_keywords }} @endsection
 @endif
 
+@section('stylesheets')
+
+    @parent
+    <style>
+        .heading {
+            background: url('http://s.bootply.com/assets/example/bg_suburb.jpg') no-repeat top center fixed;
+            color:#fff;
+            background-size:cover;
+        }
+    </style>
+
+@endsection
+
+
 @section('content')
 
-<div class="container">
 
+<!--parallax 1 -->
+<section class="heading text-center">
     <div class="jumbotron">
         <h1>{!! $page->title or 'Home Page - (Simple)' !!}</h1>
     </div>
+</section>
+<div class="divider"></div>
+
+<div class="container">
+
 
     @if (isset($page))
         {!! $page->entry !!}
@@ -50,6 +70,17 @@
     @endif
 
 </div>
+@endsection
+
+@section('javascript')
+
+    @parent
+    <script type="text/javascript">
+        $('.heading').parallax({
+            speed : 0.35
+        });
+    </script>
+
 @endsection
 
 @section('quarx')
