@@ -6038,6 +6038,13 @@ section {
 .menu a {
   padding: 0 8px; }
 
+.search-section {
+  margin-bottom: 20px; }
+  .search-section legend {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 0; }
+
 /*
 |--------------------------------------------------------------------------
 | Calendar

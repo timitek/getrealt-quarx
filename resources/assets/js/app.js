@@ -48,3 +48,18 @@ elixir((mix) => {
         });
     };
 }(jQuery));
+
+
+(function() {
+    
+    var app = angular.module('app', []);
+    
+    var home = function ($scope) {
+        $scope.advancedSearch = true;
+    };
+    
+    app.controller('home', ['$scope', home]);
+
+})();
+
+
