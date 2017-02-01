@@ -55,6 +55,9 @@
        .webpack('../../themes/getrealt/assets/js/app.js', './public/themes/getrealt/js');
 */
 
+@import "resources/assets/sass/animate";
+
+
 /*
 |--------------------------------------------------------------------------
 | Base
@@ -102,6 +105,10 @@ section {
     }
 
     margin-bottom: 20px;
+}
+
+.pointer {
+    cursor: pointer;
 }
 
 /*

@@ -55,7 +55,7 @@ elixir((mix) => {
     var app = angular.module('app', []);
     
     var home = function ($scope) {
-        $scope.advancedSearch = true;
+        $scope.advancedSearch = false;
     };
     
     app.controller('home', ['$scope', home]);
