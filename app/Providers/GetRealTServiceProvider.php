@@ -56,6 +56,10 @@ class GetRealTServiceProvider extends ServiceProvider
         Blade::directive('mainMenu', function ($expression) {
             return "<?php echo GetRealTFrontEnd::mainMenu(); ?>";
         });
+
+        Blade::directive('searchWidget', function ($expression) {
+            return "<?php echo GetRealTFrontEnd::searchWidget(); ?>";
+        });
     }
     
     private function addQuarxMenu($menu) {                

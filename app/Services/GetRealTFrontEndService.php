@@ -24,4 +24,10 @@ class GetRealTFrontEndService {
         return $output;
     }
     
+    public function searchWidget() {
+        ob_start();
+        include(realpath(__DIR__.'/../../resources/views/widgets/searchWidget.php'));
+        return ob_get_clean();
+    }
+    
 }
