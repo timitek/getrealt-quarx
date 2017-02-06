@@ -8,16 +8,22 @@ elixir((mix) => {
     
     var listingService = function ($q, $http, restService) {
         
-        this.index = function (constraints) {
+        this.index = function (advancedSearch, keywords, minPrice, maxPrice, includeResidential, includeLand, includeCommercial) {
             var deferred = $q.defer();
             
-            var params = null;
-            if (constraints) {
-                params = {
-                    'constraints': constraints
-                };
+            var params = {
+                'keywords' : keywords
+            };
+            
+            if (advancedSearch) {
+                params.advancedSearch = advancedSearch;
+                params.minPrice = minPrice;
+                params.maxPrice = maxPrice;
+                params.includeResidential = includeResidential; 
+                params.includeLand = includeLand;
+                params.includeCommercial = includeCommercial;
             }
-
+            
             restService.go({
                 url: '/getrealt/listing',
                 params: params
@@ -31,31 +37,6 @@ elixir((mix) => {
             return deferred.promise;
         };
 
-        this.indexDownload = function (constraints, format) {
-            var deferred = $q.defer();
-
-            var params = {
-                    'format': format
-                };
-            
-            if (constraints) {
-                params.constraints = constraints;
-            }
-                
-            restService.go({
-                url: '/api/analytics/metric',
-                enableCache: false,
-                responseType: 'arraybuffer',
-                params: params
-            }).then(function (data) {
-                deferred.resolve(data);
-            }, function (data) {
-                deferred.reject(data.data);
-                throw data;
-            });
-
-            return deferred.promise;
-        };
         
         this.show = function (id) {
             var deferred = $q.defer();
@@ -112,10 +93,10 @@ elixir((mix) => {
         };
     };
     
-    var searchWidget = function ($scope, listingService) {
+    var searchWidget = function ($scope, eventFactory, listingService) {
         
-        $scope.advancedSearch = false;
-        
+        // Input variables
+        $scope.advancedSearch = false;        
         $scope.keywords = null;
         $scope.minPrice = null;
         $scope.maxPrice = null;
@@ -123,16 +104,55 @@ elixir((mix) => {
         $scope.includeLand = true;
         $scope.includeCommercial = true;
         
+        $scope.listings = null;
+        
         $scope.search = function() {
-            listingService.index().then(function (data) {
-               alert(JSON.stringify(data)); 
+            listingService.index(
+                        $scope.advancedSearch,
+                        $scope.keywords,
+                        $scope.minPrice,
+                        $scope.maxPrice,
+                        $scope.includeResidential,
+                        $scope.includeLand,
+                        $scope.includeCommercial
+                    ).then(function (data) {
+               $scope.listings = data;
+               eventFactory.refreshListings($scope.listings);
             });
         };
-    };    
+    };
+    
+    var listingsWidget = function ($scope, eventFactory) {
+        $scope.listings = null;
+        
+        eventFactory.onRefreshListings($scope, function (listings) {
+            $scope.listings = listings;
+        });        
+    };
+    
+    var eventFactory = function ($rootScope) {
+        var REFRESH_LISTINGS = 'refreshListings';
+        var refreshListings = function (listings) {
+            $rootScope.$broadcast(REFRESH_LISTINGS, listings);
+        };
+        var onRefreshListings = function ($scope, handler) {
+            $scope.$on(REFRESH_LISTINGS, function (event, message) {
+                handler(message);
+            });
+        };     
+        
+        return {
+            refreshListings: refreshListings,
+            onRefreshListings: onRefreshListings
+        };
+        
+    };
 
     angular.module('getrealt', ['getrealt.rest'])
+           .factory('eventFactory', ['$rootScope', eventFactory])
            .service('listingService', ['$q', '$http', 'restService', listingService])
-           .controller('searchWidget', ['$scope', 'listingService', searchWidget]);
+           .controller('searchWidget', ['$scope', 'eventFactory', 'listingService', searchWidget])
+           .controller('listingsWidget', ['$scope', 'eventFactory', listingsWidget]);
 
 })();
 

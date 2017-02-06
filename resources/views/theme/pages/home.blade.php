@@ -41,6 +41,31 @@
                 @searchWidget()
             </div>
         </div>
+    
+    <div ng-controller="listingsWidget">
+        <div class="row" ng-if="listings">
+            <div class="col-xs-12 col-md-6">
+                <div class="thumbnail" style="min-height: 450px;" ng-repeat="listing in listings">
+                    <img ng-src="@{{listing.thumbnail}}?newWidth=242&maxHeight=200" alt="...">
+                    <div class="caption">
+                        <small><strong>Provided By:</strong> <span ng-bind="listing.providedBy"></span></small><br />
+                        <h3><span ng-bind="listing.address"></span></h3>
+                        <div class="getrets-features">
+                            <ul>
+                                <li><strong>Type:</strong><span ng-bind="listing.listingTypeURLSlug"></span></li>
+                                <li><strong>Price:</strong><span ng-bind="listing.listPrice"></span></li>
+                                <li><strong>Beds:</strong><span ng-bind="listing.beds"></span></li>
+                                <li><strong>Baths:</strong><span ng-bind="listing.baths"></span></li>
+                                <li><strong><abbr title="Square Feet">Sqft.</abbr>:</strong><span ng-bind="listing.squareFeet"></span></li>
+                                <li><strong>Lot:</strong><span ng-bind="listing.lot"></span></li>
+                                <li><strong>Acres:</strong><span ng-bind="listing.acres"></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
         <div class="row">
             <div class="col-md-4">

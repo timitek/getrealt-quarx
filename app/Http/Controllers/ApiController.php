@@ -36,122 +36,6 @@ class ApiController extends BaseController {
     }
 
     /**
-     * Decodes a serialized json object into a formal object
-     * 
-     * @param type $key The key to fetch the strong from the request
-     * @param array $additionalInput Any additional input provided by the controller action
-     * @return type
-     */
-    public function decodeInput($key, array $additionalInput = null) {
-        $decoded = null;
-
-        $json = $this->request->input($key);
-        if (!empty($json)) {
-            if (is_array($json)) {
-                $decoded = (object)$json;
-            }
-            else {
-                $decoded = json_decode($json);
-            }
-        }
-        
-        if (!empty($additionalInput)) {
-            if (empty($decoded)) {
-                $decoded = (Object)$additionalInput;
-            }
-            else {
-                $decoded = (Object)array_merge((array)$decoded, $additionalInput);
-            }
-        }
-
-        return $decoded;
-    }
-
-    /**
-     * Verfies that files were uploaded successfully
-     * 
-     * @param array $fileList The list of files to verify (items can be array with additional requirements)
-     * @return type
-     */
-    public function verifyFiles(array $fileList) {
-        $failMessage = null;
-        foreach ($fileList as $file) {
-            $fileName = $file;
-            $required = null;
-            
-            if (is_array($file)) {
-                $fileName = $file["name"];
-                $required = $file["required"];
-            }
-            
-            if ($this->request->hasFile($fileName)) {
-                if (!$this->request->file($fileName)->isValid()) {
-                    $failMessage = $fileName . " failed to upload correctly.";
-                    break;
-                }
-            }
-            else {
-                if (!empty($required)) {
-                    $failMessage = $required;
-                    break;
-                }
-            }
-        }
-        
-        return $failMessage;
-    }
-
-    /**
-     * Compares an array of input provided against an array required fields
-     * (where the key of the required fields is the input to check and the value
-     * is used as the message to respoind back from the api call with)
-     * 
-     * @param array $requiredFields The required fields used to sanitize the provided input
-     * @param array $provided The input that was decoded and parsed (if null uses Request input)
-     * @return type
-     */
-    public function verifyProvidedInput(array $requiredFields, array $provided = null) {
-        $failureResponse = null;
-        $input = (empty($provided) ? $this->request->input() : $provided);
-        foreach ($requiredFields as $key => $value) {
-            if (array_key_exists($key, $input) == false) {
-                $failureResponse = $this->respondUnprocessable($value);
-                break;
-            }
-        }
-        return $failureResponse;
-    }
-
-    /**
-     * Decodes the input and enforces requirements.  
-     * Input will be returned in input
-     * Failures will be returned in failureResponse.
-     * 
-     * @param type $key The key to fetch the strong from the request
-     * @param array $additionalInput Any additional input provided by the controller action
-     * @return type
-     */
-    public function requireInput($key, array $requiredFields = null, array $additionalInput = null) {
-        
-        $failureResponse = null; // Assume no failure
-        $input = $this->decodeInput($key, $additionalInput);
-        
-        if ($this->isEmpty($input)) {
-            $failureResponse = $this->respondUnprocessable("A filter must be provided");
-        }
-        else {
-            if (!empty($requiredFields)) {
-                $failureResponse = $this->verifyProvidedInput($requiredFields, (array)$input);
-            }
-        }
-
-        return (Object)[
-            "input" => $input,
-            "failureResponse" => $failureResponse
-        ];
-    }
-
-    /**
      * Submit the response and all meta data back to the client
      * 
      * @param type $data
@@ -234,4 +118,143 @@ class ApiController extends BaseController {
         return $this->setStatusCode(StatusCodes::HTTP_INTERNAL_SERVER_ERROR)->respondWithError($message);
     }
 
+
+    
+    
+    
+    
+
+    /**
+     * Verfies that files were uploaded successfully
+     * 
+     * @param array $fileList The list of files to verify (items can be array with additional requirements)
+     * @return type
+     */
+    public function verifyFiles(array $fileList) {
+        $failMessage = null;
+        foreach ($fileList as $file) {
+            $fileName = $file;
+            $required = null;
+            
+            if (is_array($file)) {
+                $fileName = $file["name"];
+                $required = $file["required"];
+            }
+            
+            if ($this->request->hasFile($fileName)) {
+                if (!$this->request->file($fileName)->isValid()) {
+                    $failMessage = $fileName . " failed to upload correctly.";
+                    break;
+                }
+            }
+            else {
+                if (!empty($required)) {
+                    $failMessage = $required;
+                    break;
+                }
+            }
+        }
+        
+        return $failMessage;
+    }
+    
+    /**
+     * Compares an array of input provided against an array required fields
+     * (where the key of the required fields is the input to check and the value
+     * is used as the message to respoind back from the api call with)
+     * 
+     * @param array $requiredFields The required fields used to sanitize the provided input
+     * @param array $provided The input that was decoded and parsed (if null uses Request input)
+     * @return type
+     */
+    public function verifyProvidedInput(array $requiredFields, array $provided = null) {
+        $failureResponse = null;
+        $input = (empty($provided) ? $this->request->input() : $provided);
+        foreach ($requiredFields as $key => $value) {
+            if (array_key_exists($key, $input) == false) {
+                $failureResponse = $this->respondUnprocessable($value);
+                break;
+            }
+        }
+        return $failureResponse;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+
+    /**
+     * Decodes a serialized json object into a formal object
+     * 
+     * @param type $key The key to fetch the strong from the request
+     * @param array $additionalInput Any additional input provided by the controller action
+     * @return type
+     */
+    public function decodeInput($key, array $additionalInput = null) {
+        $decoded = null;
+
+        $json = $this->request->input($key);
+        if (!empty($json)) {
+            if (is_array($json)) {
+                $decoded = (object)$json;
+            }
+            else {
+                $decoded = json_decode($json);
+            }
+        }
+        
+        if (!empty($additionalInput)) {
+            if (empty($decoded)) {
+                $decoded = (Object)$additionalInput;
+            }
+            else {
+                $decoded = (Object)array_merge((array)$decoded, $additionalInput);
+            }
+        }
+
+        return $decoded;
+    }
+
+    /**
+     * Decodes the input and enforces requirements.  
+     * Input will be returned in input
+     * Failures will be returned in failureResponse.
+     * 
+     * @param type $key The key to fetch the string from the request
+     * @param array $additionalInput Any additional input provided by the controller action
+     * @return type
+     */
+    public function requireInput($key, array $requiredFields = null, array $additionalInput = null) {
+        
+        $failureResponse = null; // Assume no failure
+        $input = $this->decodeInput($key, $additionalInput);
+        
+        if ($this->isEmpty($input)) {
+            $failureResponse = $this->respondUnprocessable("A filter must be provided");
+        }
+        else {
+            if (!empty($requiredFields)) {
+                $failureResponse = $this->verifyProvidedInput($requiredFields, (array)$input);
+            }
+        }
+
+        return (Object)[
+            "input" => $input,
+            "failureResponse" => $failureResponse
+        ];
+    }
+
+    
 }
