@@ -44,8 +44,8 @@
     
     <div ng-controller="listingsWidget">
         <div class="row" ng-if="listings">
-            <div class="col-xs-12 col-md-6">
-                <div class="thumbnail" style="min-height: 450px;" ng-repeat="listing in listings">
+            <div class="col-xs-12 col-md-6" ng-repeat="listing in listings">
+                <div class="thumbnail" style="min-height: 450px;">
                     <img ng-src="@{{listing.thumbnail}}?newWidth=242&maxHeight=200" alt="...">
                     <div class="caption">
                         <small><strong>Provided By:</strong> <span ng-bind="listing.providedBy"></span></small><br />

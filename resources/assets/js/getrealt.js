@@ -52,45 +52,6 @@ elixir((mix) => {
 
             return deferred.promise;
         };
-        
-
-        this.update = function (metric) {
-            var deferred = $q.defer();
-
-            restService.go({
-                url: '/api/analytics/metric/' + metric.metricid,
-                method: 'PUT',
-                params: {
-                    'attributes': metric
-                }
-            }).then(function (data) {
-                deferred.resolve(data.data);
-            }, function (data) {
-                deferred.reject(data.data);
-                throw data;
-            });
-
-            return deferred.promise;
-        };
-
-        this.store = function (metric) {
-            var deferred = $q.defer();
-
-            restService.go({
-                url: '/api/analytics/metric',
-                method: 'POST',
-                params: {
-                    'attributes': metric
-                }
-            }).then(function (data) {
-                deferred.resolve(data.data);
-            }, function (data) {
-                deferred.reject(data.data);
-                throw data;
-            });
-
-            return deferred.promise;
-        };
     };
     
     var searchWidget = function ($scope, eventFactory, listingService) {
