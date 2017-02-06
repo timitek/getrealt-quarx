@@ -1,14 +1,14 @@
-<div class="well well-lg">
-    <form action="/phpsdk/index.php#searchResults" method="post">
+<div class="well well-lg" ng-controller="searchWidget">
+    <form>
         <span ng-show="advancedSearch" class="label label-primary pull-right pointer" ng-click="advancedSearch = false"><i class="fa fa-arrow-circle-up"></i> Simple Search</span>
         <span ng-show="!advancedSearch" class="label label-primary pull-right pointer" ng-click="advancedSearch = true"><i class="fa fa-arrow-circle-down"></i> Advanced Search</span>
 
         <div class="form-group">
             <label for="keywords">Search</label>
             <div class="input-group add-on">
-                <input class="form-control" id="keywords" name="keywords" placeholder="Enter keywords (address, listing id, etc..)">
+                <input class="form-control" id="keywords" name="keywords" placeholder="Enter keywords (address, listing id, etc..)" ng-model="keywords">
                 <div class="input-group-btn">
-                    <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+                    <button class="btn btn-default" type="submit" ng-click="search()"><i class="fa fa-search"></i></button>
                 </div>
             </div>
         </div>
@@ -19,7 +19,7 @@
                     <label for="maxPrice">Max Price</label>
                     <div class="input-group">
                         <span class="input-group-addon">$</span>
-                        <input type="number" class="form-control" id="maxPrice" name="maxPrice" placeholder="Max Price" value="">
+                        <input type="number" class="form-control" id="maxPrice" name="maxPrice" placeholder="Max Price" ng-model="maxPrice">
                     </div>
                 </div>                        
 
@@ -27,7 +27,7 @@
                     <label for="minPrice">Min Price</label>
                     <div class="input-group">
                         <span class="input-group-addon">$</span>
-                        <input type="number" class="form-control" id="minPrice" name="minPrice" placeholder="Min Price" value="">
+                        <input type="number" class="form-control" id="minPrice" name="minPrice" placeholder="Min Price" ng-model="minPrice">
                     </div>
                 </div>
 
@@ -38,7 +38,7 @@
                             <div class="col-xs-12 col-md-4">
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" name="includeResidential" value="true"> 
+                                        <input type="checkbox" name="includeResidential" ng-model="includeResidential"> 
                                         Include Residential
                                     </label>
                                 </div>                                
@@ -47,7 +47,7 @@
                             <div class="col-xs-12 col-md-4">
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" name="includeLand" value="true"> 
+                                        <input type="checkbox" name="includeLand" ng-model="includeLand"> 
                                         Include Land
                                     </label>
                                 </div>                                
@@ -56,7 +56,7 @@
                             <div class="col-xs-12 col-md-4">
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" name="includeCommercial" value="true"> 
+                                        <input type="checkbox" name="includeCommercial" ng-model="includeCommercial"> 
                                         Include Commercial
                                     </label>
                                 </div>                                
@@ -68,6 +68,6 @@
             </div>
         </div>
 
-        <button type="submit" class="btn btn-primary" name="searchByKeyword">Search</button>
+        <button type="submit" class="btn btn-primary" name="searchByKeyword" ng-click="search()">Search</button>
     </form>
 </div>

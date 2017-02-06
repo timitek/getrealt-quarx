@@ -30,7 +30,7 @@
 </section>
 <div class="divider"></div>
 
-<div class="container" ng-controller="home">
+<div class="container">
 
 
     @if (isset($page))

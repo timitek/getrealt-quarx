@@ -21,6 +21,10 @@
     });
 
     Route::group(['namespace' => 'Timitek\GetRealT\Http\Controllers', 'prefix' => 'quarx/getrealt', 'middleware' => ['web', 'auth', 'quarx']], function () { 
-        Route::resource('settings', 'GetRealTSettingsController', ['as' => 'quarx.getrealt', 'except' => ['show', 'create', 'destroy', 'update', 'edit']]);
+        Route::resource('settings', 'GetRealTSettingsController', ['as' => 'quarx.getrealt', 'except' => ['create', 'show', 'edit', 'update', 'destroy']]);
+    });
+
+    Route::group(['namespace' => 'Timitek\GetRealT\Http\Controllers', 'prefix' => 'getrealt', 'middleware' => ['web']], function () { 
+        Route::resource('listing', 'GetRealTListingController', ['only' => ['index', 'show']]);
     });
 

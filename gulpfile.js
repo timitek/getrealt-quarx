@@ -5,8 +5,11 @@ var sass = require('gulp-sass');
 
 gulp.task('js', function() {
     gulp.src('./resources/assets/js/*.js')
+      .pipe(gulp.dest('./resources/assets/themes/getrealt/js'));
+      /*
       .pipe(uglify())
       .pipe(gulp.dest('./resources/assets/themes/getrealt/js'));
+      */
 });
 
 gulp.task('sass', function () {

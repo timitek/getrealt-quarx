@@ -1,9 +1,3 @@
-/*
-elixir((mix) => {
-    mix.webpack('../../themes/getrealt/assets/js/app.js', './public/themes/getrealt/js');
-});
-*/
-
 /**
  * Author: Heather Corey
  * jQuery Simple Parallax Plugin
@@ -48,18 +42,3 @@ elixir((mix) => {
         });
     };
 }(jQuery));
-
-
-(function() {
-    
-    var app = angular.module('app', []);
-    
-    var home = function ($scope) {
-        $scope.advancedSearch = false;
-    };
-    
-    app.controller('home', ['$scope', home]);
-
-})();
-
-

@@ -1,6 +1,6 @@
 <!doctype html>
 
-<html lang="en" ng-app="app">
+<html lang="en" ng-app="getrealt">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,6 +44,9 @@
     <script type="text/javascript" src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-    <script type="text/javascript" src="{{ asset('assets/themes/getrealt/js/app.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/themes/getrealt/js/parallax.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/themes/getrealt/js/polly.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/themes/getrealt/js/rest.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/themes/getrealt/js/getrealt.js') }}"></script>
     @yield('javascript')
 </html>
