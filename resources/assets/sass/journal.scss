@@ -16,6 +16,8 @@ elixir((mix) => {
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 @import "resources/assets/bootswatch/journal/bootswatch";
 
+@import url("./pace/red/pace-theme-loading-bar.css");
+
 /*
 |--------------------------------------------------------------------------
 | Base
