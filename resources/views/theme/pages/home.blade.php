@@ -44,23 +44,23 @@
     
     <div ng-controller="listingsWidget">
         <div class="row" ng-if="listings">
-            <div class="col-xs-12 col-md-6" ng-repeat="listing in listings">
+            <div class="col-xs-12 col-sm-6 col-lg-4" ng-repeat="listing in listings">
                 <div class="thumbnail" style="min-height: 450px;">
                     <img ng-src="@{{listing.thumbnail}}?newWidth=242&maxHeight=200" alt="...">
                     <div class="caption">
-                        <small><strong>Provided By:</strong> <span ng-bind="listing.providedBy"></span></small><br />
-                        <h3><span ng-bind="listing.address"></span></h3>
-                        <div class="getrets-features">
-                            <ul>
-                                <li><strong>Type:</strong><span ng-bind="listing.listingTypeURLSlug"></span></li>
-                                <li><strong>Price:</strong><span ng-bind="listing.listPrice"></span></li>
-                                <li><strong>Beds:</strong><span ng-bind="listing.beds"></span></li>
-                                <li><strong>Baths:</strong><span ng-bind="listing.baths"></span></li>
-                                <li><strong><abbr title="Square Feet">Sqft.</abbr>:</strong><span ng-bind="listing.squareFeet"></span></li>
-                                <li><strong>Lot:</strong><span ng-bind="listing.lot"></span></li>
-                                <li><strong>Acres:</strong><span ng-bind="listing.acres"></span></li>
-                            </ul>
+                        <h4><i class="fa fa-map-marker"></i> <span ng-bind="listing.address"></span></h4>
+                        <h4>
+                            <span class="label label-primary"><span ng-bind="listing.listingTypeURLSlug"></span></span>
+                            <span class="label label-primary" ng-if="listing.beds"><span ng-bind="listing.beds"></span> Bed</span>
+                            <span class="label label-primary" ng-if="listing.baths"><span ng-bind="listing.baths"></span> Bath</span>
+                        </h4>
+                        <h3><span ng-bind="listing.listPrice"></span></h3>
+                        <div>
+                            <abbr title="Square Feet">Sqft.</abbr><span ng-bind="listing.squareFeet"></span>
+                            Lot<span ng-bind="listing.lot"></span>
+                            Acres<span ng-bind="listing.acres"></span>
                         </div>
+                        <small><strong>Provided By:</strong> <span ng-bind="listing.providedBy"></span></small><br />
                     </div>
                 </div>
             </div>

@@ -13,7 +13,7 @@
             </div>
         </div>
 
-        <div class="animated" ng-class="{ bounceIn: advancedSearch }" ng-show="advancedSearch">
+        <div class="animated" ng-class="{ pulse: advancedSearch }" ng-show="advancedSearch">
             <div class="row">
                 <div class="col-xs-12 col-md-6 form-group">
                     <label for="maxPrice">Max Price</label>
