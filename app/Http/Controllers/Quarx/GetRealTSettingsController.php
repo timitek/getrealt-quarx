@@ -1,10 +1,9 @@
 <?php
 
-namespace Timitek\GetRealT\Http\Controllers;
+namespace Timitek\GetRealT\Http\Controllers\Quarx;
 
 use Quarx;
 use GetRealTSettings;
-use CryptoService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Timitek\GetRealT\Services\GetRealTSettingsService;

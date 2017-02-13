@@ -1,6 +1,6 @@
 <div class="well well-lg" ng-controller="searchWidget">
     <form>
-        <span ng-show="advancedSearch" class="label label-primary pull-right pointer" ng-click="advancedSearch = false"><i class="fa fa-arrow-circle-up"></i> Simple Search</span>
+        <span ng-show="advancedSearch" class="label label-primary pull-right pointer ng-cloak" ng-click="advancedSearch = false"><i class="fa fa-arrow-circle-up"></i> Simple Search</span>
         <span ng-show="!advancedSearch" class="label label-primary pull-right pointer" ng-click="advancedSearch = true"><i class="fa fa-arrow-circle-down"></i> Advanced Search</span>
 
         <div class="form-group">
@@ -13,7 +13,7 @@
             </div>
         </div>
 
-        <div class="animated" ng-class="{ pulse: advancedSearch }" ng-show="advancedSearch">
+        <div class="animated ng-cloak" ng-class="{ pulse: advancedSearch }" ng-show="advancedSearch">
             <div class="row">
                 <div class="col-xs-12 col-md-6 form-group">
                     <label for="maxPrice">Max Price</label>

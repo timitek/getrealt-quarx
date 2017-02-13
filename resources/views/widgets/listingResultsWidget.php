@@ -1,8 +1,10 @@
-<div ng-controller="listingsWidget">
+<div class="ng-cloak" ng-controller="listingsWidget">
     <div class="row" ng-if="listings">
         <div class="col-xs-12 col-sm-6 col-lg-4" ng-repeat="listing in listings">
             <div class="thumbnail listing-result animated bounceInDown">
-                <img class="listing-result-img" ng-src="{{listing.thumbnail}}?newWidth=242&maxHeight=200" alt="...">
+                <a ng-href="/listings/{{listing.listingTypeURLSlug}}_{{listing.id}}" target="_blank" alt="View Details">
+                    <img class="listing-result-img" ng-src="{{listing.thumbnail}}?newWidth=242&maxHeight=200" alt="...">
+                </a>
                 <div class="caption">
                     <div class="listing-result-address"><i class="fa fa-map-marker"></i> <span ng-bind="listing.address"></span></div>
                     <div class="listing-result-attributes">

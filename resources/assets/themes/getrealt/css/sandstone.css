@@ -8299,6 +8299,9 @@ input,
 | Base
 |--------------------------------------------------------------------------
 */
+.ng-cloak {
+  display: none !important; }
+
 .parallax-heading {
   text-align: center;
   height: 100%;
@@ -8343,44 +8346,48 @@ input,
 | Listing Results
 |--------------------------------------------------------------------------
 */
-.listing-result {
+.listing-result .listing-result-img {
+  min-height: 200px;
+  max-height: 200px;
   cursor: pointer; }
-  .listing-result:hover {
+  .listing-result .listing-result-img:hover {
     box-shadow: 10px 10px 5px #DFD7CA; }
-  .listing-result .listing-result-img {
-    min-height: 200px;
-    max-height: 200px; }
-  .listing-result .listing-result-address {
-    text-align: center;
-    min-height: 60px;
-    padding-top: 10px;
-    padding-bottom: 10px; }
-  .listing-result .listing-result-attributes {
-    background-color: #F8F5F0;
-    text-align: center;
-    border-top: 3px solid #DFD7CA;
-    border-bottom: 3px solid #DFD7CA;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-bottom: 20px; }
-  .listing-result .listing-result-price {
-    text-align: center;
-    font-size: 24px;
-    padding-bottom: 10px; }
-  .listing-result .listing-result-dimensions {
-    text-align: center;
-    padding-top: 10px; }
-    .listing-result .listing-result-dimensions .listing-result-dimension {
-      border-left: 2px solid #325D88;
-      border-right: 2px solid #325D88;
-      padding-left: 5px;
-      padding-right: 5px;
-      margin-left: 5px;
-      margin-right: 5px; }
-  .listing-result .listing-result-provider {
-    margin-top: 10px;
-    margin-bottom: -10px;
-    font-size: 10px; }
+
+.listing-result .listing-result-address {
+  text-align: center;
+  min-height: 60px;
+  padding-top: 10px;
+  padding-bottom: 10px; }
+
+.listing-result .listing-result-attributes {
+  background-color: #F8F5F0;
+  text-align: center;
+  border-top: 3px solid #DFD7CA;
+  border-bottom: 3px solid #DFD7CA;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 20px; }
+
+.listing-result .listing-result-price {
+  text-align: center;
+  font-size: 24px;
+  padding-bottom: 10px; }
+
+.listing-result .listing-result-dimensions {
+  text-align: center;
+  padding-top: 10px; }
+  .listing-result .listing-result-dimensions .listing-result-dimension {
+    border-left: 2px solid #325D88;
+    border-right: 2px solid #325D88;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-left: 5px;
+    margin-right: 5px; }
+
+.listing-result .listing-result-provider {
+  margin-top: 10px;
+  margin-bottom: -10px;
+  font-size: 10px; }
 
 /*
 |--------------------------------------------------------------------------

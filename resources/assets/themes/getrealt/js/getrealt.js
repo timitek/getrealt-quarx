@@ -25,7 +25,7 @@ elixir((mix) => {
             }
             
             restService.go({
-                url: '/getrealt/listing',
+                url: '/getrealt/listings',
                 params: params
             }).then(function (data) {
                 deferred.resolve(data.data);

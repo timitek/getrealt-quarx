@@ -1,21 +1,21 @@
 <?php
 
-namespace Timitek\GetRealT\Http\Controllers;
+namespace Timitek\GetRealT\Http\Controllers\Api;
 
 use GetRETS;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Timitek\GetRealT\Http\Controllers\ApiController;
 
-class GetRealTListingController extends ApiController
+class ListingsApiController extends ApiController
 {
-	public function imageUrl($listingSource, $listingType, $listingId, $photoId, $width = null, $height = null) {
-		$img = $this->getUrl() . '/api/' . $this->getCustomerKey() . '/'. $this->getSearchType() . '/Image/' . $listingSource . '/' . $listingType . '/' . $listingId . '/' . $photoId;
-		if ($width) {
-			$img .= '?newWidth=' . $width . '&maxHeight=' .$height;
-		}
-		return $img;
-	}
-    
+    public function imageUrl($listingSource, $listingType, $listingId, $photoId, $width = null, $height = null) {
+        $img = $this->getUrl() . '/api/' . $this->getCustomerKey() . '/' . $this->getSearchType() . '/Image/' . $listingSource . '/' . $listingType . '/' . $listingId . '/' . $photoId;
+        if ($width) {
+            $img .= '?newWidth=' . $width . '&maxHeight=' . $height;
+        }
+        return $img;
+    }
+
     private function addThumbnails(array &$listings) {
         foreach ($listings as &$listing) {
             $listing->thumbnail = GetRETS::getListing()

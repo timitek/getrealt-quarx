@@ -12,19 +12,18 @@
 */
 
 
-    Route::group(['namespace' => 'Timitek\GetRealT\Http\Controllers'], function () {
-        Route::get('listings', 'ListingController@all');
+    Route::group(['namespace' => 'Timitek\GetRealT\Http\Controllers\FrontEnd'], function () {
+        Route::get('listings', 'ListingsController@all');
+        Route::get('listings/{id}', 'ListingsController@show');
+
     });
 
-    Route::group(['namespace' => 'Timitek\GetRealT\Http\Controllers', 'prefix' => 'quarx', 'middleware' => ['web', 'auth', 'quarx']], function () { 
+    Route::group(['namespace' => 'Timitek\GetRealT\Http\Controllers\Quarx', 'prefix' => 'quarx', 'middleware' => ['web', 'auth', 'quarx']], function () { 
         Route::get('getrealt', 'GetRealTController@index');
+        Route::resource('getrealt/settings', 'GetRealTSettingsController', ['as' => 'quarx.getrealt', 'except' => ['create', 'show', 'edit', 'update', 'destroy']]);
     });
 
-    Route::group(['namespace' => 'Timitek\GetRealT\Http\Controllers', 'prefix' => 'quarx/getrealt', 'middleware' => ['web', 'auth', 'quarx']], function () { 
-        Route::resource('settings', 'GetRealTSettingsController', ['as' => 'quarx.getrealt', 'except' => ['create', 'show', 'edit', 'update', 'destroy']]);
-    });
-
-    Route::group(['namespace' => 'Timitek\GetRealT\Http\Controllers', 'prefix' => 'getrealt', 'middleware' => ['web']], function () { 
-        Route::resource('listing', 'GetRealTListingController', ['only' => ['index', 'show']]);
+    Route::group(['namespace' => 'Timitek\GetRealT\Http\Controllers\Api', 'prefix' => 'getrealt', 'middleware' => ['web']], function () { 
+        Route::resource('listings', 'ListingsApiController', ['only' => ['index', 'show']]);
     });
 

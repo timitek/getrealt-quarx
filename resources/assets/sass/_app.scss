@@ -6,6 +6,10 @@
 |--------------------------------------------------------------------------
 */
 
+.ng-cloak {
+    display: none !important;
+}
+
 .parallax-heading {
     text-align: center;
     height: 100%;
@@ -64,15 +68,14 @@
 
 .listing-result {
 
-    cursor: pointer;
-    
-    &:hover {
-        box-shadow: 10px 10px 5px $table-border-color;
-    }
-    
     .listing-result-img {
         min-height: 200px;
         max-height: 200px;
+        cursor: pointer;
+
+        &:hover {
+            box-shadow: 10px 10px 5px $table-border-color;
+        }
     }
     
     .listing-result-address {

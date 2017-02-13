@@ -1,19 +1,18 @@
 @extends('quarx-frontend::layout.master')
 
-@section('seoDescription') {{ $blog->seo_description }} @endsection
-@section('seoKeywords') {{ $blog->seo_keywords }} @endsection
+@section('seoDescription') {{ $listing->description }} @endsection
+@section('seoKeywords') {{ $listing->description }} @endsection
 
 @section('content')
 
 <div class="container">
 
-    <h1>{!! $blog->title !!} - <span>{!! $blog->published_at !!}</span></h1>
-    {!! $blog->entry !!}
+    <h1>{!! $listing->description !!}</h1>
 
 </div>
 
 @endsection
 
 @section('quarx')
-    @edit('blog', $blog->id)
+    @edit('getrealt')
 @endsection

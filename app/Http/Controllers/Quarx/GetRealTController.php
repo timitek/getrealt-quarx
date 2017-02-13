@@ -1,8 +1,7 @@
 <?php
 
-namespace Timitek\GetRealT\Http\Controllers;
+namespace Timitek\GetRealT\Http\Controllers\Quarx;
 
-use Quarx;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
