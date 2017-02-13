@@ -5974,62 +5974,6 @@ label {
 | Base
 |--------------------------------------------------------------------------
 */
-/*
-       .sass([
-            '../../themes/getrealt/assets/sass/cerulean.scss'
-       ], './public/themes/getrealt/css/cerulean.css')
-       .sass([
-            '../../themes/getrealt/assets/sass/cosmo.scss'
-       ], './public/themes/getrealt/css/cosmo.css')
-       .sass([
-            '../../themes/getrealt/assets/sass/custom.scss'
-       ], './public/themes/getrealt/css/custom.css')
-       .sass([
-            '../../themes/getrealt/assets/sass/cyborg.scss'
-       ], './public/themes/getrealt/css/cyborg.css')
-       .sass([
-            '../../themes/getrealt/assets/sass/darkly.scss'
-       ], './public/themes/getrealt/css/darkly.css')
-       .sass([
-            '../../themes/getrealt/assets/sass/flatly.scss'
-       ], './public/themes/getrealt/css/flatly.css')
-       .sass([
-            '../../themes/getrealt/assets/sass/journal.scss'
-       ], './public/themes/getrealt/css/journal.css')
-       .sass([
-            '../../themes/getrealt/assets/sass/lumen.scss'
-       ], './public/themes/getrealt/css/lumen.css')
-       .sass([
-            '../../themes/getrealt/assets/sass/paper.scss'
-       ], './public/themes/getrealt/css/paper.css')
-       .sass([
-            '../../themes/getrealt/assets/sass/readable.scss'
-       ], './public/themes/getrealt/css/readable.css')
-       .sass([
-            '../../themes/getrealt/assets/sass/sandstone.scss'
-       ], './public/themes/getrealt/css/sandstone.css')
-       .sass([
-            '../../themes/getrealt/assets/sass/simplex.scss'
-       ], './public/themes/getrealt/css/simplex.css')
-       .sass([
-            '../../themes/getrealt/assets/sass/slate.scss'
-       ], './public/themes/getrealt/css/slate.css')
-       .sass([
-            '../../themes/getrealt/assets/sass/spacelab.scss'
-       ], './public/themes/getrealt/css/spacelab.css')
-       .sass([
-            '../../themes/getrealt/assets/sass/superhero.scss'
-       ], './public/themes/getrealt/css/superhero.css')
-       .sass([
-            '../../themes/getrealt/assets/sass/united.scss'
-       ], './public/themes/getrealt/css/united.css')
-       .sass([
-            '../../themes/getrealt/assets/sass/yeti.scss'
-       ], './public/themes/getrealt/css/yeti.css')
-
-
-       .webpack('../../themes/getrealt/assets/js/app.js', './public/themes/getrealt/js');
-*/
 /*!
  * animate.css -http://daneden.me/animate
  * Version - 3.5.1
@@ -8401,21 +8345,24 @@ label {
 | Base
 |--------------------------------------------------------------------------
 */
-.divider {
-  height: 50px; }
-
-section {
+.parallax-heading {
+  text-align: center;
   height: 100%;
-  padding-top: 50px;
-  padding-bottom: 50px;
   margin-left: -15px;
   margin-right: -15px;
-  overflow: auto; }
-  section .jumbotron {
+  overflow: auto;
+  color: #fff;
+  margin-bottom: 20px;
+  background-size: cover;
+  background-color: #D9230F; }
+  .parallax-heading .jumbotron {
     color: white;
     text-shadow: #444 0 1px 1px;
     background: transparent;
     border: 0; }
+
+.section-pad {
+  margin-top: 20px; }
 
 .site-wrapper {
   margin: 50px auto;
@@ -8436,6 +8383,50 @@ section {
 
 .pointer {
   cursor: pointer; }
+
+/*
+|--------------------------------------------------------------------------
+| Listing Results
+|--------------------------------------------------------------------------
+*/
+.listing-result {
+  cursor: pointer; }
+  .listing-result:hover {
+    box-shadow: 10px 10px 5px #ddd; }
+  .listing-result .listing-result-img {
+    min-height: 200px;
+    max-height: 200px; }
+  .listing-result .listing-result-address {
+    text-align: center;
+    min-height: 60px;
+    padding-top: 10px;
+    padding-bottom: 10px; }
+  .listing-result .listing-result-attributes {
+    background-color: #f5f5f5;
+    text-align: center;
+    border-top: 3px solid #ddd;
+    border-bottom: 3px solid #ddd;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 20px; }
+  .listing-result .listing-result-price {
+    text-align: center;
+    font-size: 24px;
+    padding-bottom: 10px; }
+  .listing-result .listing-result-dimensions {
+    text-align: center;
+    padding-top: 10px; }
+    .listing-result .listing-result-dimensions .listing-result-dimension {
+      border-left: 2px solid #D9230F;
+      border-right: 2px solid #D9230F;
+      padding-left: 5px;
+      padding-right: 5px;
+      margin-left: 5px;
+      margin-right: 5px; }
+  .listing-result .listing-result-provider {
+    margin-top: 10px;
+    margin-bottom: -10px;
+    font-size: 10px; }
 
 /*
 |--------------------------------------------------------------------------

@@ -53,12 +53,20 @@ class GetRealTServiceProvider extends ServiceProvider
     }
 
     protected function registerDirectives() {
-        Blade::directive('mainMenu', function ($expression) {
+        Blade::directive('mainMenu', function () {
             return "<?php echo GetRealTFrontEnd::mainMenu(); ?>";
         });
 
-        Blade::directive('searchWidget', function ($expression) {
+        Blade::directive('searchWidget', function () {
             return "<?php echo GetRealTFrontEnd::searchWidget(); ?>";
+        });
+
+        Blade::directive('listingResultsWidget', function () {
+            return "<?php echo GetRealTFrontEnd::listingResultsWidget(); ?>";
+        });
+
+        Blade::directive('parallaxHeaderWidget', function ($title) {
+            return "<?php echo GetRealTFrontEnd::parallaxHeaderWidget(" . $title . "); ?>";
         });
     }
     

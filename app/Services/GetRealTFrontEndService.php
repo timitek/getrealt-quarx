@@ -30,4 +30,20 @@ class GetRealTFrontEndService {
         return ob_get_clean();
     }
     
+    public function listingResultsWidget() {
+        ob_start();
+        include(realpath(__DIR__.'/../../resources/views/widgets/listingResultsWidget.php'));
+        return ob_get_clean();
+    }
+
+    public function parallaxHeaderWidget($title, $background) {
+        extract([
+                    'title' => $title,
+                    'background' => $background
+                ]);
+        ob_start();
+        include(realpath(__DIR__.'/../../resources/views/widgets/parallaxHeaderWidget.php'));
+        return ob_get_clean();
+    }
+    
 }

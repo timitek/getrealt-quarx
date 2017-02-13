@@ -5,68 +5,15 @@
     @section('seoKeywords') {{ $page->seo_keywords }} @endsection
 @endif
 
-@section('stylesheets')
-
-    @parent
-    <style>
-        .heading {
-            background: url('http://s.bootply.com/assets/example/bg_suburb.jpg') no-repeat top center fixed;
-            color:#fff;
-            background-size:cover;
-        }
-    </style>
-
-@endsection
-
-
 @section('content')
 
-
-<!--parallax 1 -->
-<section class="heading text-center">
-    <div class="jumbotron">
-        <h1>{!! $page->title or 'Home Page - (Simple)' !!}</h1>
-    </div>
-</section>
-<div class="divider"></div>
+@parallaxHeaderWidget(isset($page->title) ? $page-title : 'Home Page', 'http://s.bootply.com/assets/example/bg_suburb.jpg')
 
 <div class="container">
-
 
     @if (isset($page))
         {!! $page->entry !!}
     @else
-        <div class="row">
-            <div class="col-xs-12">
-                @searchWidget()
-            </div>
-        </div>
-    
-    <div ng-controller="listingsWidget">
-        <div class="row" ng-if="listings">
-            <div class="col-xs-12 col-sm-6 col-lg-4" ng-repeat="listing in listings">
-                <div class="thumbnail" style="min-height: 450px;">
-                    <img ng-src="@{{listing.thumbnail}}?newWidth=242&maxHeight=200" alt="...">
-                    <div class="caption">
-                        <h4><i class="fa fa-map-marker"></i> <span ng-bind="listing.address"></span></h4>
-                        <h4>
-                            <span class="label label-primary"><span ng-bind="listing.listingTypeURLSlug"></span></span>
-                            <span class="label label-primary" ng-if="listing.beds"><span ng-bind="listing.beds"></span> Bed</span>
-                            <span class="label label-primary" ng-if="listing.baths"><span ng-bind="listing.baths"></span> Bath</span>
-                        </h4>
-                        <h3><span ng-bind="listing.listPrice"></span></h3>
-                        <div>
-                            <abbr title="Square Feet">Sqft.</abbr><span ng-bind="listing.squareFeet"></span>
-                            Lot<span ng-bind="listing.lot"></span>
-                            Acres<span ng-bind="listing.acres"></span>
-                        </div>
-                        <small><strong>Provided By:</strong> <span ng-bind="listing.providedBy"></span></small><br />
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
         <div class="row">
             <div class="col-md-4">
                 <div class="well">

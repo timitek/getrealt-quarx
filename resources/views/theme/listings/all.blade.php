@@ -4,34 +4,20 @@
 
 <div class="container">
 
-    <h1>Listings</h1>
+    <div class="section-pad"></div>
 
     <div class="row">
-        <div class="col-md-8">
-            @foreach($blogs as $blog)
-                @if (config('app.locale') !== config('quarx.default-language'))
-                    @if ($blog->translation(config('app.locale')))
-                        <a href="{!! URL::to('blog/'.$blog->translation(config('app.locale'))->data->url) !!}"><p>{!! $blog->translation(config('app.locale'))->data->title !!} - <span>{!! $blog->published_at !!}</span></p></a>
-                    @endif
-                @else
-                    <a href="{!! URL::to('blog/'.$blog->url) !!}"><p>{!! $blog->title !!} - <span>{!! $blog->published_at !!}</span></p></a>
-                @endif
-            @endforeach
-
-            {!! $blogs !!}
-        </div>
-
-        <div class="col-md-4">
-            @foreach($tags as $tag)
-                <a href="{{ url('blog/tags/'.$tag) }}" class="btn btn-default">{{ $tag }}</a>
-            @endforeach
+        <div class="col-xs-12">
+            @searchWidget()
         </div>
     </div>
+    
+    @listingResultsWidget()
 
 </div>
 
 @endsection
 
 @section('quarx')
-    @edit('blog')
+    @edit('getrealt')
 @endsection
