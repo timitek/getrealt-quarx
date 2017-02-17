@@ -8372,12 +8372,6 @@ button.close {
 */
 .flexslider .flex-viewport {
   background-color: #2FA4E7; }
-  .flexslider .flex-viewport ul li .carousel-imga {
-    max-height: 120px;
-    overflow-y: hidden; }
-  .flexslider .flex-viewport ul li .slider-imga {
-    max-height: 400px;
-    overflow-y: hidden; }
 
 #map {
   width: 100%;
@@ -8406,6 +8400,9 @@ h5.listing-heading {
     background-color: #46aeea !important; }
   .listing-features .feature-5 {
     background-color: #5db8ec !important; }
+
+.listing-actions {
+  text-align: center; }
 
 .listing-result .listing-result-img {
   min-height: 200px;

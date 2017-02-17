@@ -8523,12 +8523,6 @@ input[type="checkbox"] {
 */
 .flexslider .flex-viewport {
   background-color: #008cba; }
-  .flexslider .flex-viewport ul li .carousel-imga {
-    max-height: 120px;
-    overflow-y: hidden; }
-  .flexslider .flex-viewport ul li .slider-imga {
-    max-height: 400px;
-    overflow-y: hidden; }
 
 #map {
   width: 100%;
@@ -8557,6 +8551,9 @@ h5.listing-heading {
     background-color: #009fd4 !important; }
   .listing-features .feature-5 {
     background-color: #00b2ed !important; }
+
+.listing-actions {
+  text-align: center; }
 
 .listing-result .listing-result-img {
   min-height: 200px;

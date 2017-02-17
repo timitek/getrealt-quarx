@@ -8490,12 +8490,6 @@ a.list-group-item-danger.active:hover, a.list-group-item-danger.active:focus {
 */
 .flexslider .flex-viewport {
   background-color: #DF691A; }
-  .flexslider .flex-viewport ul li .carousel-imga {
-    max-height: 120px;
-    overflow-y: hidden; }
-  .flexslider .flex-viewport ul li .slider-imga {
-    max-height: 400px;
-    overflow-y: hidden; }
 
 #map {
   width: 100%;
@@ -8524,6 +8518,9 @@ h5.listing-heading {
     background-color: #e6772c !important; }
   .listing-features .feature-5 {
     background-color: #e98643 !important; }
+
+.listing-actions {
+  text-align: center; }
 
 .listing-result .listing-result-img {
   min-height: 200px;

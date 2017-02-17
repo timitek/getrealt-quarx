@@ -8348,12 +8348,6 @@ input,
 */
 .flexslider .flex-viewport {
   background-color: #325D88; }
-  .flexslider .flex-viewport ul li .carousel-imga {
-    max-height: 120px;
-    overflow-y: hidden; }
-  .flexslider .flex-viewport ul li .slider-imga {
-    max-height: 400px;
-    overflow-y: hidden; }
 
 #map {
   width: 100%;
@@ -8382,6 +8376,9 @@ h5.listing-heading {
     background-color: #396a9b !important; }
   .listing-features .feature-5 {
     background-color: #4077ad !important; }
+
+.listing-actions {
+  text-align: center; }
 
 .listing-result .listing-result-img {
   min-height: 200px;
