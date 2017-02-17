@@ -5,6 +5,8 @@
 
 @section('content')
 
+@parallaxHeaderWidget(isset($page->title) ? $page->title : 'Page', null)
+
 <div class="container">
 
     <h1>{!! $page->title !!}</h1>

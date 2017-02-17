@@ -8455,8 +8455,8 @@ a.list-group-item-danger.active:hover, a.list-group-item-danger.active:focus {
   background-size: cover;
   background-color: #DF691A; }
   .parallax-heading .jumbotron {
-    color: white;
-    text-shadow: #444 0 1px 1px;
+    color: #fff;
+    text-shadow: 3px 3px #000;
     background: transparent;
     border: 0; }
 
@@ -8485,9 +8485,37 @@ a.list-group-item-danger.active:hover, a.list-group-item-danger.active:focus {
 
 /*
 |--------------------------------------------------------------------------
-| Listing Results
+| Listings
 |--------------------------------------------------------------------------
 */
+#map {
+  width: 100%;
+  height: 400px;
+  margin-top: 40px;
+  margin-bottom: 40px; }
+
+h5.listing-heading {
+  border-bottom: 2px dashed #4E5D6C; }
+
+.listing-features {
+  text-align: center; }
+  .listing-features .label {
+    border-radius: 0 !important;
+    padding: 5px 10px 5px 10px !important;
+    margin: 6px 3px 6px 3px;
+    line-height: 30px;
+    font-size: 14px; }
+  .listing-features .feature-1 {
+    background-color: #b15315 !important; }
+  .listing-features .feature-2 {
+    background-color: #c85e17 !important; }
+  .listing-features .feature-3 {
+    background-color: #DF691A !important; }
+  .listing-features .feature-4 {
+    background-color: #e6772c !important; }
+  .listing-features .feature-5 {
+    background-color: #e98643 !important; }
+
 .listing-result .listing-result-img {
   min-height: 200px;
   max-height: 200px;
@@ -8509,10 +8537,16 @@ a.list-group-item-danger.active:hover, a.list-group-item-danger.active:focus {
   padding-top: 10px;
   padding-bottom: 10px;
   margin-bottom: 20px; }
+  .listing-result .listing-result-attributes .label {
+    border-radius: 0 !important;
+    padding: 5px 10px 5px 10px !important;
+    margin-right: 10px;
+    margin-left: 10px; }
 
 .listing-result .listing-result-price {
   text-align: center;
   font-size: 24px;
+  font-weight: 800;
   padding-bottom: 10px; }
 
 .listing-result .listing-result-dimensions {
@@ -8523,8 +8557,9 @@ a.list-group-item-danger.active:hover, a.list-group-item-danger.active:focus {
     border-right: 2px solid #DF691A;
     padding-left: 5px;
     padding-right: 5px;
-    margin-left: 5px;
-    margin-right: 5px; }
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px; }
 
 .listing-result .listing-result-provider {
   margin-top: 10px;
@@ -8578,16 +8613,6 @@ a.list-group-item-danger.active:hover, a.list-group-item-danger.active:focus {
 | Footer
 |--------------------------------------------------------------------------
 */
-.footer {
-  width: 100%;
-  height: 50px;
+footer {
   background-color: #485563;
   color: #333333; }
-
-.footer p {
-  line-height: 50px;
-  margin: 0 0 0 24px;
-  padding: 0; }
-
-.footer .btn {
-  margin: 14px 8px 0 8px; }

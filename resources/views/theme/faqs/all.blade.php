@@ -2,9 +2,9 @@
 
 @section('content')
 
-<div class="container">
+@parallaxHeaderWidget('FAQs', null)
 
-    <h1>FAQs</h1>
+<div class="container">
 
     @foreach($faqs as $faq)
         <div class="container-fluid">

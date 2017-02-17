@@ -5,12 +5,9 @@
 
 @section('content')
 
-<div class="container">
+@parallaxHeaderWidget(isset($event->title) ? $event->title : 'Featured Event', null)
 
-    <div class="jumbotron">
-        <h1>Featured Event</h1>
-        <h2>{{ $event->title }}</h2>
-    </div>
+<div class="container">
 
     @if (config('app.locale') !== config('quarx.default-language'))
         <h1>{!! $event->translationData(config('app.locale'))->title !!}</h1>

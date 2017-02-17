@@ -22,8 +22,8 @@
     background-color: $brand-primary;
     
     .jumbotron {
-        color: white;
-        text-shadow: #444 0 1px 1px;
+        color: #fff;
+        text-shadow: 3px 3px #000;
         background: transparent;
         border: 0;
     }
@@ -62,9 +62,52 @@
 
 /*
 |--------------------------------------------------------------------------
-| Listing Results
+| Listings
 |--------------------------------------------------------------------------
 */
+
+#map {
+    width: 100%; 
+    height: 400px; 
+    margin-top: 40px; 
+    margin-bottom: 40px;
+}
+
+h5.listing-heading {
+    border-bottom: 2px dashed $table-border-color;
+}
+
+.listing-features {
+    text-align: center;
+    
+    .label {
+        border-radius: 0 !important;
+        padding: 5px 10px 5px 10px !important;
+        margin: 6px 3px 6px 3px;
+        line-height: 30px;
+        font-size: 14px;
+    }
+
+    .feature-1 {
+        background-color: darken( $brand-primary, 10% ) !important;
+    }
+
+    .feature-2 {
+        background-color: darken( $brand-primary, 5% ) !important;
+    }
+    
+    .feature-3 {
+        background-color: $brand-primary !important;
+    }
+
+    .feature-4 {
+        background-color: lighten( $brand-primary, 5% ) !important;
+    }
+
+    .feature-5 {
+        background-color: lighten( $brand-primary, 10% ) !important;
+    }
+}
 
 .listing-result {
 
@@ -93,11 +136,19 @@
         padding-top: 10px;
         padding-bottom: 10px;
         margin-bottom: 20px;
+        
+        .label {
+            border-radius: 0 !important;
+            padding: 5px 10px 5px 10px !important;
+            margin-right: 10px;
+            margin-left: 10px;
+        }
     }
     
     .listing-result-price {
         text-align: center;
         font-size: 24px;
+        font-weight: 800;
         padding-bottom: 10px
     }
     
@@ -110,8 +161,9 @@
             border-right: 2px solid $brand-primary;
             padding-left: 5px;
             padding-right: 5px;
-            margin-left: 5px;
-            margin-right: 5px;
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-right: 10px;
         }
         
     }
@@ -181,21 +233,7 @@
 |--------------------------------------------------------------------------
 */
 
-.footer {
-    width: 100%;
-    height: 50px;
+footer {
     background-color: $panel-footer-bg;
     color: $panel-default-text;
-}
-
-.footer p {
-    line-height: 50px;
-    margin: 0 0 0 24px;
-    padding: 0;
-}
-
-.footer {
-    .btn {
-        margin: 14px 8px 0 8px;
-    }
 }

@@ -2,9 +2,9 @@
 
 @section('content')
 
-<div class="container">
+@parallaxHeaderWidget(isset($event->title) ? $event->title : 'Events', null)
 
-    <h1>Events</h1>
+<div class="container">
 
     @foreach($events as $event)
         @if (config('app.locale') !== config('quarx.default-language'))

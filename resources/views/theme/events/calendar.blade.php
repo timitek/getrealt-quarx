@@ -2,9 +2,9 @@
 
 @section('content')
 
-<div class="container">
+@parallaxHeaderWidget(isset($event->title) ? $event->title : 'Calendar', null)
 
-    <h1>Calendar</h1>
+<div class="container">
 
     <div class="row">
         <div class="col-md-12">

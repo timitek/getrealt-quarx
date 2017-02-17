@@ -2,9 +2,9 @@
 
 @section('content')
 
-<div class="container">
+@parallaxHeaderWidget('Blog', null)
 
-    <h1>Blog</h1>
+<div class="container">
 
     <div class="row">
         <div class="col-md-8">

@@ -1,50 +1,140 @@
 @extends('quarx-frontend::layout.master')
 
 @if (isset($page))
-    @section('seoDescription') {{ $page->seo_description }} @endsection
-    @section('seoKeywords') {{ $page->seo_keywords }} @endsection
+@section('seoDescription') {{ $page->seo_description }} @endsection
+@section('seoKeywords') {{ $page->seo_keywords }} @endsection
 @endif
 
 @section('content')
 
-@parallaxHeaderWidget(isset($page->title) ? $page-title : 'Home Page', 'http://s.bootply.com/assets/example/bg_suburb.jpg')
+@parallaxHeaderWidget(isset($page->title) ? $page->title : 'Home Page', null)
 
 <div class="container">
 
     @if (isset($page))
-        {!! $page->entry !!}
+    {!! $page->entry !!}
     @else
-        <div class="row">
-            <div class="col-md-4">
-                <div class="well">
-                    <h3>Basics</h3>
-                    <p>In order to add content to this page login to Quarx and add a home page. Remember you can set up
-                        your own Auth for Quarx or run the artisan command: <code>php artisan quarx:setup</code> to get
-                        a prebuilt auth system.</p>
-                    <p>Once you're all set up try building a menu with slug: main, and a widget with the slug: widget. You'll see the theme display them right away!</p>
+
+    <div class="light-gray-bg inner-shadow">
+        <!-- What we are good with -->
+        <div class="container">
+            <div class="row med-margin">
+                <div class="col-xs-12">
+                    <h2 class="main-header no-border">Learn about our  <span>Multi System</span></h2>
+                    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas metus nulla, commodo a sodales sed, dignissim pretium nunc. Nam et lacus neque. Ut enim massa, sodales tempor convallis et.</p>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="well">
-                    <h3>Custom Templates</h3>
-                    <p>By default the homepage has its own template but you can add any by following these details:</p>
-                    <p>To create custom templates for different purposes simply make a view in <br>
-                        the <code>resources/themes/{theme-name}/{module-name}</code> directory that looks similar to: `xxxx-template.blade.php`. <br>
-                        This means you still have full control of blade templating but your pages can easily swap out views.</p>
-                    <h3>Custom Themes</h3>
-                    <p>You can easily generate a theme template via the command: <code>php artisan theme:generate {name}</code> </p>
-                    <p>The theme's files will be placed in the following directory: <code>resources/themes/{name}</code></p>
-                    <p>To include files either use the blade code: <code>&#64;theme</code> or include a file with the <code>quarx-frontend::</code> namespace.</p>
+                <div class="clearfix"></div>
+                <div class="col-sm-4">
+                    <div class="feature">
+                        <div class="feature-img">
+                            <span class="glyphicon glyphicon-cloud"></span>
+                        </div>
+                        <div class="feature-content">
+                            <h3><strong>Cloud</strong> System</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing metus elit. Lorem ipsum dolor sit amet, consectetur adipiscing metus elit.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="well">
-                    <h3>Widgets, Menus, Images &amp; Includes</h3>
-                    <p>Widgets are easy to add to any template since they can be injected with the <code>&#64;menu('slug')</code>, <code>&#64;widget('slug')</code> or <code>&#64;images('tag')</code>. If you don't suppy a tag for the images you will get all images. To include a theme view you can easily use: <code>&#64;theme('path.in.theme')</code>.</p>
+                <div class="col-sm-4">
+                    <div class="feature">
+                        <div class="feature-img">
+                            <span class="glyphicon glyphicon-fire"></span>
+                        </div>
+                        <div class="feature-content">
+                            <h3><strong>Fire</strong> System</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing metus elit. Lorem ipsum dolor sit amet, consectetur adipiscing metus elit.</p>
+                        </div>
+                    </div>
                 </div>
-                <br>
+                <div class="col-sm-4">
+                    <div class="feature">
+                        <div class="feature-img">
+                            <span class="glyphicon glyphicon-flash"></span>
+                        </div>
+                        <div class="feature-content">
+                            <h3><strong>Lightning</strong> System</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing metus elit. Lorem ipsum dolor sit amet, consectetur adipiscing metus elit.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
+
+
+
+
+    <div class="testimony">
+        <div class="container">
+            <div class="row big-margin animated fadeInUp" data-animate="fadeInUp" style="visibility: visible;">
+                <div class="col-xs-12">
+                    <h2 class="main-header">What Others Say About Us</h2>
+                </div>
+                <div class="col-xs-12">
+                    <div class="carousel slide" data-ride="carousel" id="quote-carousel">
+                        <!-- Bottom Carousel Indicators -->
+                        <ol class="carousel-indicators">
+                            <li data-target="#quote-carousel" data-slide-to="0" class=""></li>
+                            <li data-target="#quote-carousel" data-slide-to="1" class=""></li>
+                            <li data-target="#quote-carousel" data-slide-to="2" class="active"></li>
+                        </ol>
+
+                        <!-- Carousel Slides / Quotes -->
+                        <div class="carousel-inner">
+
+                            <!-- Quote 1 -->
+                            <div class="item">
+                                <blockquote>
+                                    <div class="row">
+                                        <div class="col-sm-3 text-center">
+                                            <img class="img-circle" src="http://randomuser.me/api/portraits/men/{{rand(1,40)}}.jpg" style="width: 100px;height:100px;">
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <p>The first time I used GetRealT, I was able to find my ideal house. Thank you GetRealT!</p>
+                                            <small>Someone famous</small>
+                                        </div>
+                                    </div>
+                                </blockquote>
+                            </div>
+                            <!-- Quote 2 -->
+                            <div class="item">
+                                <blockquote>
+                                    <div class="row">
+                                        <div class="col-sm-3 text-center">
+                                            <img class="img-circle" src="http://randomuser.me/api/portraits/men/{{rand(1,40)}}.jpg" style="width: 100px;height:100px;">
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <p>GetRealT gave me a wonderful experience searching for a new house! Good job guys!</p>
+                                            <small>Someone a little bit famous</small>
+                                        </div>
+                                    </div>
+                                </blockquote>
+                            </div>
+                            <!-- Quote 3 -->
+                            <div class="item active">
+                                <blockquote>
+                                    <div class="row">
+                                        <div class="col-sm-3 text-center">
+                                            <img class="img-circle" src="http://randomuser.me/api/portraits/men/{{rand(1,40)}}.jpg" style="width: 100px;height:100px;">
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <p>Umm.... Thank you GetRealT! ..</p>
+                                            <small>Someone infamous</small>
+                                        </div>
+                                    </div>
+                                </blockquote>
+                            </div>
+                        </div>
+
+                        <!-- Carousel Buttons Next/Prev -->
+                        <a data-slide="prev" href="#quote-carousel" class="left carousel-control"><i class="fa fa-chevron-left"></i></a>
+                        <a data-slide="next" href="#quote-carousel" class="right carousel-control"><i class="fa fa-chevron-right"></i></a>
+                    </div>                          
+                </div>
+            </div>
+        </div>
+    </div>
+
     @endif
 
 </div>
@@ -52,17 +142,17 @@
 
 @section('javascript')
 
-    @parent
-    <script type="text/javascript">
-        $('.heading').parallax({
-            speed : 0.35
-        });
-    </script>
+@parent
+<script type="text/javascript">
+    $('.heading').parallax({
+        speed: 0.35
+    });
+</script>
 
 @endsection
 
 @section('quarx')
-    @if (isset($page))
-        @edit('pages', $page->id)
-    @endif
+@if (isset($page))
+@edit('pages', $page->id)
+@endif
 @endsection

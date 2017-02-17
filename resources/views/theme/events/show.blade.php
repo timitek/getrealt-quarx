@@ -5,6 +5,8 @@
 
 @section('content')
 
+@parallaxHeaderWidget(isset($event->title) ? $event->title : 'Events', null)
+
 <div class="container">
 
     @if (config('app.locale') !== config('quarx.default-language'))

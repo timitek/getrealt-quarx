@@ -5,6 +5,8 @@
 
 @section('content')
 
+@parallaxHeaderWidget(isset($blog->title) ? $blog->title : 'Blog', null)
+
 <div class="container">
 
     <h1>{!! $blog->title !!} - <span>{!! $blog->published_at !!}</span></h1>

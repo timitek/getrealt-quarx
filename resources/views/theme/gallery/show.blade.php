@@ -2,9 +2,9 @@
 
 @section('content')
 
-<div class="container">
+@parallaxHeaderWidget('Gallery (' . $title . ')', null)
 
-    <h1>Gallery ({{ $title }})</h1>
+<div class="container">
 
     <div class="col-md-8">
         @foreach ($images as $image)

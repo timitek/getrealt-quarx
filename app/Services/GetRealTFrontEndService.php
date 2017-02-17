@@ -37,9 +37,11 @@ class GetRealTFrontEndService {
     }
 
     public function parallaxHeaderWidget($title, $background) {
+        
         extract([
                     'title' => $title,
-                    'background' => $background
+                    'background' => (empty($background) ? "http://lorempixel.com/1400/900/abstract/" : $background),
+                    'initialY' => (rand(0, 400) * -1)
                 ]);
         ob_start();
         include(realpath(__DIR__.'/../../resources/views/widgets/parallaxHeaderWidget.php'));

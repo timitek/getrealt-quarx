@@ -8315,8 +8315,8 @@ legend {
   background-size: cover;
   background-color: #4582EC; }
   .parallax-heading .jumbotron {
-    color: white;
-    text-shadow: #444 0 1px 1px;
+    color: #fff;
+    text-shadow: 3px 3px #000;
     background: transparent;
     border: 0; }
 
@@ -8345,9 +8345,37 @@ legend {
 
 /*
 |--------------------------------------------------------------------------
-| Listing Results
+| Listings
 |--------------------------------------------------------------------------
 */
+#map {
+  width: 100%;
+  height: 400px;
+  margin-top: 40px;
+  margin-bottom: 40px; }
+
+h5.listing-heading {
+  border-bottom: 2px dashed #ddd; }
+
+.listing-features {
+  text-align: center; }
+  .listing-features .label {
+    border-radius: 0 !important;
+    padding: 5px 10px 5px 10px !important;
+    margin: 6px 3px 6px 3px;
+    line-height: 30px;
+    font-size: 14px; }
+  .listing-features .feature-1 {
+    background-color: #1863e6 !important; }
+  .listing-features .feature-2 {
+    background-color: #2e72ea !important; }
+  .listing-features .feature-3 {
+    background-color: #4582EC !important; }
+  .listing-features .feature-4 {
+    background-color: #5c92ee !important; }
+  .listing-features .feature-5 {
+    background-color: #73a1f1 !important; }
+
 .listing-result .listing-result-img {
   min-height: 200px;
   max-height: 200px;
@@ -8369,10 +8397,16 @@ legend {
   padding-top: 10px;
   padding-bottom: 10px;
   margin-bottom: 20px; }
+  .listing-result .listing-result-attributes .label {
+    border-radius: 0 !important;
+    padding: 5px 10px 5px 10px !important;
+    margin-right: 10px;
+    margin-left: 10px; }
 
 .listing-result .listing-result-price {
   text-align: center;
   font-size: 24px;
+  font-weight: 800;
   padding-bottom: 10px; }
 
 .listing-result .listing-result-dimensions {
@@ -8383,8 +8417,9 @@ legend {
     border-right: 2px solid #4582EC;
     padding-left: 5px;
     padding-right: 5px;
-    margin-left: 5px;
-    margin-right: 5px; }
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px; }
 
 .listing-result .listing-result-provider {
   margin-top: 10px;
@@ -8438,16 +8473,6 @@ legend {
 | Footer
 |--------------------------------------------------------------------------
 */
-.footer {
-  width: 100%;
-  height: 50px;
+footer {
   background-color: #fff;
   color: #333333; }
-
-.footer p {
-  line-height: 50px;
-  margin: 0 0 0 24px;
-  padding: 0; }
-
-.footer .btn {
-  margin: 14px 8px 0 8px; }

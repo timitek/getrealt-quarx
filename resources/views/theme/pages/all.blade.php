@@ -2,9 +2,9 @@
 
 @section('content')
 
-<div class="container">
+@parallaxHeaderWidget('Pages', null)
 
-    <h1>Pages</h1>
+<div class="container">
 
     @foreach($pages as $page)
         <a href="{!! url('page/'.$page->url) !!}">{{ $page->title }}</a><br>

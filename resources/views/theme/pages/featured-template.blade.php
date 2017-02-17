@@ -5,12 +5,9 @@
 
 @section('content')
 
-<div class="container">
+@parallaxHeaderWidget(isset($page->title) ? $page->title : 'Featured Page', null)
 
-    <div class="jumbotron">
-        <h1>Featured Page</h1>
-        <h2>{{ $page->title }}</h2>
-    </div>
+<div class="container">
 
     {!! $page->entry !!}
 

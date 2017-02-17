@@ -30,12 +30,22 @@ class ListingsController extends Controller
     public function show($id)
     {
         $values = explode("_", $id);
-        $listing = GetRETS::getListing()->details($values[1], $values[0], $values[2]);
+        $listingSource = $values[1];
+        $listingType = $values[0];
+        $listingId = $values[2];
+        
+        $listing = GetRETS::getListing()->details($listingSource, $listingType, $listingId);
+
+        $headerImage = null;
+        if ($listing->photoCount) {
+            $randomPhoto = rand(0, $listing->photoCount - 1);
+            $headerImage = GetRETS::getListing()->imageUrl($listingSource, $listingType, $listingId, $randomPhoto, 1400, 1400);
+        }
                 
         if (empty($listing)) {
             abort(404);
         }
         
-        return view('quarx-frontend::listings.show')->with('listing', $listing);
+        return view('quarx-frontend::listings.show', ['listing' => $listing, 'headerImage' => $headerImage]);
     }
 }

@@ -2,6 +2,8 @@
 
 @section('content')
 
+@parallaxHeaderWidget('Listings', null)
+
 <div class="container">
 
     <div class="section-pad"></div>
