@@ -8525,6 +8525,15 @@ a.list-group-item-danger.active:hover, a.list-group-item-danger.active:focus {
 | Listings
 |--------------------------------------------------------------------------
 */
+.flexslider .flex-viewport {
+  background-color: #375a7f; }
+  .flexslider .flex-viewport ul li .carousel-imga {
+    max-height: 120px;
+    overflow-y: hidden; }
+  .flexslider .flex-viewport ul li .slider-imga {
+    max-height: 400px;
+    overflow-y: hidden; }
+
 #map {
   width: 100%;
   height: 400px;

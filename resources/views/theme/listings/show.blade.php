@@ -22,7 +22,7 @@
                 <ul class="slides">
                     @for ($i = 0; $i < $listing->photoCount; $i++)
                     <li>
-                        <img src="{{ GetRETS::getListing()->imageUrl($listing->listingSourceURLSlug, $listing->listingTypeURLSlug, $listing->listingID, $i) }}" />
+                        <img class="carousel-img" src="{{ GetRETS::getListing()->imageUrl($listing->listingSourceURLSlug, $listing->listingTypeURLSlug, $listing->listingID, $i) }}" />
                     </li>
                     @endfor
                 </ul>
@@ -33,7 +33,7 @@
                 <ul class="slides">
                     @for ($i = 0; $i < $listing->photoCount; $i++)
                     <li>
-                        <img src="{{ GetRETS::getListing()->imageUrl($listing->listingSourceURLSlug, $listing->listingTypeURLSlug, $listing->listingID, $i) }}" />
+                        <img class="slider-img" src="{{ GetRETS::getListing()->imageUrl($listing->listingSourceURLSlug, $listing->listingTypeURLSlug, $listing->listingID, $i) }}" />
                     </li>
                     @endfor
                 </ul>
@@ -147,6 +147,7 @@
                 slideshow: false,
                 itemWidth: 210,
                 itemMargin: 5,
+                smoothHeight: true,
                 asNavFor: '#slider'
             });
 
@@ -155,6 +156,7 @@
                 controlNav: false,
                 animationLoop: false,
                 slideshow: false,
+                smoothHeight: true,
                 sync: "#carousel"
             });
         });

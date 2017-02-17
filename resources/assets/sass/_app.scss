@@ -66,6 +66,12 @@
 |--------------------------------------------------------------------------
 */
 
+.flexslider {
+    .flex-viewport {
+        background-color: $brand-primary;
+    }
+}
+
 #map {
     width: 100%; 
     height: 400px; 

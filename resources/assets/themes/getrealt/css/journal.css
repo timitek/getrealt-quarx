@@ -8331,6 +8331,15 @@ button.close {
 | Listings
 |--------------------------------------------------------------------------
 */
+.flexslider .flex-viewport {
+  background-color: #EB6864; }
+  .flexslider .flex-viewport ul li .carousel-imga {
+    max-height: 120px;
+    overflow-y: hidden; }
+  .flexslider .flex-viewport ul li .slider-imga {
+    max-height: 400px;
+    overflow-y: hidden; }
+
 #map {
   width: 100%;
   height: 400px;
