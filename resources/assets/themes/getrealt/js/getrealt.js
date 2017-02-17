@@ -110,13 +110,12 @@
 
     };
 
-    var listingDetails = function ($scope) {
+    var listingDetails = function ($scope, $uibModal) {
 
+        $scope.listingSource = null;
+        $scope.listingType = null;
+        $scope.listingID = null;
         $scope.address = null;
-
-        $scope.contactAgent = function () {
-            alert('asdfasdf');
-        };
 
         $scope.initMap = function () {
 
@@ -209,12 +208,75 @@
             });
         };
 
-        $scope.start = function (address) {
+
+        $scope.contactAgent = function () {
+            var modalInstance = $uibModal.open({
+                templateUrl: 'contactAgent.html',
+                controller: 'contactAgentModal',
+                ariaLabelledBy: 'modal-title',
+                ariaDescribedBy: 'modal-body',
+                size: 'lg',
+                resolve: {
+                    parentController: function () {
+                        return $scope;
+                    }
+                }
+            });
+
+            modalInstance.result.then(
+                    function (results) {
+                        var info = results.contactInfo;
+                        // closed
+                        if (info && (info.name || info.phone || info.email || info.message)) {
+                            info.listingSource = $scope.listingSource;
+                            info.listingType = $scope.listingType;
+                            info.listingID = $scope.listingID;
+                            alert(JSON.stringify(info));
+                        }
+                    },
+                    function () {
+                        // dismissed
+                    });
+
+        };
+
+        $scope.start = function (listingSource, listingType, listingID, address) {
+            $scope.listingSource = listingSource;
+            $scope.listingType = listingType;
+            $scope.listingID = listingID;
             $scope.address = address;
+            
             google.maps.event.addDomListener(window, 'load', $scope.initMap);
+            
             $scope.initSliders();
         };
 
+    };
+    
+    var contactAgentModal = function ($scope, $uibModalInstance, parentController) {
+        $scope.name = null;
+        $scope.phone = null;
+        $scope.email = null;
+        $scope.message = null;
+        
+        $scope.send = function () {
+            
+            var contactInfo = {
+                name: $scope.name,
+                phone: $scope.phone,
+                email: $scope.email,
+                message: $scope.message
+            };
+            
+            $uibModalInstance.close({
+                contactInfo: contactInfo
+            });
+        };
+        
+        $scope.cancel = function () {
+            $uibModalInstance.dismiss('cancel');
+        };
+        
     };
 
     angular.module('getrealt', ['getrealt.rest', 'ui.bootstrap'])
@@ -222,7 +284,8 @@
             .service('listingService', ['$q', '$http', 'restService', listingService])
             .controller('searchWidget', ['$scope', 'eventFactory', 'listingService', searchWidget])
             .controller('listingsWidget', ['$scope', 'eventFactory', listingsWidget])
-            .controller('listingDetails', ['$scope', listingDetails]);
+            .controller('listingDetails', ['$scope', '$uibModal', listingDetails])
+            .controller('contactAgentModal', ['$scope', '$uibModalInstance', 'parentController', contactAgentModal]);
 
 })();
 

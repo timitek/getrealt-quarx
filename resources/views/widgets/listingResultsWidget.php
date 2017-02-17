@@ -9,7 +9,7 @@
                     <div class="listing-result-address"><i class="fa fa-map-marker"></i> <span ng-bind="listing.address"></span></div>
                     <div class="listing-result-attributes">
                         <div>
-                            <span class="label label-primary"><i class="fa" ng-class="{ 'fa-tree' : listing.listingTypeURLSlug === 'Land', 'fa-building-o' : listing.listingTypeURLSlug === 'Commercial', 'fa-home' : listing.listingTypeURLSlug === 'Residential' }"></i> <span ng-bind="listing.listingTypeURLSlug"></span></span>
+                            <span class="label label-primary"><i class="fa" ng-class="{ 'fa-tree' : listing.listingTypeURLSlug === 'Land', 'fa-building' : listing.listingTypeURLSlug === 'Commercial', 'fa-home' : listing.listingTypeURLSlug === 'Residential' }"></i> <span ng-bind="listing.listingTypeURLSlug"></span></span>
                             <span class="label label-primary" ng-if="listing.beds"><i class="fa fa-bed"></i> <span ng-bind="listing.beds"></span> Bed</span>
                             <span class="label label-primary" ng-if="listing.baths"><i class="fa fa-bath"></i> <span ng-bind="listing.baths"></span> Bath</span>
                         </div>

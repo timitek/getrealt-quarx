@@ -7,7 +7,7 @@
 
 @parallaxHeaderWidget(isset($listing->address) ? $listing->address : 'Listing', $headerImage)
 
-<div class="container" ng-controller="listingDetails" ng-init='start( "{!! str_replace("'", "\u0027", $listing->address) !!}" )'>
+<div class="container" ng-controller="listingDetails" ng-init='start("{{ $listing->listingSourceURLSlug }}", "{{ $listing->listingTypeURLSlug }}", "{{ $listing->listingID }}", "{!! str_replace("'", "\u0027", $listing->address) !!}" )'>
 
     <!-- Featured Listings -->
     <div class="row">
@@ -44,7 +44,7 @@
         </div>
         @endif
 
-        <!-- Right Widget -->
+        <!-- Right Side -->
         <div class="{{ $listing->photoCount > 0 ? 'col-md-4' : 'col-xs-12' }}">
 
             
@@ -63,7 +63,7 @@
                             @if ( strcmp("Land", $listing->listingTypeURLSlug) === 0 )
                             <i class="fa fa-tree"></i>
                             @elseif ( strcmp("Commercial", $listing->listingTypeURLSlug) === 0 )
-                            <i class="fa fa-building-o"></i>
+                            <i class="fa fa-building"></i>
                             @else
                             <i class="fa fa-home"></i>
                             @endif
@@ -134,4 +134,10 @@
 
 @section('pre-javascript')
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAX72AIlCzzSJ6lDPlSEj_3I2BERp3PTm0"></script>
+@endsection
+
+@section('javascript')
+<script type="text/ng-template" id="contactAgent.html">
+@theme('partials.contactAgent')
+</script>
 @endsection
