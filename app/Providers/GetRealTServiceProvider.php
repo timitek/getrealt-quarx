@@ -66,6 +66,11 @@ class GetRealTServiceProvider extends ServiceProvider
             return "<?php echo GetRealTFrontEnd::listingResultsWidget(); ?>";
         });
 
+        Blade::directive('recentBlogPostsWidget', function ($arguments) {
+            list($tag, $numPosts) = explode(',',str_replace(['(',')',' '], '', $arguments));
+            return "<?php echo GetRealTFrontEnd::recentBlogPostsWidget(" . $tag . ", " . $numPosts . "); ?>";
+        });
+
         Blade::directive('parallaxHeaderWidget', function ($title) {
             return "<?php echo GetRealTFrontEnd::parallaxHeaderWidget(" . $title . "); ?>";
         });

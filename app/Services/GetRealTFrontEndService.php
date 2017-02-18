@@ -3,6 +3,8 @@
 namespace Timitek\GetRealT\Services;
 
 use Quarx;
+use Carbon\Carbon;
+use Yab\Quarx\Repositories\BlogRepository;
 
 class GetRealTFrontEndService {
     
@@ -34,6 +36,25 @@ class GetRealTFrontEndService {
         ob_start();
         include(realpath(__DIR__.'/../../resources/views/widgets/listingResultsWidget.php'));
         return ob_get_clean();
+    }
+    
+    public function recentBlogPostsWidget($tag, $numPosts) {
+        $output = "";
+        $newRepo = new BlogRepository();
+        $posts = $newRepo->findBlogsByTag($tag)->take($numPosts)->all();
+        if (count($posts) > 0) {
+            $output = "<ul>";
+            foreach ($posts as $post) {
+                $formattedDate = Carbon::parse($post->published_at)->format("F j, Y");
+                $output .= "<li><a href='/blog/" . $post->url . "'>" . $post->title . "</a> <span>" . $formattedDate . "</span></li>";
+            }
+            $output .= "</ul>";
+        }
+        else {
+            $output = "<div><h5>Blog posts tagged with <strong>[" . $tag . "]</strong>, will show up here.</h5></div>";
+        }
+        
+        return $output;
     }
 
     public function parallaxHeaderWidget($title, $background) {

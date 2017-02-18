@@ -67,7 +67,5 @@
 
             </div>
         </div>
-
-        <button type="submit" class="btn btn-primary" name="searchByKeyword" ng-click="search()">Search</button>
     </form>
 </div>
