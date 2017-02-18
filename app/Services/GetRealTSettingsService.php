@@ -49,11 +49,16 @@ class GetRealTSettingsService {
         $this->setEnvironmentValue('GETREALT_MAPS_KEY', 'getrealt.maps_key', $mapsKey);
     }
     
+    public function setGetRealTLeadsEmail($email) {
+        $this->setEnvironmentValue('GETREALT_LEADS_EMAIL', 'getrealt.leads_email', $email);
+    }
+    
     public function getSettings() {
         return (object)[
             'customer_key' => config('getrets.customer_key'),
             'enable_example' => config('getrets.enable_example'),
             'maps_key' => config('getrealt.maps_key'),
+            'leads_email' => config('getrealt.leads_email'),
             'theme' => config('getrealt.theme')
         ];
     }
@@ -68,6 +73,9 @@ class GetRealTSettingsService {
             ],
             'maps_key' => [
                 'placeholder' => 'Google Maps API Key',
+            ],
+            'leads_email' => [
+                'placeholder' => 'Email address that leads are sent too',
             ],
             'theme' => [
                 'type' => 'select',

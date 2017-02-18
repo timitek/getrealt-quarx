@@ -42,13 +42,29 @@
             var deferred = $q.defer();
 
             restService.go({
-                url: '/api/analytics/metric/' + id
+                url: '/getrealt/listings' + id
             }).then(function (data) {
                 deferred.resolve(data.data);
             }, function (data) {
                 deferred.reject(data.data);
                 throw data;
-                s
+            });
+
+            return deferred.promise;
+        };
+
+        this.sendLead = function (info) {
+            var deferred = $q.defer();
+
+            restService.go({
+                url: '/getrealt/listings/sendLead',
+                method: 'POST',
+                params: info
+            }).then(function (data) {
+                deferred.resolve(data.data);
+            }, function (data) {
+                deferred.reject(data.data);
+                throw data;
             });
 
             return deferred.promise;
@@ -110,7 +126,7 @@
 
     };
 
-    var listingDetails = function ($scope, $uibModal) {
+    var listingDetails = function ($scope, $uibModal, listingService) {
 
         $scope.listingSource = null;
         $scope.listingType = null;
@@ -231,7 +247,10 @@
                             info.listingSource = $scope.listingSource;
                             info.listingType = $scope.listingType;
                             info.listingID = $scope.listingID;
-                            alert(JSON.stringify(info));
+                            
+                            listingService.sendLead(info).then(function (data) {
+                                alert(JSON.stringify(data));
+                            });
                         }
                     },
                     function () {
@@ -284,7 +303,7 @@
             .service('listingService', ['$q', '$http', 'restService', listingService])
             .controller('searchWidget', ['$scope', 'eventFactory', 'listingService', searchWidget])
             .controller('listingsWidget', ['$scope', 'eventFactory', listingsWidget])
-            .controller('listingDetails', ['$scope', '$uibModal', listingDetails])
+            .controller('listingDetails', ['$scope', '$uibModal', 'listingService', listingDetails])
             .controller('contactAgentModal', ['$scope', '$uibModalInstance', 'parentController', contactAgentModal]);
 
 })();

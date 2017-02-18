@@ -29,4 +29,16 @@ return [
 
     'maps_key' => env('GETREALT_MAPS_KEY', null),
     
+    /*
+    |--------------------------------------------------------------------------
+    | Leads Email
+    |--------------------------------------------------------------------------
+    |
+    | When somebody fills out the contact agent form, a lead e-mail is sent.
+    | Specify the e-mail address you want to receive this e-mail
+    | 
+    */
+
+    'leads_email' => env('GETREALT_LEADS_EMAIL', null),
+    
 ];

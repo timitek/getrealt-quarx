@@ -24,6 +24,7 @@
     });
 
     Route::group(['namespace' => 'Timitek\GetRealT\Http\Controllers\Api', 'prefix' => 'getrealt', 'middleware' => ['web']], function () { 
+        Route::post('listings/sendLead', 'ListingsApiController@sendLead');
         Route::resource('listings', 'ListingsApiController', ['only' => ['index', 'show']]);
     });
 
