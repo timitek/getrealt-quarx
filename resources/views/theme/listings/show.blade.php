@@ -133,7 +133,7 @@
 @endsection
 
 @section('pre-javascript')
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAX72AIlCzzSJ6lDPlSEj_3I2BERp3PTm0"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{ config('getrealt.maps_key') }}"></script>
 @endsection
 
 @section('javascript')

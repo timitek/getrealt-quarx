@@ -48,6 +48,7 @@ class GetRealTSettingsController extends Controller
             GetRealTSettings::setCustomerKey($request->customer_key);
             GetRealTSettings::setEnableExample((isset($request->enable_example)) ? "on" === $request->enable_example : false);            
             GetRealTSettings::setGetRealTTheme($request->theme);
+            GetRealTSettings::setGetRealTMapsKey($request->maps_key);
 
             Quarx::notification('Settings saved successfully.', 'success');
         } else {

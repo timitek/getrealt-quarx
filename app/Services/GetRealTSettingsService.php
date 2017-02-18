@@ -45,10 +45,15 @@ class GetRealTSettingsService {
         $this->setEnvironmentValue('GETREALT_THEME', 'getrealt.theme', $theme);
     }
     
+    public function setGetRealTMapsKey($mapsKey) {
+        $this->setEnvironmentValue('GETREALT_MAPS_KEY', 'getrealt.maps_key', $mapsKey);
+    }
+    
     public function getSettings() {
         return (object)[
             'customer_key' => config('getrets.customer_key'),
             'enable_example' => config('getrets.enable_example'),
+            'maps_key' => config('getrealt.maps_key'),
             'theme' => config('getrealt.theme')
         ];
     }
@@ -60,6 +65,9 @@ class GetRealTSettingsService {
             ],
             'enable_example' => [
                 'type' => 'checkbox',
+            ],
+            'maps_key' => [
+                'placeholder' => 'Google Maps API Key',
             ],
             'theme' => [
                 'type' => 'select',
