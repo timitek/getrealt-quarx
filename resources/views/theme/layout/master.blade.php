@@ -20,9 +20,7 @@
         @theme('partials.navigation')
 
         <div class="site-wrapper @if(Request::is('/')) homepage @endif">
-            <div class="container-fluid">
-                @yield('content')
-            </div>
+            @yield('content')
         </div>
 
         @theme('partials.footer')
