@@ -18,6 +18,7 @@ class GetRealTSettingsService {
         $existingValue = config($configKey);
         $existingValue = (is_bool($existingValue) ? ($existingValue ? 'true' : 'false') : $existingValue);
         $find = $environmentKey . '=' . $existingValue;
+        $findQuoted = $environmentKey . '="' . $existingValue . '"';
         $replace = $environmentKey . '=' . $newValue;
         file_put_contents(App::environmentFilePath(), str_replace(
             $find,
@@ -25,12 +26,23 @@ class GetRealTSettingsService {
             file_get_contents(App::environmentFilePath())
         ));
 
+        file_put_contents(App::environmentFilePath(), str_replace(
+            $findQuoted,
+            $replace,
+            file_get_contents(App::environmentFilePath())
+        ));
+
+
         Config::set($configKey, $newValue);
         
         // Reload the cached config       
         if (file_exists(App::getCachedConfigPath())) {
             Artisan::call("config:cache");
         }
+    }
+    
+    public function setSiteName($name) {
+        $this->setEnvironmentValue('GETREALT_SITE_NAME', 'getrealt.site_name', '"' . $name . '"');
     }
     
     public function setCustomerKey($customerKey) {
@@ -55,6 +67,7 @@ class GetRealTSettingsService {
     
     public function getSettings() {
         return (object)[
+            'site_name' => config('getrealt.site_name'),
             'customer_key' => config('getrets.customer_key'),
             'enable_example' => config('getrets.enable_example'),
             'maps_key' => config('getrealt.maps_key'),
@@ -65,12 +78,15 @@ class GetRealTSettingsService {
 
     public function getSettingsForm() {
         return [
+            'site_name' => [
+                'placeholder' => 'The name to be used for your site',
+            ],
             'customer_key' => [
                 'placeholder' => 'Customer Key from timitek.com',
             ],
-            'enable_example' => [
+            /*'enable_example' => [
                 'type' => 'checkbox',
-            ],
+            ],*/
             'maps_key' => [
                 'placeholder' => 'Google Maps API Key',
             ],

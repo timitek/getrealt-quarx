@@ -45,8 +45,9 @@ class GetRealTSettingsController extends Controller
         if (!$validation['errors']) {
             //(new \Timitek\GetRealT\Services\GetRealTService())->setCustomerKey($request->customer_key);
             
+            GetRealTSettings::setSiteName($request->site_name);
             GetRealTSettings::setCustomerKey($request->customer_key);
-            GetRealTSettings::setEnableExample((isset($request->enable_example)) ? "on" === $request->enable_example : false);            
+            /*GetRealTSettings::setEnableExample((isset($request->enable_example)) ? "on" === $request->enable_example : false);*/
             GetRealTSettings::setGetRealTTheme($request->theme);
             GetRealTSettings::setGetRealTMapsKey($request->maps_key);
             GetRealTSettings::setGetRealTLeadsEmail($request->leads_email);

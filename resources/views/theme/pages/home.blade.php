@@ -7,7 +7,7 @@
 
 @section('content')
 
-@parallaxHeaderWidget(isset($page->title) ? $page->title : 'Home Page', null)
+@parallaxHeaderWidget(isset($page->title) ? $page->title : config('getrealt.site_name'), null)
 
 <div class="container">
 
