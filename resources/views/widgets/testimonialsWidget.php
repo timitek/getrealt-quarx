@@ -16,6 +16,15 @@
                             <?= $testimonials[$i]->entry ?>
                             <small><?= $testimonials[$i]->title ?></small>
                         </blockquote>
+                        <?php if ($allowEdit): ?>
+                            <div style="text-align: center">
+                                <?php if (isset($testimonials[$i]->id)): ?>
+                                <a href="<?= url('quarx/blog/'.$testimonials[$i]->id.'/edit') ?>" target="_blank" style="margin-left: 8px;" class="btn btn-xs btn-default"><span class="fa fa-pencil"></span> Edit</a>
+                                <?php else: ?>
+                                <a href="<?= url('quarx/blog/create') ?>" target="_blank" style="margin-left: 8px;" class="btn btn-xs btn-default"><span class="fa fa-pencil"></span> Create Now</a>
+                                <?php endif; ?>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>

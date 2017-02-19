@@ -9087,6 +9087,12 @@ html, body {
       color: #444; }
     .welcome-section .getrealt-bp .getrealt-bp-entry {
       font-size: 17px; }
+      .welcome-section .getrealt-bp .getrealt-bp-entry i {
+        font-size: 35px;
+        padding-right: 20px;
+        position: relative;
+        display: inline-block;
+        line-height: 35px; }
 
 .featured-section {
   background-color: #fff;

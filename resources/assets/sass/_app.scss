@@ -89,6 +89,15 @@ html, body {
         }
         .getrealt-bp-entry {
             font-size: $font-size-large;
+            
+            i {
+                font-size: 35px;
+                padding-right: 20px;
+                position: relative;
+                display: inline-block;
+                line-height: 35px;                
+            }
+            
         }
     }
 }
