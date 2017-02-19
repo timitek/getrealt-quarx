@@ -79,6 +79,10 @@ class GetRealTServiceProvider extends ServiceProvider
         Blade::directive('parallaxHeaderWidget', function ($title) {
             return "<?php echo GetRealTFrontEnd::parallaxHeaderWidget(" . $title . "); ?>";
         });
+
+        Blade::directive('testimonialsWidget', function () {
+            return "<?php echo GetRealTFrontEnd::testimonialsWidget(); ?>";
+        });
     }
     
     private function addQuarxMenu($menu) {                
