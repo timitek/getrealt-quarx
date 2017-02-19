@@ -20,7 +20,7 @@
     margin-bottom: 20px;
     background-size: cover;
     background-color: $brand-primary;
-    
+
     .jumbotron {
         color: #fff;
         text-shadow: 3px 3px #000;
@@ -85,7 +85,7 @@ h5.listing-heading {
 
 .listing-features {
     text-align: center;
-    
+
     .label {
         border-radius: 0 !important;
         padding: 5px 10px 5px 10px !important;
@@ -101,7 +101,7 @@ h5.listing-heading {
     .feature-2 {
         background-color: darken( $brand-primary, 5% ) !important;
     }
-    
+
     .feature-3 {
         background-color: $brand-primary !important;
     }
@@ -130,14 +130,14 @@ h5.listing-heading {
             box-shadow: 10px 10px 5px $table-border-color;
         }
     }
-    
+
     .listing-result-address {
         text-align: center;
         min-height: 60px;
         padding-top: 10px;
         padding-bottom: 10px;
     }
-    
+
     .listing-result-attributes {
         background-color: $table-bg-hover;
         text-align: center;
@@ -146,7 +146,7 @@ h5.listing-heading {
         padding-top: 10px;
         padding-bottom: 10px;
         margin-bottom: 20px;
-        
+
         .label {
             border-radius: 0 !important;
             padding: 5px 10px 5px 10px !important;
@@ -154,18 +154,18 @@ h5.listing-heading {
             margin-left: 10px;
         }
     }
-    
+
     .listing-result-price {
         text-align: center;
         font-size: 24px;
         font-weight: 800;
         padding-bottom: 10px
     }
-    
+
     .listing-result-dimensions {
         text-align: center;
         padding-top: 10px;
-        
+
         .listing-result-dimension {
             border-left: 2px solid $brand-primary;
             border-right: 2px solid $brand-primary;
@@ -175,16 +175,15 @@ h5.listing-heading {
             margin-left: 10px;
             margin-right: 10px;
         }
-        
+
     }
-    
+
     .listing-result-provider {
         margin-top: 10px;
         margin-bottom: -10px;
         font-size: 10px;
     }
 }
-
 
 /*
 |--------------------------------------------------------------------------
@@ -197,33 +196,33 @@ h5.listing-heading {
     min-height: 100%;
 }
 
-    .calendar th {
-        background-color: $table-bg-active;
-        padding: 8px;
-    }
+.calendar th {
+    background-color: $table-bg-active;
+    padding: 8px;
+}
 
-    .calendar td {
-        vertical-align: top;
-        padding: 8px;
-        text-align: left;
-        border: 1px solid $table-border-color;
-        height: 160px;
-        width: calc(100% / 7);
-    }
+.calendar td {
+    vertical-align: top;
+    padding: 8px;
+    text-align: left;
+    border: 1px solid $table-border-color;
+    height: 160px;
+    width: calc(100% / 7);
+}
 
-    .calendar td .today {
-        background-color: $table-bg-active;
-    }
+.calendar td .today {
+    background-color: $table-bg-active;
+}
 
-    .calendar td .date {
-        float: right;
-        text-align: right;
-        width: 100%;
-    }
-    .calendar td .content {
-        float: right;
-        width: 100%;
-    }
+.calendar td .date {
+    float: right;
+    text-align: right;
+    width: 100%;
+}
+.calendar td .content {
+    float: right;
+    width: 100%;
+}
 
 .cal-link {
     margin-top: 24px;
@@ -246,4 +245,104 @@ h5.listing-heading {
 footer {
     background-color: $panel-footer-bg;
     color: $panel-default-text;
+    
+    .footer-final {
+        text-align: center;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: 12px;
+    }
+}
+
+.footer-bp-widget {
+    
+    ul {
+        list-style: none;
+        padding-left: 0;
+
+        li {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+            a {
+                font-weight: 700;
+                padding-right: 10px;
+            }
+
+            span {
+                font-size: 12px;
+            }
+        }
+    }
+}
+
+/*
+|--------------------------------------------------------------------------
+| Contact Widget
+<div class="contact">
+    <address>
+        <div class="contact-mailing">
+            <i class="fa fa-map-marker"></i>
+            215 North Washington<br>
+            EL Dorado, Arkansas 71730
+        </div>
+        <div class="contact-phone">
+            <i class="fa fa-phone"></i> 
+            (501) 779-8464
+        </div>
+        <div class="contact-email">
+            <i class="fa fa-envelope-open"></i> 
+            <a href="mailto:support@timitek.com">support@timitek.com</a>
+        <div>
+    </address>
+    <div class="social-icons">
+        <a href="https://www.facebook.com/timitek.llc" target="_blank"><i class="fa fa-facebook"></i></a>
+        <a href="https://twitter.com/timitek_llc" target="_blank"><i class="fa fa-twitter"></i></a>
+    </div>
+</div>
+|--------------------------------------------------------------------------
+*/
+
+.contact {
+    
+    address {
+        margin-bottom: 5px;
+        
+        div {
+            vertical-align: text-top;
+            padding-left: 20px;
+            
+            i {
+                float: left;
+                position: absolute;
+                margin-left: -20px;
+                line-height: inherit;
+            }
+        }
+        
+        .contact-mailing {
+            font-weight: 800;
+            padding-bottom: 5px;            
+        }
+        .contact-phone {
+            
+        }
+        .contact-email {
+            
+        }
+    }
+}
+
+.social-icons {
+    a {
+        color: $brand-primary;
+        font-size: 20px;
+        border: 1px solid $brand-primary;
+        border-radius: 50%;
+        padding: 6px;
+        width: 44px;
+        height: 44px;
+        display: inline-block;
+        margin: 2px;
+        text-align: center;
+    }
 }

@@ -8526,3 +8526,71 @@ h5.listing-heading {
 footer {
   background-color: #FCFCFC;
   color: #444; }
+  footer .footer-final {
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 12px; }
+
+.footer-bp-widget ul {
+  list-style: none;
+  padding-left: 0; }
+  .footer-bp-widget ul li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+    .footer-bp-widget ul li a {
+      font-weight: 700;
+      padding-right: 10px; }
+    .footer-bp-widget ul li span {
+      font-size: 12px; }
+
+/*
+|--------------------------------------------------------------------------
+| Contact Widget
+<div class="contact">
+    <address>
+        <div class="contact-mailing">
+            <i class="fa fa-map-marker"></i>
+            215 North Washington<br>
+            EL Dorado, Arkansas 71730
+        </div>
+        <div class="contact-phone">
+            <i class="fa fa-phone"></i> 
+            (501) 779-8464
+        </div>
+        <div class="contact-email">
+            <i class="fa fa-envelope-open"></i> 
+            <a href="mailto:support@timitek.com">support@timitek.com</a>
+        <div>
+    </address>
+    <div class="social-icons">
+        <a href="https://www.facebook.com/timitek.llc" target="_blank"><i class="fa fa-facebook"></i></a>
+        <a href="https://twitter.com/timitek_llc" target="_blank"><i class="fa fa-twitter"></i></a>
+    </div>
+</div>
+|--------------------------------------------------------------------------
+*/
+.contact address {
+  margin-bottom: 5px; }
+  .contact address div {
+    vertical-align: text-top;
+    padding-left: 20px; }
+    .contact address div i {
+      float: left;
+      position: absolute;
+      margin-left: -20px;
+      line-height: inherit; }
+  .contact address .contact-mailing {
+    font-weight: 800;
+    padding-bottom: 5px; }
+
+.social-icons a {
+  color: #D9230F;
+  font-size: 20px;
+  border: 1px solid #D9230F;
+  border-radius: 50%;
+  padding: 6px;
+  width: 44px;
+  height: 44px;
+  display: inline-block;
+  margin: 2px;
+  text-align: center; }
