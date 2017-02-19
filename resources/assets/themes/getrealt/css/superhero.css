@@ -8447,18 +8447,23 @@ a.list-group-item-danger.active:hover, a.list-group-item-danger.active:focus {
 .parallax-heading {
   text-align: center;
   height: 100%;
+  overflow: hidden !important;
   margin-left: -15px;
   margin-right: -15px;
   overflow: auto;
-  color: #fff;
   margin-bottom: 20px;
   background-size: cover;
-  background-color: #DF691A; }
+  background-color: #4E5D6C; }
   .parallax-heading .jumbotron {
-    color: #fff;
-    text-shadow: 3px 3px #000;
     background: transparent;
     border: 0; }
+    .parallax-heading .jumbotron h1 {
+      overflow: hidden !important;
+      margin-left: -60px;
+      margin-right: -60px;
+      background: rgba(235, 235, 235, 0.5);
+      color: #4E5D6C;
+      text-shadow: 3px 3px #EBEBEB; }
 
 .section-pad {
   margin-top: 20px; }
@@ -8482,6 +8487,55 @@ a.list-group-item-danger.active:hover, a.list-group-item-danger.active:focus {
 
 .pointer {
   cursor: pointer; }
+
+/*
+|--------------------------------------------------------------------------
+| Home
+|--------------------------------------------------------------------------
+*/
+.welcome-section {
+  margin-top: 40px;
+  margin-bottom: 40px; }
+  .welcome-section .getrealt-bp {
+    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+    .welcome-section .getrealt-bp .getrealt-bp-title {
+      font-family: inherit;
+      font-size: 39px;
+      font-weight: 400;
+      line-height: 1.1;
+      color: inherit; }
+    .welcome-section .getrealt-bp .getrealt-bp-entry {
+      font-size: 19px; }
+
+.featured-section {
+  background-color: #4E5D6C;
+  color: #EBEBEB;
+  border-top: 3px solid #DF691A;
+  border-bottom: 3px solid #DF691A;
+  padding: 30px 100px 30px 100px;
+  margin-bottom: 40px; }
+  .featured-section .getrealt-bp {
+    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding-top: 30px;
+    padding-bottom: 30px; }
+    .featured-section .getrealt-bp .getrealt-bp-title {
+      display: none; }
+    .featured-section .getrealt-bp .getrealt-bp-entry {
+      font-size: 15px;
+      font-style: italic; }
+      .featured-section .getrealt-bp .getrealt-bp-entry i {
+        display: block;
+        text-align: center;
+        font-size: 65px;
+        font-style: none;
+        padding-bottom: 20px; }
+  .featured-section .getrealt-bp:hover .getrealt-bp-entry i {
+    color: #EBEBEB;
+    margin-top: -20px;
+    font-size: 85px;
+    -webkit-transition: color 300ms linear, margin-top 300ms linear, font-size 300ms linear;
+    -o-transition: color 300ms linear, margin-top 300ms linear, font-size 300ms linear;
+    transition: color 300ms linear, margin-top 300ms linear, font-size 300ms linear; }
 
 /*
 |--------------------------------------------------------------------------

@@ -56,6 +56,43 @@ class GetRealTFrontEndService {
         
         return $output;
     }
+    
+    function ordinal($number) {
+        $ordinal = $number;
+        $ends = array('th','st','nd','rd','th','th','th','th','th','th');
+        if ((($number % 100) >= 11) && (($number%100) <= 13)) {
+            $ordinal = $number. 'th';
+        }
+        else {
+            $ordinal = $number. $ends[$number % 10];
+        }
+        return $ordinal;
+    }
+    
+    public function blogPostByTagWidget($tag, $entry) {
+        $output = "";
+        $newRepo = new BlogRepository();
+        $posts = $newRepo->findBlogsByTag($tag)->take($entry)->all();
+        if (count($posts) >= $entry ) {
+            $post = $posts[$entry - 1];
+            $output = "<div class='getrealt-bp'>" .
+                      "<div class='getrealt-bp-title'>" . $post->title . "</div>" .
+                      "<div class='getrealt-bp-entry'>" . $post->entry . "</div>" .
+                      "</div>";
+        }
+        else {
+            $output = "<div class='getrealt-bp'>" . 
+                      "<div class='getrealt-bp-title'>" . $tag . "</div>" .
+                      "<div class='getrealt-bp-entry'><i class='fa fa-info-circle'></i>" . 
+                      "The <strong><em>" . $this->ordinal($entry) . "</em></strong> most recent blog post tagged with <strong>[" . $tag . "]</strong>, will show up here.<br /><br />" .
+                      "If your post starts with an icon such as the ones found here <a href='http://fontawesome.io/icons/' target='_blank'>here</a>, they will be presented at the top of this content.<br />" .
+                      "Example..<br /><pre><code>&lt;i class='fa fa-info-circle'&gt;&lt;/i&gt;</code></pre>" .
+                      "</div>" .
+                      "</div>";
+        }
+        
+        return $output;
+    }
 
     public function parallaxHeaderWidget($title, $background) {
         

@@ -13,19 +13,26 @@
 .parallax-heading {
     text-align: center;
     height: 100%;
+    overflow: hidden !important;
     margin-left: -15px;
     margin-right: -15px;
     overflow: auto;
-    color: #fff;
     margin-bottom: 20px;
     background-size: cover;
-    background-color: $brand-primary;
+    background-color: $navbar-default-bg;
 
     .jumbotron {
-        color: #fff;
-        text-shadow: 3px 3px #000;
         background: transparent;
         border: 0;
+        
+        h1 {
+            overflow: hidden !important;
+            margin-left: -60px;
+            margin-right: -60px;
+            background: rgba($navbar-default-color, 0.5);
+            color: $navbar-default-bg; //;
+            text-shadow: 3px 3px $navbar-default-link-hover-color;
+        }
     }
 }
 
@@ -59,6 +66,80 @@
 .pointer {
     cursor: pointer;
 }
+
+/*
+|--------------------------------------------------------------------------
+| Home
+|--------------------------------------------------------------------------
+*/
+
+.welcome-section {
+    margin-top: 40px;
+    margin-bottom: 40px;
+
+    .getrealt-bp {
+        font-family: $font-family-base;
+        
+        .getrealt-bp-title {
+            font-family: $headings-font-family;
+            font-size: $font-size-h1;
+            font-weight: $headings-font-weight;
+            line-height: $headings-line-height;
+            color: $headings-color;
+        }
+        .getrealt-bp-entry {
+            font-size: $font-size-large;
+        }
+    }
+}
+
+.featured-section {
+    background-color: $navbar-default-bg;
+    color: $navbar-default-color;
+    border-top: 3px solid $navbar-inverse-bg;
+    border-bottom: 3px solid $navbar-inverse-bg;
+    padding: 30px 100px 30px 100px;
+    //overflow: hidden !important;
+    //margin-left: -100px;
+    //margin-right: -70px;
+    margin-bottom: 40px;
+
+    .getrealt-bp {
+        font-family: $font-family-sans-serif;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        
+        .getrealt-bp-title {
+            display: none;
+        }
+
+        .getrealt-bp-entry {
+            font-size: $font-size-base;
+            font-style: italic;
+            
+            i {
+                display: block;
+                text-align: center;
+                font-size: 65px;
+                font-style: none;
+                padding-bottom: 20px;
+            }
+        }
+    }
+    
+    .getrealt-bp:hover {
+        .getrealt-bp-entry {
+            i {
+                color: $navbar-default-link-hover-color;
+                margin-top: -20px;
+                font-size: 85px;
+                @include transition(color 300ms linear, margin-top 300ms linear, font-size 300ms linear);
+            }
+        }
+    }
+    
+}
+
 
 /*
 |--------------------------------------------------------------------------

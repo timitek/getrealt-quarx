@@ -15,53 +15,27 @@
     {!! $page->entry !!}
     @else
 
-    <div class="light-gray-bg inner-shadow">
-        <!-- What we are good with -->
-        <div class="container">
-            <div class="row med-margin">
-                <div class="col-xs-12">
-                    <h2 class="main-header no-border">Learn about our  <span>Multi System</span></h2>
-                    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas metus nulla, commodo a sodales sed, dignissim pretium nunc. Nam et lacus neque. Ut enim massa, sodales tempor convallis et.</p>
-                </div>
-                <div class="clearfix"></div>
-                <div class="col-sm-4">
-                    <div class="feature">
-                        <div class="feature-img">
-                            <span class="glyphicon glyphicon-cloud"></span>
-                        </div>
-                        <div class="feature-content">
-                            <h3><strong>Cloud</strong> System</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing metus elit. Lorem ipsum dolor sit amet, consectetur adipiscing metus elit.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="feature">
-                        <div class="feature-img">
-                            <span class="glyphicon glyphicon-fire"></span>
-                        </div>
-                        <div class="feature-content">
-                            <h3><strong>Fire</strong> System</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing metus elit. Lorem ipsum dolor sit amet, consectetur adipiscing metus elit.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="feature">
-                        <div class="feature-img">
-                            <span class="glyphicon glyphicon-flash"></span>
-                        </div>
-                        <div class="feature-content">
-                            <h3><strong>Lightning</strong> System</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing metus elit. Lorem ipsum dolor sit amet, consectetur adipiscing metus elit.</p>
-                        </div>
-                    </div>
-                </div>
+    <div class="welcome-section">
+        <div class="row">
+            <div class="col-xs-12">
+                @blogPostByTagWidget('Welcome', 1)
             </div>
         </div>
     </div>
 
-
+    <div class="featured-section">
+        <div class="row">
+            <div class="col-sm-4">
+                @blogPostByTagWidget('Featured', 1)
+            </div>
+            <div class="col-sm-4">
+                @blogPostByTagWidget('Featured', 2)
+            </div>
+            <div class="col-sm-4">
+                @blogPostByTagWidget('Featured', 3)
+            </div>
+        </div>
+    </div>
 
 
     <div class="testimony">
@@ -134,6 +108,8 @@
             </div>
         </div>
     </div>
+
+
 
     @endif
 

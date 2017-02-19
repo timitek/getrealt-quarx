@@ -8290,18 +8290,23 @@ button.close {
 .parallax-heading {
   text-align: center;
   height: 100%;
+  overflow: hidden !important;
   margin-left: -15px;
   margin-right: -15px;
   overflow: auto;
-  color: #fff;
   margin-bottom: 20px;
   background-size: cover;
-  background-color: #EB6864; }
+  background-color: #fff; }
   .parallax-heading .jumbotron {
-    color: #fff;
-    text-shadow: 3px 3px #000;
     background: transparent;
     border: 0; }
+    .parallax-heading .jumbotron h1 {
+      overflow: hidden !important;
+      margin-left: -60px;
+      margin-right: -60px;
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      text-shadow: 3px 3px #000; }
 
 .section-pad {
   margin-top: 20px; }
@@ -8325,6 +8330,55 @@ button.close {
 
 .pointer {
   cursor: pointer; }
+
+/*
+|--------------------------------------------------------------------------
+| Home
+|--------------------------------------------------------------------------
+*/
+.welcome-section {
+  margin-top: 40px;
+  margin-bottom: 40px; }
+  .welcome-section .getrealt-bp {
+    font-family: Georgia, "Times New Roman", Times, serif; }
+    .welcome-section .getrealt-bp .getrealt-bp-title {
+      font-family: "News Cycle", "Arial Narrow Bold", sans-serif;
+      font-size: 39px;
+      font-weight: 700;
+      line-height: 1.1;
+      color: #000; }
+    .welcome-section .getrealt-bp .getrealt-bp-entry {
+      font-size: 19px; }
+
+.featured-section {
+  background-color: #fff;
+  color: #000;
+  border-top: 3px solid #EB6864;
+  border-bottom: 3px solid #EB6864;
+  padding: 30px 100px 30px 100px;
+  margin-bottom: 40px; }
+  .featured-section .getrealt-bp {
+    font-family: "News Cycle", "Arial Narrow Bold", sans-serif;
+    padding-top: 30px;
+    padding-bottom: 30px; }
+    .featured-section .getrealt-bp .getrealt-bp-title {
+      display: none; }
+    .featured-section .getrealt-bp .getrealt-bp-entry {
+      font-size: 15px;
+      font-style: italic; }
+      .featured-section .getrealt-bp .getrealt-bp-entry i {
+        display: block;
+        text-align: center;
+        font-size: 65px;
+        font-style: none;
+        padding-bottom: 20px; }
+  .featured-section .getrealt-bp:hover .getrealt-bp-entry i {
+    color: #000;
+    margin-top: -20px;
+    font-size: 85px;
+    -webkit-transition: color 300ms linear, margin-top 300ms linear, font-size 300ms linear;
+    -o-transition: color 300ms linear, margin-top 300ms linear, font-size 300ms linear;
+    transition: color 300ms linear, margin-top 300ms linear, font-size 300ms linear; }
 
 /*
 |--------------------------------------------------------------------------
