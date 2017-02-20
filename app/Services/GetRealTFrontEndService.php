@@ -105,10 +105,16 @@ class GetRealTFrontEndService {
     }
 
     public function parallaxHeaderWidget($title, $background) {
+        
+        $finalBackground = $background;
+        if (empty($background)) {
+            //"http://lorempixel.com/1400/900/abstract/"
+            $finalBackground = '/assets/img/header/' . collect(array_diff( scandir(public_path() . '/assets/img/header'), array(".", "..") ))->random();
+        }
 
         extract([
             'title' => $title,
-            'background' => (empty($background) ? "http://lorempixel.com/1400/900/abstract/" : $background),
+            'background' => $finalBackground,
             'initialY' => (rand(0, 400) * -1)
         ]);
         ob_start();

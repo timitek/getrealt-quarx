@@ -46,6 +46,7 @@ class GetRealTServiceProvider extends ServiceProvider
     protected function loadPublishes() {
         $this->publishes([realpath(__DIR__.'/../../config') => config_path('')], 'config');
         $this->publishes([realpath(__DIR__.'/../../resources/assets/themes') => public_path('assets') . '/themes'], 'public');
+        $this->publishes([realpath(__DIR__.'/../../resources/assets/img') => public_path('assets') . '/img'], 'public');
         $this->publishes([realpath(__DIR__.'/../../resources/lang') => resource_path('lang/vendor/timitek')], 'translations');
         $this->publishes([realpath(__DIR__.'/../../resources/views') => base_path('resources/views/vendor/timitek/getrealt')], 'views');
         $this->publishes([realpath(__DIR__.'/../../database/migrations') => database_path('migrations')], 'migrations');
