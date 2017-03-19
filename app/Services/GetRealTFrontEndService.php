@@ -87,15 +87,14 @@ class GetRealTFrontEndService {
         } else {
             $create = "";
             if ($allowEdit) {
-                $create = '<a href="'.url('quarx/blog/create').'" target="_blank" style="margin-left: 8px;" class="btn btn-xs btn-default"><span class="fa fa-pencil"></span> Create Now</a>';
+                $create = '<a href="' . url('quarx/blog/create') . '?taginit=' . $tag . '" target="_blank" style="margin-left: 8px;" class="btn btn-xs btn-default"><span class="fa fa-pencil"></span> Create Now</a>';
             }
 
             $output = "<div class='getrealt-bp'>" .
                     "<div class='getrealt-bp-title'>" . $tag . "</div>" .
                     "<div class='getrealt-bp-entry'><i class='fa fa-info-circle'></i>" .
-                    "The <strong><em>" . $this->ordinal($entry) . "</em></strong> most recent blog post tagged with <strong>[" . $tag . "]</strong>, will show up here.<br /><br />" .
-                    "If your post starts with an icon such as the ones found here <a href='http://fontawesome.io/icons/' target='_blank'>here</a>, they will be emphasized within this content.<br />" .
-                    "Example..<br /><pre><code>&lt;i class='fa fa-info-circle'&gt;&lt;/i&gt;</code></pre>" .
+                    "The <strong><em>" . $this->ordinal($entry) . "</em></strong> most recent blog post tagged with <strong>[" . $tag . "]</strong>, will show up here.<br />" .
+                    '<em>Start your post with an icon for it to be emphasized here.</em>' .
                     "</div>" .
                     $create .
                     "</div>";

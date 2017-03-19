@@ -211,6 +211,21 @@ html, body {
     max-width: 250px;
 }
 
+blockquote {
+    border-left: none;
+}
+
+/* Insert the pseudo element - replicating what FontAwesome does */
+blockquote:before {
+    content: "\f10d"; 
+    font-family: FontAwesome;
+    float: left;
+    margin-right: 10px;
+    opacity: .5;
+    font-size: 30px;
+}
+
+
 /* Previous button  */
 #quote-carousel .carousel-control.left {
   left: -12px;

@@ -9,13 +9,20 @@
     <div class="row">
         <div class="col-md-8">
             @foreach($blogs as $blog)
-                @if (config('app.locale') !== config('quarx.default-language'))
-                    @if ($blog->translation(config('app.locale')))
-                        <a href="{!! URL::to('blog/'.$blog->translation(config('app.locale'))->data->url) !!}"><p>{!! $blog->translation(config('app.locale'))->data->title !!} - <span>{!! $blog->published_at !!}</span></p></a>
-                    @endif
-                @else
-                    <a href="{!! URL::to('blog/'.$blog->url) !!}"><p>{!! $blog->title !!} - <span>{!! $blog->published_at !!}</span></p></a>
-                @endif
+                <div class="panel entry-row">
+                    <div class="panel-heading">
+                        @if (config('app.locale') !== config('quarx.default-language'))
+                            @if ($blog->translation(config('app.locale')))
+                                <a href="{!! URL::to('blog/'.$blog->translation(config('app.locale'))->data->url) !!}"><p>{!! $blog->translation(config('app.locale'))->data->title !!} - <span>{!! $blog->published_at !!}</span></p></a>
+                            @endif
+                        @else
+                            <a href="{!! URL::to('blog/'.$blog->url) !!}"><p>{!! $blog->title !!} - <span>{!! \Carbon\Carbon::parse($blog->published_at)->format('d M, Y') !!}</span></p></a>
+                        @endif
+                    </div>
+                    <div class="panel-body">
+                    {!! str_limit($blog->entry->plain(), 300) !!}
+                    </div>
+                </div>
             @endforeach
 
             {!! $blogs !!}
