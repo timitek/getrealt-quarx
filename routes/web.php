@@ -21,6 +21,7 @@
     Route::group(['namespace' => 'Timitek\GetRealT\Http\Controllers\Quarx', 'prefix' => 'quarx', 'middleware' => ['web', 'auth', 'quarx']], function () { 
         Route::get('getrealt', 'GetRealTController@index');
         Route::resource('getrealt/settings', 'GetRealTSettingsController', ['as' => 'quarx.getrealt', 'except' => ['create', 'show', 'edit', 'update', 'destroy']]);
+        Route::resource('getrealt/contact', 'GetRealTContactController', ['as' => 'quarx.getrealt', 'except' => ['create', 'show', 'edit', 'update', 'destroy']]);
     });
 
     Route::group(['namespace' => 'Timitek\GetRealT\Http\Controllers\Api', 'prefix' => 'getrealt', 'middleware' => ['web']], function () { 

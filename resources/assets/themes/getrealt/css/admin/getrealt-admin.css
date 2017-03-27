@@ -5,3 +5,30 @@
     overflow-y: scroll;
     max-height: 200px;
 }
+
+.contact address {
+  margin-bottom: 5px; }
+  .contact address div {
+    vertical-align: text-top;
+    padding-left: 20px; }
+    .contact address div i {
+      float: left;
+      position: absolute;
+      margin-left: -20px;
+      line-height: inherit; }
+  .contact address .contact-mailing {
+    font-weight: 800;
+    padding-bottom: 5px; }
+
+.social-icons a {
+  color: #008cba;
+  font-size: 20px;
+  border: 1px solid #008cba;
+  border-radius: 50%;
+  padding: 6px;
+  width: 44px;
+  height: 44px;
+  display: inline-block;
+  margin: 2px;
+  text-align: center; }
+
