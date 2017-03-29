@@ -7,6 +7,7 @@ use Gate;
 use Auth;
 use Carbon\Carbon;
 use Yab\Quarx\Repositories\BlogRepository;
+use Yab\Quarx\Repositories\WidgetRepository;
 
 class GetRealTFrontEndService {
 
@@ -138,6 +139,29 @@ class GetRealTFrontEndService {
         ob_start();
         include(realpath(__DIR__ . '/../../resources/views/widgets/testimonialsWidget.php'));
         return ob_get_clean();
+    }
+    
+    public function contactWidget() {
+        $output = '';
+        
+        $widget = WidgetRepository::getWidgetBySLUG('contact');
+        
+        if (empty($widget)) {
+            $output = "<div><h5>The contact widget will show up here.</h5></div>";            
+        }
+        else {
+            $output = $widget->content;
+            
+            if (config('app.locale') !== config('quarx.default-language') && $widget->translation(config('app.locale'))) {
+                $output = $widget->translationData(config('app.locale'))->content;
+            } 
+        }
+
+        if (!empty($output) && Gate::allows('quarx', Auth::user())) {
+            $output .= '<a href="'.url('quarx/getrealt/contact').'" style="margin-left: 8px;" class="btn btn-xs btn-default"><span class="fa fa-pencil"></span> Edit</a>';
+        }
+        
+        return $output;
     }
 
 }

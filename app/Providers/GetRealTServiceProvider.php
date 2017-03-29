@@ -91,6 +91,10 @@ class GetRealTServiceProvider extends ServiceProvider
         Blade::directive('testimonialsWidget', function () {
             return "<?php echo GetRealTFrontEnd::testimonialsWidget(); ?>";
         });
+
+        Blade::directive('contactWidget', function () {
+            return "<?php echo GetRealTFrontEnd::contactWidget(); ?>";
+        });
     }
     
     private function addQuarxMenu($menu) {                

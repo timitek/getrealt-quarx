@@ -5,17 +5,15 @@ namespace Timitek\GetRealT\Http\Controllers\Quarx;
 use Quarx;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Timitek\GetRealT\Services\GetRealTSettingsService;
 use Yab\Quarx\Services\ValidationService;
-use Yab\Quarx\Repositories\WidgetRepository;
+use Timitek\GetRealT\Services\GetRealTContactService;
 
 
 
 class GetRealTContactController extends Controller
 {
-    public function __construct(WidgetRepository $widgetsRepo)
+    public function __construct()
     {
-        $this->widgetsRepository = $widgetsRepo;
     }
 
     /**
@@ -43,46 +41,20 @@ class GetRealTContactController extends Controller
         ]);
 
         if (!$validation['errors']) {
+            $details = (object)[
+                'address_line1' => $request->address_line1,
+                'address_line2' => $request->address_line2,
+                'phone' => $request->phone,
+                'email' => $request->email,
+                'facebook' => $request->facebook,
+                'twitter' => $request->twitter,
+                'youtube' => $request->youtube,
+                'google_plus' => $request->google_plus,
+                'linkedin' => $request->linkedin
+            ];
             
-            $phone = empty($request->phone) ? '' :
-'        <div class="contact-phone">
-            <i class="fa fa-phone"></i> 
-            ' . $request->phone . '
-        </div>';
-            
-            $social = empty($request->facebook) && empty($request->twitter) ? '' : 
-'    <div class="social-icons">
-        ' . (empty($request->facebook) ? '' : '<a href="' . $request->facebook . '" target="_blank"><i class="fa fa-facebook"></i></a>') . '
-        ' . (empty($request->twitter) ? '' : '<a href="' . $request->twitter . '" target="_blank"><i class="fa fa-twitter"></i></a>') . '
-    </div>';
-            
-            $content = 
-'<div class="contact">
-    <address>
-        <div class="contact-mailing">
-            <i class="fa fa-map-marker"></i>
-            ' . $request->address_line1 . '<br>
-            ' . $request->address_line2 . '
-        </div>' . $phone . '
-        <div class="contact-email">
-            <i class="fa fa-envelope-open"></i> 
-            <a href="mailto:' . $request->email . '">' . $request->email . '</a>
-        <div>
-    </address>' . $social . '
-</div>';
-            
-            
-            $currentWidget = WidgetRepository::getWidgetBySLUG('contact');
-            if (empty($currentWidget)) {
-                $this->widgetsRepository->store([
-                    'name' => 'Contact',
-                    'slug' => 'contact',
-                    'content' => $content
-                ]);
-            }
-            else {
-                $this->widgetsRepository->update($currentWidget, ['content' => $content]);
-            }
+            $contactService = new GetRealTContactService();
+            $contactService->saveContact($details);
             
             Quarx::notification('Contact saved successfully.', 'success');
         } else {

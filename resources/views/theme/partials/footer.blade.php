@@ -4,7 +4,7 @@
 
             <div class="col-xs-12 col-sm-6 col-md-4">
                 <h4>Contact <strong>Us</strong></h4>
-                @widget('Contact')
+                @contactWidget()
             </div>
 
             <div class="footer-bp-widget hidden-xs col-sm-6 col-md-4">
