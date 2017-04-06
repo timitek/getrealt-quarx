@@ -1,5 +1,5 @@
 <div class="ng-cloak" ng-controller="listingsWidget">
-    <div class="row" ng-if="listings">
+    <div class="row" ng-if="listings && listings.length">
         <div class="col-xs-12 col-sm-6 col-lg-4" ng-repeat-start="listing in listings">
             <div class="thumbnail listing-result animated bounceInDown">
                 <a ng-href="/listings/{{listing.listingTypeURLSlug}}_{{listing.id}}" target="_blank" alt="View Details">
@@ -33,5 +33,10 @@
         <div class="clearfix visible-sm-block" ng-if="$index%2==1"></div>
         <div class="clearfix visible-lg-block" ng-if="$index%3==2"></div>
         <div ng-repeat-end=""></div>
+    </div>
+    <div class="row" ng-if="!searching && (listings && !listings.length)">
+        <div class="col-xs-12">
+            <div class="alert alert-warning animated bounceInDown" role="alert"> <strong>Nope...</strong> I couldn't find exactly what you were looking for.  Change a few things up and try searching again.</div>            
+        </div>
     </div>
 </div>

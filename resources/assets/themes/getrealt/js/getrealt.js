@@ -85,23 +85,31 @@
         $scope.listings = null;
 
         $scope.search = function () {
-            listingService.index(
-                    $scope.advancedSearch,
-                    $scope.keywords,
-                    $scope.minPrice,
-                    $scope.maxPrice,
-                    $scope.includeResidential,
-                    $scope.includeLand,
-                    $scope.includeCommercial
-                    ).then(function (data) {
-                $scope.listings = data;
-                eventFactory.refreshListings($scope.listings);
-            });
+            if ($scope.advancedSearch || $scope.keywords) {
+                eventFactory.searchingListings(true);
+                listingService.index(
+                        $scope.advancedSearch,
+                        $scope.keywords,
+                        $scope.minPrice,
+                        $scope.maxPrice,
+                        $scope.includeResidential,
+                        $scope.includeLand,
+                        $scope.includeCommercial
+                        ).then(function (data) {
+                    $scope.listings = data;
+                    eventFactory.searchingListings(false);
+                    eventFactory.refreshListings($scope.listings);
+                });
+            }
         };
     };
 
     var listingsWidget = function ($scope, eventFactory) {
         $scope.listings = null;
+
+        eventFactory.onSearchingListings($scope, function (searching) {
+            $scope.searching = searching;
+        });
 
         eventFactory.onRefreshListings($scope, function (listings) {
             $scope.listings = listings;
@@ -119,9 +127,22 @@
             });
         };
 
+        var SEARCHING_LISTINGS = 'searchingListings';
+        var searchingListings = function (searching) {
+            $rootScope.$broadcast(SEARCHING_LISTINGS, searching);
+        };
+        var onSearchingListings = function ($scope, handler) {
+            $scope.$on(SEARCHING_LISTINGS, function (event, message) {
+                handler(message);
+            });
+        };
+
+
         return {
             refreshListings: refreshListings,
-            onRefreshListings: onRefreshListings
+            onRefreshListings: onRefreshListings,
+            searchingListings: searchingListings,
+            onSearchingListings: onSearchingListings
         };
 
     };
