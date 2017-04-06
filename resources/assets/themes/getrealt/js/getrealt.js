@@ -299,12 +299,25 @@
     };
 
     angular.module('getrealt', ['getrealt.rest', 'ui.bootstrap'])
-            .factory('eventFactory', ['$rootScope', eventFactory])
-            .service('listingService', ['$q', '$http', 'restService', listingService])
-            .controller('searchWidget', ['$scope', 'eventFactory', 'listingService', searchWidget])
-            .controller('listingsWidget', ['$scope', 'eventFactory', listingsWidget])
-            .controller('listingDetails', ['$scope', '$uibModal', 'listingService', listingDetails])
-            .controller('contactAgentModal', ['$scope', '$uibModalInstance', 'parentController', contactAgentModal]);
+        .factory('eventFactory', ['$rootScope', eventFactory])
+        .service('listingService', ['$q', '$http', 'restService', listingService])
+        .controller('searchWidget', ['$scope', 'eventFactory', 'listingService', searchWidget])
+        .controller('listingsWidget', ['$scope', 'eventFactory', listingsWidget])
+        .controller('listingDetails', ['$scope', '$uibModal', 'listingService', listingDetails])
+        .controller('contactAgentModal', ['$scope', '$uibModalInstance', 'parentController', contactAgentModal])
+        .directive('ngEnter', function () {
+            return function (scope, element, attrs) {
+                element.bind("keydown keypress", function (event) {
+                    if (event.which === 13) {
+                        scope.$apply(function () {
+                            scope.$eval(attrs.ngEnter, { 'event': event });
+                        });
+
+                        event.preventDefault();
+                    }
+                });
+            };
+        });
 
 })();
 
