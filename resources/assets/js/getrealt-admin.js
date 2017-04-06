@@ -105,11 +105,19 @@ var getrealtAdmin = new function () {
         }
     };
 
+    this.handleThemePreview = function () {
+        $("select#Theme").change(function () {
+            var theme = '/assets/img/theme_preview/' + $(this).val() + '.png';
+            $("img#getRealTThemePreview").attr("src", theme);
+        }).change()
+    };
+
     this.start = function () {
         _redactorConfig.plugins.push('insertIcon');
         _redactorConfig.buttons.push('insertIcon');
         
         self.handleTagInit();
+        self.handleThemePreview();
     };
 
 };

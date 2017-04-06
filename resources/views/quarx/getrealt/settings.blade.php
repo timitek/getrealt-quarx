@@ -14,10 +14,15 @@
 
             {!! FormMaker::fromObject(GetRealTSettings::getSettings(), GetRealTSettings::getSettingsForm()) !!}
 
+            <div class="col-xs-12 text-center">
+                <img id="getRealTThemePreview" src="{{ url('assets/img/theme_preview/united.png') }}" class="img-responsive center-block" alt="Theme Preview" style="max-height: 200px;" />
+            </div>
+
             <div class="form-group text-right">
                 <a href="{!! URL::to('quarx/getrealt/settings') !!}" class="btn btn-default raw-left">Cancel</a>
                 {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
             </div>
+                        
 
         {!! Form::close() !!}
     </div>

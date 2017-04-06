@@ -98,7 +98,6 @@ class GetRealTSettingsService {
                 'options' => [
                     'cerulean' => 'cerulean',
                     'cosmo' => 'cosmo',
-                    'custom' => 'custom',
                     'cyborg' => 'cyborg',
                     'darkly' => 'darkly',
                     'flatly' => 'flatly',
