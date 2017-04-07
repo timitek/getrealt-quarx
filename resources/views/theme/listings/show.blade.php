@@ -140,4 +140,9 @@
 <script type="text/ng-template" id="contactAgent.html">
 @theme('partials.contactAgent')
 </script>
+
+<script type="text/ng-template" id="messageConfirmation.html">
+@theme('partials.messageConfirmation')
+</script>
+
 @endsection

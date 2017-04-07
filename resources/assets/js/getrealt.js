@@ -270,7 +270,19 @@
                             info.listingID = $scope.listingID;
                             
                             listingService.sendLead(info).then(function (data) {
-                                alert(JSON.stringify(data));
+                                $uibModal.open({
+                                    templateUrl: 'messageConfirmation.html',
+                                    controller: 'messageConfirmationModal',
+                                    ariaLabelledBy: 'modal-title',
+                                    ariaDescribedBy: 'modal-body',
+                                    size: 'sm',
+                                    resolve: {
+                                        message: function () {
+                                            return (data.success ? "Message Sent!" : "Oops! Our messaging is down right now.  Try contacting us directly please!");
+                                        }
+                                    }
+                                });
+                                
                             });
                         }
                     },
@@ -318,6 +330,15 @@
         };
         
     };
+    
+    var messageConfirmationModal = function ($scope, $uibModalInstance, message) {
+        $scope.message = message;
+
+        $scope.cancel = function () {
+            $uibModalInstance.dismiss('cancel');
+        };
+        
+    };
 
     angular.module('getrealt', ['getrealt.rest', 'ui.bootstrap'])
         .factory('eventFactory', ['$rootScope', eventFactory])
@@ -326,6 +347,7 @@
         .controller('listingsWidget', ['$scope', 'eventFactory', listingsWidget])
         .controller('listingDetails', ['$scope', '$uibModal', 'listingService', listingDetails])
         .controller('contactAgentModal', ['$scope', '$uibModalInstance', 'parentController', contactAgentModal])
+        .controller('messageConfirmationModal', ['$scope', '$uibModalInstance', 'message', messageConfirmationModal])
         .directive('ngEnter', function () {
             return function (scope, element, attrs) {
                 element.bind("keydown keypress", function (event) {
