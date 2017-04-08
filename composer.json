@@ -21,7 +21,9 @@
     "prefer-stable": true,
     "require": {
         "illuminate/support": "~5.1",
-        "php" : "~5.6|~7.0"
+        "php" : "~5.6|~7.0",
+        "timitek/getrets-laravel": "~1.0",
+        "yab/quarx": "~2.3"
     },
     "repositories": [
         {
