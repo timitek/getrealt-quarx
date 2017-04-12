@@ -639,6 +639,12 @@ footer {
 }
 
 .blog-show {
+
+    .body-content {
+        border: 1px solid $table-border-color;
+        margin-bottom: 40px;
+    }
+    
     .blog-title {
         background-color: $table-bg-hover;
         border-top: 3px solid $table-border-color;

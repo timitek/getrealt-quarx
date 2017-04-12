@@ -9093,6 +9093,10 @@ footer {
   .blog-all .blog-tags .tag-5 {
     background-color: #959ba0 !important; }
 
+.blog-show .body-content {
+  border: 1px solid #1c1e22;
+  margin-bottom: 40px; }
+
 .blog-show .blog-title {
   background-color: #49515a;
   border-top: 3px solid #1c1e22;
