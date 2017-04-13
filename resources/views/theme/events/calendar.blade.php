@@ -7,13 +7,13 @@
 <div class="container">
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 calendar-content">
             {!! $calendar->asHtml([ 'class' => 'calendar', 'dates' => $events ]); !!}
             {!! $calendar->links('cal-link btn btn-default'); !!}
         </div>
     </div>
 
-<div class="container">
+</div>
 
 @endsection
 

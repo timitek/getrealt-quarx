@@ -700,3 +700,56 @@ footer {
         }
     }
 */
+
+
+/*
+|--------------------------------------------------------------------------
+| Calendar
+|--------------------------------------------------------------------------
+*/
+.calendar-content {
+    td {
+        .date {
+            margin-top: -7px;
+            margin-right: -8px;
+            margin-bottom: 10px;                
+
+            a {
+                background-color: $table-bg-hover;                
+                text-decoration: none;
+                cursor: pointer;
+                font-weight: 800;
+                //background-color: lighten( $brand-primary, 30% ) !important;
+                border-bottom: 2px solid $table-border-color;
+                border-left: 2px solid $table-border-color;
+                //border-radius: 5px;
+                padding: 2px 10px 2px 10px;
+            }
+        }
+
+        .content {
+            a {
+                background-color: $table-bg-hover;                
+                text-decoration: none;
+                cursor: pointer;
+
+                border-left: 2px solid $table-border-color;
+                border-right: 2px solid $table-border-color;
+                border-bottom: 2px solid $table-border-color;
+                border-radius: 15px;
+
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+            a::before { 
+                content: "\2022";
+            }
+            a::after { 
+                content: "\2022";
+            }
+            a:hover {
+                font-weight: 800;                
+            }
+        }
+    }
+}

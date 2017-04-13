@@ -8966,3 +8966,40 @@ footer {
         }
     }
 */
+/*
+|--------------------------------------------------------------------------
+| Calendar
+|--------------------------------------------------------------------------
+*/
+.calendar-content td .date {
+  margin-top: -7px;
+  margin-right: -8px;
+  margin-bottom: 10px; }
+  .calendar-content td .date a {
+    background-color: #ecf0f1;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 800;
+    border-bottom: 2px solid #ecf0f1;
+    border-left: 2px solid #ecf0f1;
+    padding: 2px 10px 2px 10px; }
+
+.calendar-content td .content a {
+  background-color: #ecf0f1;
+  text-decoration: none;
+  cursor: pointer;
+  border-left: 2px solid #ecf0f1;
+  border-right: 2px solid #ecf0f1;
+  border-bottom: 2px solid #ecf0f1;
+  border-radius: 15px;
+  padding-left: 5px;
+  padding-right: 5px; }
+
+.calendar-content td .content a::before {
+  content: "\2022"; }
+
+.calendar-content td .content a::after {
+  content: "\2022"; }
+
+.calendar-content td .content a:hover {
+  font-weight: 800; }

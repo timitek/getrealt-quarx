@@ -7,17 +7,20 @@
 
 @parallaxHeaderWidget(isset($event->title) ? $event->title : 'Events', null)
 
-<div class="container">
+<div class="container blog-show">
 
-    @if (config('app.locale') !== config('quarx.default-language'))
-        <h1>{!! $event->translationData(config('app.locale'))->title !!}</h1>
-        <p>{!! $event->translationData(config('app.locale'))->start_date !!} - {!! $event->translationData(config('app.locale'))->end_date !!}</p>
-        {!! $event->translationData(config('app.locale'))->details !!}
-    @else
+    <div class='blog-title'>
         <h1>{!! $event->title !!}</h1>
-        <p>{!! $event->start_date !!} - {!! $event->end_date !!}</p>
-        {!! $event->details !!}
-    @endif
+        <i class="fa fa-calendar"></i> 
+        <span class='published-at'>
+            {!! \Carbon\Carbon::parse($event->start_date)->format('d M, Y') !!}
+            @if ($event->start_date != $event->end_date)
+                - {!! \Carbon\Carbon::parse($event->end_date)->format('d M, Y') !!}
+            @endif
+        </span>
+    </div>
+
+    {!! $event->details !!}
 
 </div>
 
