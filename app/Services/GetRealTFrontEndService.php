@@ -8,6 +8,7 @@ use Auth;
 use Carbon\Carbon;
 use Yab\Quarx\Repositories\BlogRepository;
 use Yab\Quarx\Repositories\WidgetRepository;
+use Yab\Quarx\Models\Blog;
 
 class GetRealTFrontEndService {
 
@@ -42,7 +43,7 @@ class GetRealTFrontEndService {
 
     public function recentBlogPostsWidget($tag, $numPosts) {
         $output = "";
-        $posts = (new BlogRepository())->findBlogsByTag($tag)->take($numPosts)->all();
+        $posts = Blog::where('tags', 'LIKE', "%$tag%")->where('is_published', 1)->orderBy('published_at', 'desc')->take($numPosts)->get()->all();
         if (count($posts) > 0) {
             $output = "<ul>";
             foreach ($posts as $post) {
@@ -71,7 +72,7 @@ class GetRealTFrontEndService {
     public function blogPostByTagWidget($tag, $entry) {
         $output = "";
         $allowEdit = Gate::allows('quarx', Auth::user());
-        $posts = (new BlogRepository())->findBlogsByTag($tag)->take($entry)->all();
+        $posts = Blog::where('tags', 'LIKE', "%$tag%")->where('is_published', 1)->orderBy('published_at', 'desc')->take($entry)->get()->all();
         if (count($posts) >= $entry) {
             $post = $posts[$entry - 1];
             
