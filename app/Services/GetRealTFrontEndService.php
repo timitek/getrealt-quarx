@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Yab\Quarx\Repositories\BlogRepository;
 use Yab\Quarx\Repositories\WidgetRepository;
 use Yab\Quarx\Models\Blog;
+use Yab\Quarx\Repositories\ImageRepository;
 
 class GetRealTFrontEndService {
 
@@ -106,11 +107,22 @@ class GetRealTFrontEndService {
     }
 
     public function parallaxHeaderWidget($title, $background) {
-        
         $finalBackground = $background;
-        if (empty($background)) {
-            //"http://lorempixel.com/1400/900/abstract/"
-            $finalBackground = '/assets/img/header/' . collect(array_diff( scandir(public_path() . '/assets/img/header'), array(".", "..") ))->random();
+        
+        if (empty($finalBackground)) {
+
+            $headerImageTag = config('getrealt.header_image_tag');
+
+            if (!empty($headerImageTag) && $headerImageTag !== 'none') {
+                $taggedImages = (new ImageRepository())->getImagesByTag($headerImageTag)->get();
+                if ($taggedImages->count() > 0) {
+                    $finalBackground = collect($taggedImages)->random()->url;
+                }
+            }
+
+            if (empty($finalBackground)) {
+                $finalBackground = '/assets/img/header/' . collect(array_diff( scandir(public_path() . '/assets/img/header'), array(".", "..") ))->random();
+            }
         }
 
         extract([

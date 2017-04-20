@@ -5,6 +5,7 @@ namespace Timitek\GetRealT\Services;
 use App;
 use Config;
 use Artisan;
+use Yab\Quarx\Repositories\ImageRepository;
 
 class GetRealTSettingsService {
     
@@ -15,23 +16,31 @@ class GetRealTSettingsService {
      * @return void
      */
     private function setEnvironmentValue($environmentKey, $configKey, $newValue) {
-        $existingValue = config($configKey);
-        $existingValue = (is_bool($existingValue) ? ($existingValue ? 'true' : 'false') : $existingValue);
-        $find = $environmentKey . '=' . $existingValue;
-        $findQuoted = $environmentKey . '="' . $existingValue . '"';
         $replace = $environmentKey . '=' . $newValue;
-        file_put_contents(App::environmentFilePath(), str_replace(
-            $find,
-            $replace,
-            file_get_contents(App::environmentFilePath())
-        ));
+        
+        // Replace it if it is an existing key
+        if (strpos(file_get_contents(App::environmentFilePath()), $environmentKey) !== false) {
+            $existingValue = config($configKey);
+            $existingValue = (is_bool($existingValue) ? ($existingValue ? 'true' : 'false') : $existingValue);
+            $find = $environmentKey . '=' . $existingValue;
+            $findQuoted = $environmentKey . '="' . $existingValue . '"';
 
-        file_put_contents(App::environmentFilePath(), str_replace(
-            $findQuoted,
-            $replace,
-            file_get_contents(App::environmentFilePath())
-        ));
+            file_put_contents(App::environmentFilePath(), str_replace(
+                $find,
+                $replace,
+                file_get_contents(App::environmentFilePath())
+            ));
 
+            file_put_contents(App::environmentFilePath(), str_replace(
+                $findQuoted,
+                $replace,
+                file_get_contents(App::environmentFilePath())
+            ));
+        }
+        // Append it if it is a new key
+        else {
+            file_put_contents(App::environmentFilePath(), $replace . PHP_EOL, FILE_APPEND);
+        }
 
         Config::set($configKey, $newValue);
         
@@ -64,6 +73,11 @@ class GetRealTSettingsService {
     public function setGetRealTLeadsEmail($email) {
         $this->setEnvironmentValue('GETREALT_LEADS_EMAIL', 'getrealt.leads_email', $email);
     }
+
+    public function setGetRealTHeaderImageTag($tag) {
+        $this->setEnvironmentValue('GETREALT_HEADER_IMAGE_TAG', 'getrealt.header_image_tag', $tag);
+    }
+    
     
     public function getSettings() {
         return (object)[
@@ -72,11 +86,18 @@ class GetRealTSettingsService {
             'enable_example' => config('getrets.enable_example'),
             'maps_key' => config('getrealt.maps_key'),
             'leads_email' => config('getrealt.leads_email'),
-            'theme' => config('getrealt.theme')
+            'theme' => config('getrealt.theme'),
+            'header_image_tag' => config('getrealt.header_image_tag'),
         ];
     }
 
     public function getSettingsForm() {
+        $imageRepo = new ImageRepository();
+        $headerImageTags = array_merge([ 'none' ], $imageRepo->allTags());
+        $headerImageTagOptions = collect($headerImageTags)->flatMap(function ($values) { 
+            return [$values => $values]; 
+        })->all();
+        
         return [
             'site_name' => [
                 'placeholder' => 'The name to be used for your site',
@@ -92,6 +113,10 @@ class GetRealTSettingsService {
             ],
             'leads_email' => [
                 'placeholder' => 'Email address that leads are sent too',
+            ],
+            'header_image_tag' => [
+                'type' => 'select',
+                'options' => $headerImageTagOptions,
             ],
             'theme' => [
                 'type' => 'select',
@@ -113,7 +138,7 @@ class GetRealTSettingsService {
                     'united' => 'united',
                     'yeti' => 'yeti'
                 ]
-            ]
+            ],
         ];
     }
 

@@ -52,4 +52,18 @@ return [
 
     'leads_email' => env('GETREALT_LEADS_EMAIL', null),
     
+    /*
+    |--------------------------------------------------------------------------
+    | Header Image Tag
+    |--------------------------------------------------------------------------
+    |
+    | The image gallery tag that should be used to load images for the 
+    | parallax header.
+    |
+    | If it is set to null, or if the tag has no images, defaults will be used.
+    | 
+    */
+
+    'header_image_tag' => env('GETREALT_HEADER_IMAGE_TAG', null),
+    
 ];
