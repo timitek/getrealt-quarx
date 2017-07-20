@@ -15,7 +15,6 @@
     Route::group(['namespace' => 'Timitek\GetRealT\Http\Controllers\FrontEnd'], function () {
         Route::get('listings', 'ListingsController@all');
         Route::get('listings/{id}', 'ListingsController@show');
-
     });
 
     Route::group(['namespace' => 'Timitek\GetRealT\Http\Controllers\Quarx', 'prefix' => 'quarx', 'middleware' => ['web', 'auth', 'quarx']], function () { 
@@ -27,5 +26,6 @@
     Route::group(['namespace' => 'Timitek\GetRealT\Http\Controllers\Api', 'prefix' => 'getrealt', 'middleware' => ['web']], function () { 
         Route::post('listings/sendLead', 'ListingsApiController@sendLead');
         Route::resource('listings', 'ListingsApiController', ['only' => ['index', 'show']]);
+        Route::post('listings', 'ListingsApiController@index');
     });
 

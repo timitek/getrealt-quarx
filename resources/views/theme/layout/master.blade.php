@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/themes/getrealt/css/' . config('getrealt.theme') . '.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/themes/getrealt/flexslider/flexslider.css') }}">
-        <script type="text/javascript" data-pace-options='{ "startOnPageLoad": false }' src="{{ asset('assets/themes/getrealt/js/pace.min.js') }}"></script>
+        <script type="text/javascript" data-pace-options='{ "startOnPageLoad": false, "ajax": { "trackMethods": ["GET", "POST"] } }' src="{{ asset('assets/themes/getrealt/js/pace.min.js') }}"></script>
         @yield('stylesheets')
     </head>
 

@@ -1,4 +1,5 @@
 deployLocal.sh
+deployApache.sh
 /nbproject/private/
 /nbproject
 /node_modules

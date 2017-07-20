@@ -38,7 +38,15 @@ class ListingsApiController extends ApiController {
             $preparedKeywords = htmlspecialchars($this->request->keywords);
             if (!empty($this->request->advancedSearch) && $this->request->advancedSearch) {
                 $data = GetRETS::getListing()
-                        ->search($preparedKeywords, $this->request->maxPrice, $this->request->minPrice, $this->request->includeResidential, $this->request->includeLand, $this->request->includeCommercial);
+                        ->search($preparedKeywords, 
+                                 $this->request->extra, 
+                                 $this->request->maxPrice, 
+                                 $this->request->minPrice, 
+                                 $this->request->beds, 
+                                 $this->request->baths, 
+                                 $this->request->includeResidential, 
+                                 $this->request->includeLand, 
+                                 $this->request->includeCommercial);
                 $this->addThumbnails($data);
                 $output = $this->respondData($data);
             } else {
