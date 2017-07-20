@@ -8,7 +8,7 @@
 
     var listingService = function ($q, $http, restService) {
 
-        this.index = function (advancedSearch, keywords, minPrice, maxPrice, includeResidential, includeLand, includeCommercial) {
+        this.index = function (advancedSearch, keywords, minPrice, maxPrice, beds, baths, includeResidential, includeLand, includeCommercial) {
             var deferred = $q.defer();
 
             var params = {
@@ -16,16 +16,35 @@
             };
 
             if (advancedSearch) {
-                params.advancedSearch = advancedSearch;
-                params.minPrice = minPrice;
-                params.maxPrice = maxPrice;
-                params.includeResidential = includeResidential;
-                params.includeLand = includeLand;
-                params.includeCommercial = includeCommercial;
+                if (advancedSearch) {
+                    params.advancedSearch = advancedSearch;
+                }
+                if (minPrice) {
+                    params.minPrice = minPrice;
+                }
+                if (maxPrice) {
+                    params.maxPrice = maxPrice;
+                }
+                if (includeResidential) {
+                    params.includeResidential = includeResidential;
+                }
+                if (includeLand) {
+                    params.includeLand = includeLand;
+                }
+                if (includeCommercial) {
+                    params.includeCommercial = includeCommercial;
+                }
+                if (beds) {
+                    params.beds = beds;
+                }
+                if (baths) {
+                    params.baths = baths;
+                }
             }
 
             restService.go({
                 url: '/getrealt/listings',
+                method: 'POST',
                 params: params
             }).then(function (data) {
                 deferred.resolve(data.data);
@@ -78,6 +97,8 @@
         $scope.keywords = null;
         $scope.minPrice = null;
         $scope.maxPrice = null;
+        $scope.beds = null;
+        $scope.baths = null;
         $scope.includeResidential = true;
         $scope.includeLand = true;
         $scope.includeCommercial = true;
@@ -92,6 +113,8 @@
                         $scope.keywords,
                         $scope.minPrice,
                         $scope.maxPrice,
+                        $scope.beds,
+                        $scope.baths,
                         $scope.includeResidential,
                         $scope.includeLand,
                         $scope.includeCommercial
