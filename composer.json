@@ -22,7 +22,7 @@
     "require": {
         "illuminate/support": "5.5.*",
         "php": ">=7.0",
-        "timitek/getrets": "^1.0",
+        "timitek/getrets-laravel": "^1.1",
         "yab/quarx": "^2.4"
     },
     "repositories": [
