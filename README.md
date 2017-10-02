@@ -3,9 +3,28 @@
 
 An instant real estate website / portal.  Fully integrated with listings fed directly from your MLS, with the ability to generate your own leads!
 
-**Live Demo at**: <http://www.getrealt.com/>
+**Live Demo at**: (<http://www.getrealt.com>)
+
+**Help Documentation at**: (<http://help.getrealt.com>)
 
 ***
+
+# Table of Contents
+* [Compatibility Guide](#compatibility-guide)
+* [Install](#install)
+  * [Automated Install From Scratch](#automated-install-from-scratch)
+  * [Manually adding to an existing project](#manually-adding-to-an-existing-project)
+* [Further Information](#further-information)
+* [Technonology Stack](#technonology-stack)
+
+***
+
+# Compatibility Guide
+
+| Laravel Version | Package Tag |
+|-----------------|-------------|
+| 5.5.x | 1.1.x |
+| 5.4.x | [1.0.x](<https://github.com/timitek/getrealt-quarx/releases/tag/1.0.4>) |
 
 # Install
 
@@ -13,7 +32,7 @@ An instant real estate website / portal.  Fully integrated with listings fed dir
 A command line install tool that will install everything from scratch is available for download at;
 <https://github.com/timitek/getrealt-manager>
 
-## Manual Installation / adding to an existing project
+## Manually adding to an existing project
 
 Manual installation requires a configured Laravel installation with Quarx and GetRETS.
 
@@ -21,9 +40,7 @@ Manual installation requires a configured Laravel installation with Quarx and Ge
 
 **Step 2:** Install Quarx (<https://github.com/YABhq/Quarx#installation>).
 
-**Step 3:** Install GetRETS for Laravel (<https://github.com/timitek/getrets-laravel#install>).
-
-**Step 4:** Install GetRealT for Quarx
+**Step 3:** Install GetRealT for Quarx
 
 ```
 composer require timitek/getrealt-quarx
@@ -86,7 +103,7 @@ GETREALT_LEADS_EMAIL=support@timitek.com
 
 # Further Information
 
-For further documentation and information visit <http://www.getrealt.com> or contact timitek at <http://www.timitek.com/getrealt>.
+For further documentation and information visit <http://www.getrealt.com> and <http://help.getrealt.com> or contact timitek at <http://www.timitek.com/getrealt>.
 If you are interested in managed hosting / installation, visit <https://www.timitek.net>.
 
 ***
