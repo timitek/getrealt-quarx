@@ -67,10 +67,10 @@ Make GetRealT the active Quarx theme by modifying the config/quarx.php and chang
 Publish all of the assets with the following commands.
 
 ```
-php artisan vendor:publish --provider="Timitek\GetRealT\Providers\GetRealTServiceProvider" --tag=config
-```
+php artisan vendor:publish --provider="Timitek\GetRETS\Providers\GetRETSServiceProvider" --tag=config
 
-```
+php artisan vendor:publish --provider="Timitek\GetRealT\Providers\GetRealTServiceProvider" --tag=config
+
 php artisan vendor:publish --provider="Timitek\GetRealT\Providers\GetRealTServiceProvider" --tag=public
 ```
 
