@@ -24,6 +24,18 @@
     </div>
 </div>
 
+@if (!empty(config('getrets.customer_key')))
+<div class="container">
+    <div class="row animated bounceInDown">
+        <div class="col-xs-12">
+            @searchWidget()
+        </div>
+    </div>
+    
+    @listingResultsWidget()
+</div>
+@endif
+
 <div class="featured-section">
     <div class="container">
         <div class="row animated fadeInRight">
