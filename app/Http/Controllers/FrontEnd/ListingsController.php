@@ -17,7 +17,7 @@ class ListingsController extends Controller
      */
     public function all()
     {
-        return view('quarx-theme::listings.all');
+        return view('quarx-frontend::listings.all');
     }
 
     /**
@@ -46,6 +46,6 @@ class ListingsController extends Controller
             abort(404);
         }
         
-        return view('quarx-theme::listings.show', ['listing' => $listing, 'headerImage' => $headerImage]);
+        return view('quarx-frontend::listings.show', ['listing' => $listing, 'headerImage' => $headerImage]);
     }
 }
