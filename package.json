@@ -12,6 +12,8 @@
     "gulp-sass": "^3.1.0"
   },
   "devDependencies": {
+    "gulp-concat": "^2.6.1",
+    "gulp-sourcemaps": "^2.6.1",
     "gulp-uglify": "^2.0.1"
   },
   "scripts": {
