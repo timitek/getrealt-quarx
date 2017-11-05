@@ -9,6 +9,10 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!-- Quarx Styles -->
+        <link rel="stylesheet" type="text/css" href="{!! Quarx::asset('dist/css/all.css', 'text/css') !!}">
+        
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/themes/getrealt/css/' . (empty(config('getrealt.theme')) ? 'united' : config('getrealt.theme')) . '.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/themes/getrealt/flexslider/flexslider.css') }}">
         <script type="text/javascript" data-pace-options='{ "startOnPageLoad": false, "ajax": { "trackMethods": ["GET", "POST"] } }' src="{{ asset('assets/themes/getrealt/js/pace.min.js') }}"></script>
@@ -28,8 +32,10 @@
     </body>
 
     <script type="text/javascript">
-        var _token = '{!! Session::token() !!}';
+        var _token = '{!! csrf_token() !!}';
         var _url = '{!! url("/") !!}';
+        var _pixabayKey = '{!! config('quarx.pixabay', '') !!}';
+        var _appTimeZone = '{!! config('app.timezone', 'UTC') !!}';
     </script>
     @yield("pre-javascript")
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>

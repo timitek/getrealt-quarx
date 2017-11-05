@@ -15,6 +15,8 @@
     Route::group(['namespace' => 'Timitek\GetRealT\Http\Controllers\FrontEnd'], function () {
         Route::get('listings', 'ListingsController@all');
         Route::get('listings/{id}', 'ListingsController@show');
+
+        Route::post('posts', 'PostsController@store')->name('getrealt.posts.store');
     });
 
     Route::group(['namespace' => 'Timitek\GetRealT\Http\Controllers\Quarx', 'prefix' => 'quarx', 'middleware' => ['web', 'auth', 'quarx']], function () { 

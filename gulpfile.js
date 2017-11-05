@@ -14,7 +14,31 @@ gulp.task('js', function() {
     // Vendor
     gulp.src([
       './resources/assets/js/vendor/parallax.js',
-      './resources/assets/js/vendor/polly.js'
+      './resources/assets/js/vendor/polly.js',
+
+      './resources/assets/js/vendor/quarx/forms.js',
+      './resources/assets/js/vendor/quarx/typeahead.bundle.js',
+      './resources/assets/js/vendor/quarx/bootstrap-tagsinput.min.js',
+      './resources/assets/js/vendor/quarx/sortable.min.js',
+
+      './resources/assets/js/vendor/quarx/packages/dropzone/dropzone.js',
+      
+      './resources/assets/js/vendor/quarx/packages/datepicker/moment.js',
+      './resources/assets/js/vendor/quarx/packages/datepicker/moment-timezone.js',
+      './resources/assets/js/vendor/quarx/packages/datepicker/bootstrap-datetimepicker.min.js',
+    
+      './resources/assets/js/vendor/quarx/packages/redactor/redactor.js',
+      './resources/assets/js/vendor/quarx/packages/redactor/filemanager.js',
+      './resources/assets/js/vendor/quarx/packages/redactor/fontcolor.js',
+      './resources/assets/js/vendor/quarx/packages/redactor/fontfamily.js',
+      './resources/assets/js/vendor/quarx/packages/redactor/fontsize.js',
+      './resources/assets/js/vendor/quarx/packages/redactor/imagemanager.js',
+      './resources/assets/js/vendor/quarx/packages/redactor/stockimagemanager.js',
+      './resources/assets/js/vendor/quarx/packages/redactor/specialchar.js',
+      './resources/assets/js/vendor/quarx/packages/redactor/table.js',
+      './resources/assets/js/vendor/quarx/packages/redactor/video.js',
+      './resources/assets/js/vendor/quarx/packages/redactor/insertIcon.js'
+
     ])
     .pipe(sourcemaps.init())
     .pipe(concat('vendor.min.js'))

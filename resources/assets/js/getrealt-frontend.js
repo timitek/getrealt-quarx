@@ -363,6 +363,13 @@
         
     };
 
+    var homeController = function ($scope) {
+        var self = this;
+
+        self.start = function () {
+        };
+    };
+
     angular.module('getrealt', ['getrealt.rest', 'ui.bootstrap'])
         .factory('eventFactory', ['$rootScope', eventFactory])
         .service('listingService', ['$q', '$http', 'restService', listingService])
@@ -371,6 +378,7 @@
         .controller('listingDetails', ['$scope', '$uibModal', 'listingService', listingDetails])
         .controller('contactAgentModal', ['$scope', '$uibModalInstance', 'parentController', contactAgentModal])
         .controller('messageConfirmationModal', ['$scope', '$uibModalInstance', 'message', messageConfirmationModal])
+        .controller('homeController', ['$scope',homeController])
         .directive('ngEnter', function () {
             return function (scope, element, attrs) {
                 element.bind("keydown keypress", function (event) {
