@@ -17,6 +17,8 @@
 
 <div ng-controller="homeController as home" ng-init="home.start()">
 
+    <button class="btn btn-primary" ng-click="home.createPost()">Create Content</button>
+
     <div class="container">
         <div class="row animated fadeInLeft">
             <div class="col-xs-12">

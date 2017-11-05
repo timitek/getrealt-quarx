@@ -363,9 +363,66 @@
         
     };
 
-    var homeController = function ($scope) {
+    var postModal = function ($scope, $uibModalInstance, parentController) {
+        $scope.content = null;
+        $scope.tags = null;
+        
+        $scope.save = function () {
+            
+            var postDetails = {
+                content: $scope.content,
+                tags: $scope.tags
+            };
+            
+            $uibModalInstance.close({
+                postDetails: postDetails
+            });
+        };
+        
+        $scope.cancel = function () {
+            $uibModalInstance.dismiss('cancel');
+        };
+
+    };
+
+    var homeController = function ($scope, $uibModal) {
         var self = this;
 
+        self.createPost = function () {
+            var modalInstance = $uibModal.open({
+                templateUrl: 'postModal.html',
+                controller: 'postModal',
+                ariaLabelledBy: 'modal-title',
+                ariaDescribedBy: 'modal-body',
+                size: 'lg',
+                resolve: {
+                    parentController: function () {
+                        return $scope;
+                    }
+                }
+            });
+
+            modalInstance.result.then(
+                function (results) {
+                    // closed
+                    var info = results.postDetails;
+                    alert(JSON.stringify(info));
+                },
+                function () {
+                    // dismissed
+                });
+
+            modalInstance.rendered.then(
+                function () {
+                    // Now that it's opened run redactor
+                    $('textarea.redactor').redactor(_redactorConfig);
+                },
+                function () {
+                    // dismissed
+                });
+    
+            };
+        
         self.start = function () {
         };
     };
@@ -378,7 +435,8 @@
         .controller('listingDetails', ['$scope', '$uibModal', 'listingService', listingDetails])
         .controller('contactAgentModal', ['$scope', '$uibModalInstance', 'parentController', contactAgentModal])
         .controller('messageConfirmationModal', ['$scope', '$uibModalInstance', 'message', messageConfirmationModal])
-        .controller('homeController', ['$scope',homeController])
+        .controller('postModal', ['$scope', '$uibModalInstance', 'parentController', postModal])
+        .controller('homeController', ['$scope', '$uibModal', homeController])
         .directive('ngEnter', function () {
             return function (scope, element, attrs) {
                 element.bind("keydown keypress", function (event) {
