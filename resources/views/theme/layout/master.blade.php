@@ -36,6 +36,8 @@
         var _url = '{!! url("/") !!}';
         var _pixabayKey = '{!! config('quarx.pixabay', '') !!}';
         var _appTimeZone = '{!! config('app.timezone', 'UTC') !!}';
+        var _apiKey = '{!!  config("quarx.api-key") !!}';
+        var _apiToken = '{!!  config("quarx.api-token") !!}';
     </script>
     @yield("pre-javascript")
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>

@@ -26,49 +26,20 @@
     </h3>
 </div>
 <div class="modal-body">
-    <form method="POST" action="<?= route('getrealt.posts.store') ?>" accept-charset="UTF-8" class="add">
-        {!! csrf_field() !!}
-
+    <form accept-charset="UTF-8" class="add">
         <div class="form-group ">
             <label class="control-label" for="Title">Title</label>
-            <input id="Title" class="form-control" type="text" name="title" placeholder="Title">
-        </div>
-        <div class="form-group ">
-            <label class="control-label" for="Url">Url</label>
-            <input id="Url" class="form-control" type="text" name="url" placeholder="Url">
-        </div>
-        <div class="form-group ">
-            <label class="control-label" for="Tags">Tags</label>
-            <input id="Tags" class="form-control tags" type="text" name="tags" placeholder="Tags">
+            <input id="postModal-title" class="form-control" type="text" name="title" placeholder="Title" ng-model="title">
         </div>
         <div class="form-group ">
             <label class="control-label" for="Entry">Content</label>
-            <textarea id="Entry" class="form-control redactor" name="entry" placeholder="Content"></textarea>
-        </div>
-        <div class="form-group ">
-            <label class="control-label" for="Seo_description">SEO Description</label>
-            <textarea id="Seo_description" class="form-control" name="seo_description" placeholder="SEO Description"></textarea>
-        </div>
-        <div class="form-group ">
-            <label class="control-label" for="Seo_keywords">SEO Keywords</label>
-            <input id="Seo_keywords" class="form-control tags" type="text" name="seo_keywords" placeholder="SEO Keywords">
-        </div>
-        <div class="form-group ">
-            <div class="checkbox">
-                <label for="Is_published" class="control-label">
-                    <input id="Is_published" type="checkbox" name="is_published" class="form-check-input">Published</label>
-            </div>
-        </div>
-        <div class="form-group ">
-            <label class="control-label" for="Published_at">Publish Date</label>
-            <div class="input-group">
-                <input id="Published_at" class="form-control datetimepicker" type="text" name="published_at" placeholder="Publish Date"><span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-            </div>
+            <textarea id="postModal-entry" class="form-control redactor" name="entry" placeholder="Content"></textarea>
         </div>
         <div class="form-group text-right">
-            <input class="btn btn-primary" type="submit" value="Save">
+            <button class="btn btn-primary" ng-click="save()">
+                Save
+            </button>
         </div>
-
     </form>
 
 </div>

@@ -21,7 +21,7 @@
                                 <?php if (isset($testimonials[$i]->id)): ?>
                                 <a href="<?= url('quarx/blog/'.$testimonials[$i]->id.'/edit') ?>" target="_blank" style="margin-left: 8px;" class="btn btn-xs btn-default"><span class="fa fa-pencil"></span> Edit</a>
                                 <?php else: ?>
-                                <a href="<?= url('quarx/blog/create') . '?taginit=Testimonial' ?>" target="_blank" style="margin-left: 8px;" class="btn btn-xs btn-default"><span class="fa fa-pencil"></span> Create Now</a>
+                                <button class="btn btn-xs btn-default" ng-click="home.createPost('Testimonial')"><span class="fa fa-pencil"></span> Create Now</button>
                                 <?php endif; ?>
                             </div>
                         <?php endif; ?>

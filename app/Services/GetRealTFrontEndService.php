@@ -90,7 +90,8 @@ class GetRealTFrontEndService {
         } else {
             $create = "";
             if ($allowEdit) {
-                $create = '<a href="' . url('quarx/blog/create') . '?taginit=' . $tag . '" target="_blank" style="margin-left: 8px;" class="btn btn-xs btn-default"><span class="fa fa-pencil"></span> Create Now</a>';
+                $create = '<button class="btn btn-xs btn-default" ng-click="home.createPost(\'' . $tag . '\')"><span class="fa fa-pencil"></span> Create Now</button>';
+                //$create = '<a href="' . url('quarx/blog/create') . '?taginit=' . $tag . '" target="_blank" style="margin-left: 8px;" class="btn btn-xs btn-default"><span class="fa fa-pencil"></span> Create Now</a>';
             }
 
             $output = "<div class='getrealt-bp'>" .

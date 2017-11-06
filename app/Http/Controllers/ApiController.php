@@ -167,11 +167,11 @@ class ApiController extends BaseController {
      * @param array $provided The input that was decoded and parsed (if null uses Request input)
      * @return type
      */
-    public function verifyProvidedInput(array $requiredFields, array $provided = null) {
+     public function verifyProvidedInput(array $requiredFields, array $provided = null) {
         $failureResponse = null;
         $input = (empty($provided) ? $this->request->input() : $provided);
         foreach ($requiredFields as $key => $value) {
-            if (array_key_exists($key, $input) == false) {
+            if (array_key_exists($key, $input) == false || empty($input[$key])) {
                 $failureResponse = $this->respondUnprocessable($value);
                 break;
             }

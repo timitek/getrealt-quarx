@@ -90,6 +90,26 @@
         };
     };
 
+    var postsService = function ($q, $http, restService) {
+
+        this.store = function (details) {
+            var deferred = $q.defer();
+
+            restService.go({
+                url: '/getrealt/posts',
+                method: 'POST',
+                params: details
+            }).then(function (data) {
+                deferred.resolve(data.data);
+            }, function (data) {
+                deferred.reject(data.data);
+                throw data;
+            });
+
+            return deferred.promise;
+        };
+    };
+
     var searchWidget = function ($scope, eventFactory, listingService) {
 
         // Input variables
@@ -363,15 +383,19 @@
         
     };
 
-    var postModal = function ($scope, $uibModalInstance, parentController) {
-        $scope.content = null;
-        $scope.tags = null;
-        
+    var postModal = function ($scope, $uibModalInstance, tags) {
+        $scope.title = null;
+        $scope.entry = null;
+        $scope.tags = tags;
+
         $scope.save = function () {
+
+            $scope.entry = $('#postModal-entry').redactor('code.get');
             
             var postDetails = {
-                content: $scope.content,
-                tags: $scope.tags
+                title: $scope.title,
+                entry: $scope.entry,
+                tags: $scope.tags,
             };
             
             $uibModalInstance.close({
@@ -385,10 +409,10 @@
 
     };
 
-    var homeController = function ($scope, $uibModal) {
+    var homeController = function ($scope, $uibModal, postsService) {
         var self = this;
 
-        self.createPost = function () {
+        self.createPost = function (tags) {
             var modalInstance = $uibModal.open({
                 templateUrl: 'postModal.html',
                 controller: 'postModal',
@@ -396,8 +420,8 @@
                 ariaDescribedBy: 'modal-body',
                 size: 'lg',
                 resolve: {
-                    parentController: function () {
-                        return $scope;
+                    tags: function () {
+                        return tags;
                     }
                 }
             });
@@ -405,8 +429,13 @@
             modalInstance.result.then(
                 function (results) {
                     // closed
-                    var info = results.postDetails;
-                    alert(JSON.stringify(info));
+                    var details = results.postDetails;
+                    if (details) {                        
+                        postsService.store(details)
+                            .then(function (data) {
+                                location.reload();
+                            });
+                    }
                 },
                 function () {
                     // dismissed
@@ -421,7 +450,7 @@
                     // dismissed
                 });
     
-            };
+        };
         
         self.start = function () {
         };
@@ -430,13 +459,14 @@
     angular.module('getrealt', ['getrealt.rest', 'ui.bootstrap'])
         .factory('eventFactory', ['$rootScope', eventFactory])
         .service('listingService', ['$q', '$http', 'restService', listingService])
+        .service('postsService', ['$q', '$http', 'restService', postsService])
         .controller('searchWidget', ['$scope', 'eventFactory', 'listingService', searchWidget])
         .controller('listingsWidget', ['$scope', 'eventFactory', listingsWidget])
         .controller('listingDetails', ['$scope', '$uibModal', 'listingService', listingDetails])
         .controller('contactAgentModal', ['$scope', '$uibModalInstance', 'parentController', contactAgentModal])
         .controller('messageConfirmationModal', ['$scope', '$uibModalInstance', 'message', messageConfirmationModal])
-        .controller('postModal', ['$scope', '$uibModalInstance', 'parentController', postModal])
-        .controller('homeController', ['$scope', '$uibModal', homeController])
+        .controller('postModal', ['$scope', '$uibModalInstance', 'tags', postModal])
+        .controller('homeController', ['$scope', '$uibModal', 'postsService', homeController])
         .directive('ngEnter', function () {
             return function (scope, element, attrs) {
                 element.bind("keydown keypress", function (event) {
