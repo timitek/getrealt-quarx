@@ -13,6 +13,22 @@ use Timitek\GetRealT\Http\Controllers\ApiController;
 
 class PostsApiController extends ApiController {
 
+    private function insertIcon($entry, $icon) {
+        $content = $entry;
+        if (!empty($icon)) {
+            $iconHtml = '<i class="fa ' . $icon . '"></i> ';
+            // If the content starts with a paragraph put it at the beginning of the paragraph
+            $pos = stripos($entry, '<p>');
+            if ($pos === 0) {
+                $content = substr_replace($entry, '<p>' . $iconHtml, $pos, strlen('<p>'));
+            }
+            else {
+                $content = $iconHtml . $content;
+            }
+        }
+        return $content;
+    }
+
     /**
      * Save Settings
      *
@@ -30,24 +46,24 @@ class PostsApiController extends ApiController {
 
         if (empty($output)) {
 
-                $details = [
-                    'title' => $request['title'],
-                    'entry' => $request['entry'],
-                    'tags' => $request['tags'],
-                    'is_published' => true,
-                    'url' => strtolower(str_replace(' ', '-', preg_replace('/[^\w\s]/i', '', $request['title']))),
-                    'template' => 'show',
-                ];
-    
-                $blogRepository = new BlogRepository();
-                $blog = $blogRepository->store($details);
-    
-                if ($blog) {
-                    $output = $this->respondData($blog);
-                }
-                else {
-                    $output = $this->respondUnprocessable('Blog could not be saved.');
-                }
+            $details = [
+                'title' => $request['title'],
+                'entry' => $this->insertIcon($request['entry'], $request['icon']),
+                'tags' => $request['tags'],
+                'is_published' => true,
+                'url' => strtolower(str_replace(' ', '-', preg_replace('/[^\w\s]/i', '', $request['title']))),
+                'template' => 'show',
+            ];
+
+            $blogRepository = new BlogRepository();
+            $blog = $blogRepository->store($details);
+
+            if ($blog) {
+                $output = $this->respondData($blog);
+            }
+            else {
+                $output = $this->respondUnprocessable('Blog could not be saved.');
+            }
         }
 
         return $output;
