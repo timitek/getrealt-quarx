@@ -61,7 +61,7 @@
             var deferred = $q.defer();
 
             restService.go({
-                url: '/getrealt/listings' + id
+                url: '/getrealt/listings/' + id
             }).then(function (data) {
                 deferred.resolve(data.data);
             }, function (data) {
@@ -106,6 +106,20 @@
                 throw data;
             });
 
+            return deferred.promise;
+        };
+
+        this.edit = function (id) {
+            var deferred = $q.defer();
+
+            restService.go({
+                url: '/getrealt/posts/' + id
+            }).then(function (data) {
+                deferred.resolve(data.data);
+            }, function (data) {
+                deferred.reject(data.data);
+                throw data;
+            });
             return deferred.promise;
         };
     };
@@ -408,7 +422,8 @@
         
     };
 
-    var postModal = function ($scope, $uibModalInstance, $uibModal, tags) {
+    var postModal = function ($scope, $uibModalInstance, $uibModal, postsService, tags, id) {
+        $scope.id = id;
         $scope.title = null;
         $scope.entry = null;
         $scope.tags = tags;
@@ -419,6 +434,7 @@
             $scope.entry = $('#postModal-entry').redactor('code.get');
             
             var postDetails = {
+                id: $scope.id,
                 title: $scope.title,
                 entry: $scope.entry,
                 tags: $scope.tags,
@@ -456,12 +472,34 @@
             $uibModalInstance.dismiss('cancel');
         };
 
+        if (id) {
+            postsService.edit(id)
+            .then(function (data) {
+
+                $scope.entry = (data.entry ? data.entry.value : null);
+                if ($scope.entry && $scope.entry.length > 7 && $scope.entry.substring(0, 6).toLowerCase() === "<p><i ") {
+                    var entryParts = $scope.entry.split('</i>')
+                    $scope.iconDetails = {
+                        icon: entryParts[0].split('"')[1].replace('fa ', ''),
+                        text: entryParts[0].split('"')[1].replace('fa fa-', ''),
+                    };
+                    entryParts[0] = null;
+                    $scope.entry = '<p>' + entryParts.join('');
+                }
+
+                $scope.id = id;
+                $scope.title = data.title;
+                $scope.tags = data.tags;
+                $('textarea.redactor').redactor('code.set', $scope.entry);
+            });
+        }
+
     };
 
     var homeController = function ($scope, $uibModal, postsService) {
         var self = this;
 
-        self.createPost = function (tags) {
+        self.editPost = function (tags, id) {
             var modalInstance = $uibModal.open({
                 templateUrl: 'postModal.html',
                 controller: 'postModal',
@@ -471,6 +509,9 @@
                 resolve: {
                     tags: function () {
                         return tags;
+                    },
+                    id: function () {
+                        return id
                     }
                 }
             });
@@ -515,7 +556,7 @@
         .controller('contactAgentModal', ['$scope', '$uibModalInstance', 'parentController', contactAgentModal])
         .controller('messageConfirmationModal', ['$scope', '$uibModalInstance', 'message', messageConfirmationModal])
         .controller('iconModal', ['$scope', '$uibModalInstance', iconModal])
-        .controller('postModal', ['$scope', '$uibModalInstance', '$uibModal', 'tags', postModal])
+        .controller('postModal', ['$scope', '$uibModalInstance', '$uibModal', 'postsService', 'tags', 'id', postModal])
         .controller('homeController', ['$scope', '$uibModal', 'postsService', homeController])
         .directive('ngEnter', function () {
             return function (scope, element, attrs) {

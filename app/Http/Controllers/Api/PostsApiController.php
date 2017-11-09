@@ -56,7 +56,14 @@ class PostsApiController extends ApiController {
             ];
 
             $blogRepository = new BlogRepository();
-            $blog = $blogRepository->store($details);
+            $blog = null;
+            if (empty($request['id'])) {
+                $blog = $blogRepository->store($details);
+            }
+            else {
+                $blog = $blogRepository->findBlogById($request['id']);
+                $blog = $blogRepository->update($blog, $details);
+            }
 
             if ($blog) {
                 $output = $this->respondData($blog);
@@ -68,5 +75,26 @@ class PostsApiController extends ApiController {
 
         return $output;
     }
-    
+
+    /**
+     * Undocumented function
+     *
+     * @param [type] $id
+     * @return void
+     */
+    public function edit($id)
+    {
+        $output = null;
+        $blogRepository = new BlogRepository();
+        $blog = $blogRepository->findBlogById($id);
+
+        if (empty($blog)) {
+            $output = $this->respondUnprocessable('Blog could not be found.');
+        }
+        else {
+            $output = $this->respondData($blog);
+        }
+
+        return $output;
+    }    
 }

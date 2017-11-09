@@ -28,6 +28,7 @@
         Route::resource('listings', 'ListingsApiController', ['only' => ['index', 'show']]);
         Route::post('listings', 'ListingsApiController@index');
 
+        Route::get('posts/{id}', 'PostsApiController@edit')->name('getrealt.posts.edit');
         Route::post('posts', 'PostsApiController@store')->name('getrealt.posts.store');
     });
 

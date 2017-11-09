@@ -22,7 +22,8 @@
     <button type="button" class="close" data-ng-click="cancel()" aria-hidden="true">&times;</button>
     <h3 class="modal-title" id="modal-title">
         <span class="icon"><i class="fa fa-address-card-o"></i></span>    
-        <span>Create Post</span>
+        <span ng-if="!id">Create Post</span>
+        <span ng-if="id">Edit Post</span>
     </h3>
 </div>
 <div class="modal-body">

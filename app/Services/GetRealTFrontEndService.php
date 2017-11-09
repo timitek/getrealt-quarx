@@ -79,7 +79,8 @@ class GetRealTFrontEndService {
             
             $edit = "";
             if ($allowEdit) {
-                $edit = '<a href="'.url('quarx/blog/'.$post->id.'/edit').'" target="_blank" style="margin-left: 8px;" class="btn btn-xs btn-default"><span class="fa fa-pencil"></span> Edit</a>';
+                $edit = '<button class="btn btn-xs btn-default" ng-click="home.editPost(\'' . $tag . '\', ' . $post->id . ')"><span class="fa fa-pencil"></span> Edit</button>';
+                //$edit = '<a href="'.url('quarx/blog/'.$post->id.'/edit').'" target="_blank" style="margin-left: 8px;" class="btn btn-xs btn-default"><span class="fa fa-pencil"></span> Edit</a>';
             }
             
             $output = "<div class='getrealt-bp'>" .
@@ -90,7 +91,7 @@ class GetRealTFrontEndService {
         } else {
             $create = "";
             if ($allowEdit) {
-                $create = '<button class="btn btn-xs btn-default" ng-click="home.createPost(\'' . $tag . '\')"><span class="fa fa-pencil"></span> Create Now</button>';
+                $create = '<button class="btn btn-xs btn-default" ng-click="home.editPost(\'' . $tag . '\')"><span class="fa fa-pencil"></span> Create Now</button>';
                 //$create = '<a href="' . url('quarx/blog/create') . '?taginit=' . $tag . '" target="_blank" style="margin-left: 8px;" class="btn btn-xs btn-default"><span class="fa fa-pencil"></span> Create Now</a>';
             }
 
