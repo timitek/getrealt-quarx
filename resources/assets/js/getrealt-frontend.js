@@ -428,16 +428,30 @@
         $scope.entry = null;
         $scope.tags = tags;
         $scope.iconDetails = null;
+        $scope.main = false;
+        $scope.news = false;
 
         $scope.save = function () {
 
             $scope.entry = $('#postModal-entry').redactor('code.get');
             
+            var tags = $scope.tags.split(',');
+            if ($scope.main) {
+                if (tags.indexOf("Main") < 0) {
+                    tags.push('Main');
+                }
+            }
+            if ($scope.news) {
+                if (tags.indexOf("News") < 0) {
+                    tags.push('News');
+                }
+            }
+
             var postDetails = {
                 id: $scope.id,
                 title: $scope.title,
                 entry: $scope.entry,
-                tags: $scope.tags,
+                tags: tags.join(','),
                 icon: ($scope.iconDetails ? $scope.iconDetails.icon : null)
             };
             
@@ -446,6 +460,9 @@
             });
         };
 
+        $scope.clearIcon = function () {
+            $scope.iconDetails = null;
+        };
 
         $scope.selectIcon = function () {
             var modalInstance = $uibModal.open({
@@ -475,7 +492,19 @@
         if (id) {
             postsService.edit(id)
             .then(function (data) {
-
+                var tags = data.tags.split(',');
+                var i = tags.indexOf("Main");
+                if (i > -1) {
+                    $scope.main = true;
+                    tags.splice(i, 1);
+                }
+    
+                i = tags.indexOf("News");
+                if (i > -1) {
+                    $scope.news = true;
+                    tags.splice(i, 1);
+                }
+    
                 $scope.entry = (data.entry ? data.entry.value : null);
                 if ($scope.entry && $scope.entry.length > 7 && $scope.entry.substring(0, 6).toLowerCase() === "<p><i ") {
                     var entryParts = $scope.entry.split('</i>')
@@ -489,7 +518,7 @@
 
                 $scope.id = id;
                 $scope.title = data.title;
-                $scope.tags = data.tags;
+                $scope.tags = tags.join(',');
                 $('textarea.redactor').redactor('code.set', $scope.entry);
             });
         }
