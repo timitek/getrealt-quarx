@@ -13,6 +13,12 @@ use Yab\Quarx\Repositories\ImageRepository;
 
 class GetRealTFrontEndService {
 
+    private $advancedEdit = true;
+
+    function __construct() {
+        $this->advancedEdit = config('getrealt.advanced_edit');
+    }
+
     public function mainMenu() {
         $output = "";
 
@@ -79,8 +85,12 @@ class GetRealTFrontEndService {
             
             $edit = "";
             if ($allowEdit) {
-                $edit = '<button class="btn btn-xs btn-default" ng-click="home.editPost(\'' . $tag . '\', ' . $post->id . ')"><span class="fa fa-pencil"></span> Edit</button>';
-                //$edit = '<a href="'.url('quarx/blog/'.$post->id.'/edit').'" target="_blank" style="margin-left: 8px;" class="btn btn-xs btn-default"><span class="fa fa-pencil"></span> Edit</a>';
+                if ($this->advancedEdit) {
+                    $edit = '<a href="'.url('quarx/blog/'.$post->id.'/edit').'" target="_blank" style="margin-left: 8px;" class="btn btn-xs btn-default"><span class="fa fa-pencil"></span> Edit</a>';
+                }
+                else {
+                    $edit = '<button class="btn btn-xs btn-default" ng-click="frontEnd.editPost(\'' . $tag . '\', ' . $post->id . ')"><span class="fa fa-pencil"></span> Edit</button>';
+                }
             }
             
             $output = "<div class='getrealt-bp'>" .
@@ -91,8 +101,12 @@ class GetRealTFrontEndService {
         } else {
             $create = "";
             if ($allowEdit) {
-                $create = '<button class="btn btn-xs btn-default" ng-click="home.editPost(\'' . $tag . '\')"><span class="fa fa-pencil"></span> Create Now</button>';
-                //$create = '<a href="' . url('quarx/blog/create') . '?taginit=' . $tag . '" target="_blank" style="margin-left: 8px;" class="btn btn-xs btn-default"><span class="fa fa-pencil"></span> Create Now</a>';
+                if ($this->advancedEdit) {
+                    $create = '<a href="' . url('quarx/blog/create') . '?taginit=' . $tag . '" target="_blank" style="margin-left: 8px;" class="btn btn-xs btn-default"><span class="fa fa-pencil"></span> Create New</a>';
+                }
+                else {
+                    $create = '<button class="btn btn-xs btn-default" ng-click="frontEnd.editPost(\'' . $tag . '\')"><span class="fa fa-pencil"></span> Create New</button>';
+                }
             }
 
             $output = "<div class='getrealt-bp'>" .
@@ -149,7 +163,8 @@ class GetRealTFrontEndService {
 
         extract([
             'allowEdit' => Gate::allows('quarx', Auth::user()),
-            'testimonials' => $testimonials
+            'testimonials' => $testimonials,
+            'advancedEdit' => $this->advancedEdit,
         ]);
         ob_start();
         include(realpath(__DIR__ . '/../../resources/views/widgets/testimonialsWidget.php'));

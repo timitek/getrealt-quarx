@@ -18,10 +18,16 @@
                         </blockquote>
                         <?php if ($allowEdit): ?>
                             <div style="text-align: center">
-                                <?php if (isset($testimonials[$i]->id)): ?>
-                                <button class="btn btn-xs btn-default" ng-click="home.editPost('Testimonial', " . $testimonials[$i]->id . ")"><span class="fa fa-pencil"></span> Edit</button>
+                                <?php if ($advancedEdit) : ?>
+                                    <?php if (isset($testimonials[$i]->id)): ?>
+                                    <a href="<?= url('quarx/blog/'.$testimonials[$i]->id.'/edit') ?>" target="_blank" style="margin-left: 8px;" class="btn btn-xs btn-default"><span class="fa fa-pencil"></span> Edit</a>
+                                    <?php endif; ?>
+                                    <a href="<?= url('quarx/blog/create') . '?taginit=Testimonial' ?>" target="_blank" style="margin-left: 8px;" class="btn btn-xs btn-default"><span class="fa fa-pencil"></span> Create New</a>
                                 <?php else: ?>
-                                <button class="btn btn-xs btn-default" ng-click="home.editPost('Testimonial')"><span class="fa fa-pencil"></span> Create Now</button>
+                                    <?php if (isset($testimonials[$i]->id)): ?>
+                                    <button class="btn btn-xs btn-default" ng-click="frontEnd.editPost('Testimonial', <?= $testimonials[$i]->id ?>)"><span class="fa fa-pencil"></span> Edit</button>
+                                    <?php endif; ?>
+                                    <button class="btn btn-xs btn-default" ng-click="frontEnd.editPost('Testimonial')"><span class="fa fa-pencil"></span> Create New</button>
                                 <?php endif; ?>
                             </div>
                         <?php endif; ?>

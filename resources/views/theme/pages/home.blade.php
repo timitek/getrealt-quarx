@@ -15,7 +15,7 @@
 </div>
 @else
 
-<div ng-controller="homeController as home" ng-init="home.start()">
+<div>
 
     <div class="container">
         <div class="row animated fadeInLeft">
@@ -67,9 +67,6 @@
             </div>
         </div>
     </div>
-
-    @theme('partials.iconModal')
-    @theme('partials.postModal')
 
 </div>
 

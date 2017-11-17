@@ -21,13 +21,20 @@
 
     <body>
 
-        @theme('partials.navigation')
+        <div ng-controller="frontEndController as frontEnd" ng-init="frontEnd.start()">
 
-        <div class="site-wrapper @if(Request::is('/')) homepage @endif">
-            @yield('content')
+            @theme('partials.navigation')
+
+            <div class="site-wrapper @if(Request::is('/')) homepage @endif">        
+                @yield('content')
+            </div>
+
+            @theme('partials.footer')
+
+            @theme('partials.iconModal')
+            @theme('partials.postModal')
+
         </div>
-
-        @theme('partials.footer')
 
     </body>
 

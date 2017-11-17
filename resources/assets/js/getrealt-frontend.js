@@ -525,7 +525,7 @@
 
     };
 
-    var homeController = function ($scope, $uibModal, postsService) {
+    var frontEndController = function ($scope, $uibModal, postsService) {
         var self = this;
 
         self.editPost = function (tags, id) {
@@ -586,7 +586,7 @@
         .controller('messageConfirmationModal', ['$scope', '$uibModalInstance', 'message', messageConfirmationModal])
         .controller('iconModal', ['$scope', '$uibModalInstance', iconModal])
         .controller('postModal', ['$scope', '$uibModalInstance', '$uibModal', 'postsService', 'tags', 'id', postModal])
-        .controller('homeController', ['$scope', '$uibModal', 'postsService', homeController])
+        .controller('frontEndController', ['$scope', '$uibModal', 'postsService', frontEndController])
         .directive('ngEnter', function () {
             return function (scope, element, attrs) {
                 element.bind("keydown keypress", function (event) {
