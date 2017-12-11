@@ -14,55 +14,60 @@
     {!! $page->entry !!}
 </div>
 @else
-<div class="container">
-    <div class="row animated fadeInLeft">
-        <div class="col-xs-12">
-            <div class="welcome-section">
-                @blogPostByTagWidget('Welcome', 1)
-            </div>
-        </div>
-    </div>
-</div>
 
-@if (!empty(config('getrets.customer_key')))
-<div class="container">
-    <div class="row animated bounceInDown">
-        <div class="col-xs-12">
-            @searchWidget()
-        </div>
-    </div>
-    
-    @listingResultsWidget()
-</div>
-@endif
+<div>
 
-<div class="featured-section">
     <div class="container">
-        <div class="row animated fadeInRight">
-            <div class="col-sm-4">
-                @blogPostByTagWidget('Featured', 1)
-            </div>
-            <div class="col-sm-4">
-                @blogPostByTagWidget('Featured', 2)
-            </div>
-            <div class="col-sm-4">
-                @blogPostByTagWidget('Featured', 3)
+        <div class="row animated fadeInLeft">
+            <div class="col-xs-12">
+                <div class="welcome-section">
+                    @blogPostByTagWidget('Welcome', 1)
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="testimonial-section">
+    @if (!empty(config('getrets.customer_key')))
     <div class="container">
-        <div class="row animated fadeInUp" data-animate="fadeInUp" style="visibility: visible;">
+        <div class="row animated bounceInDown">
             <div class="col-xs-12">
-                <h2 class="main-header">What Others Say About Us</h2>
+                @searchWidget()
             </div>
-            <div class="col-xs-12">
-                @testimonialsWidget()
+        </div>
+        
+        @listingResultsWidget()
+    </div>
+    @endif
+
+    <div class="featured-section">
+        <div class="container">
+            <div class="row animated fadeInRight">
+                <div class="col-sm-4">
+                    @blogPostByTagWidget('Featured', 1)
+                </div>
+                <div class="col-sm-4">
+                    @blogPostByTagWidget('Featured', 2)
+                </div>
+                <div class="col-sm-4">
+                    @blogPostByTagWidget('Featured', 3)
+                </div>
             </div>
         </div>
     </div>
+
+    <div class="testimonial-section">
+        <div class="container">
+            <div class="row animated fadeInUp" data-animate="fadeInUp" style="visibility: visible;">
+                <div class="col-xs-12">
+                    <h2 class="main-header">What Others Say About Us</h2>
+                </div>
+                <div class="col-xs-12">
+                    @testimonialsWidget()
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 @endif

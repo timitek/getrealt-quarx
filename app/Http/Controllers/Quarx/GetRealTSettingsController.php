@@ -52,7 +52,8 @@ class GetRealTSettingsController extends Controller
             GetRealTSettings::setGetRealTMapsKey($request->maps_key);
             GetRealTSettings::setGetRealTLeadsEmail($request->leads_email);
             GetRealTSettings::setGetRealTHeaderImageTag($request->header_image_tag);
-
+            GetRealTSettings::setGetRealTAdvancedEdit($request->advanced_edit);
+            
             Quarx::notification('Settings saved successfully.', 'success');
         } else {
             return $validation['redirect'];

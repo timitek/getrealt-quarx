@@ -31,5 +31,10 @@
 @endsection
 
 @section('quarx')
-    @edit('blog', $blog->id)
+    <?php if (config('getrealt.advanced_edit')) : ?>
+        @edit('blog', $blog->id)
+    <?php else: ?>
+        <button class="btn btn-xs btn-default pull-right" ng-click="frontEnd.editPost('', <?= $blog->id ?>)"><span class="fa fa-pencil"></span> Edit</button>
+        <button class="btn btn-xs btn-default pull-right" ng-click="frontEnd.editPost('')"><span class="fa fa-pencil"></span> Create New</button>
+    <?php endif; ?>
 @endsection

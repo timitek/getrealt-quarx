@@ -66,4 +66,18 @@ return [
 
     'header_image_tag' => env('GETREALT_HEADER_IMAGE_TAG', null),
     
+    /*
+    |--------------------------------------------------------------------------
+    | Advanced Edit
+    |--------------------------------------------------------------------------
+    |
+    | Enables advanced editing where the user is always directed to the 
+    | back end Quarx system for editing.
+    |
+    | By default editing from the front end (simple editing) is enabled
+    |
+    */
+
+    'advanced_edit' => env('GETREALT_ADVANCED_EDIT', false),
+    
 ];

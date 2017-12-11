@@ -9,6 +9,10 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!-- Quarx Styles -->
+        <link rel="stylesheet" type="text/css" href="{!! Quarx::asset('dist/css/all.css', 'text/css') !!}">
+        
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/themes/getrealt/css/' . (empty(config('getrealt.theme')) ? 'united' : config('getrealt.theme')) . '.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/themes/getrealt/flexslider/flexslider.css') }}">
         <script type="text/javascript" data-pace-options='{ "startOnPageLoad": false, "ajax": { "trackMethods": ["GET", "POST"] } }' src="{{ asset('assets/themes/getrealt/js/pace.min.js') }}"></script>
@@ -17,19 +21,30 @@
 
     <body>
 
-        @theme('partials.navigation')
+        <div ng-controller="frontEndController as frontEnd" ng-init="frontEnd.start()">
 
-        <div class="site-wrapper @if(Request::is('/')) homepage @endif">
-            @yield('content')
+            @theme('partials.navigation')
+
+            <div class="site-wrapper @if(Request::is('/')) homepage @endif">        
+                @yield('content')
+            </div>
+
+            @theme('partials.footer')
+
+            @theme('partials.iconModal')
+            @theme('partials.postModal')
+
         </div>
-
-        @theme('partials.footer')
 
     </body>
 
     <script type="text/javascript">
-        var _token = '{!! Session::token() !!}';
+        var _token = '{!! csrf_token() !!}';
         var _url = '{!! url("/") !!}';
+        var _pixabayKey = '{!! config('quarx.pixabay', '') !!}';
+        var _appTimeZone = '{!! config('app.timezone', 'UTC') !!}';
+        var _apiKey = '{!!  config("quarx.api-key") !!}';
+        var _apiToken = '{!!  config("quarx.api-token") !!}';
     </script>
     @yield("pre-javascript")
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
@@ -38,9 +53,7 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>    
     <script type="text/javascript" src="{{ asset('assets/themes/getrealt/flexslider/jquery.flexslider.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/themes/getrealt/js/parallax.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/themes/getrealt/js/polly.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/themes/getrealt/js/rest.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/themes/getrealt/js/getrealt.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/themes/getrealt/js/vendor.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/themes/getrealt/js/getrealt-frontend.min.js') }}"></script>
     @yield('javascript')
 </html>

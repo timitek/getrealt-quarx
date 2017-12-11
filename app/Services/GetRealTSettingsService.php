@@ -77,6 +77,10 @@ class GetRealTSettingsService {
     public function setGetRealTHeaderImageTag($tag) {
         $this->setEnvironmentValue('GETREALT_HEADER_IMAGE_TAG', 'getrealt.header_image_tag', $tag);
     }
+
+    public function setGetRealTAdvancedEdit($enable) {
+        $this->setEnvironmentValue('GETREALT_ADVANCED_EDIT', 'getrealt.advanced_edit', ($enable ? 'true' : 'false'));
+    }
     
     
     public function getSettings() {
@@ -88,6 +92,7 @@ class GetRealTSettingsService {
             'leads_email' => config('getrealt.leads_email'),
             'theme' => config('getrealt.theme'),
             'header_image_tag' => config('getrealt.header_image_tag'),
+            'advanced_edit' => config('getrealt.advanced_edit'),
         ];
     }
 
@@ -104,6 +109,11 @@ class GetRealTSettingsService {
             ],
             'customer_key' => [
                 'placeholder' => 'Customer Key from timitek.com',
+            ],
+            'advanced_edit' => [
+                'type' => 'checkbox-inline',
+                'label' => 'Advanced Edit',
+                'before' => '<span></span>',
             ],
             /*'enable_example' => [
                 'type' => 'checkbox',
